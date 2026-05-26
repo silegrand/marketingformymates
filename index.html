@@ -40,6 +40,7 @@
 
   * { position: relative; z-index: 1; }
 
+  /* NAV */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1.25rem 4rem;
@@ -56,6 +57,7 @@
   .nav-cta { background: var(--amber); color: #000; padding: 0.6rem 1.4rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: none; letter-spacing: 0.05em; transition: opacity 0.2s; border: none; }
   .nav-cta:hover { opacity: 0.85; }
 
+  /* LAYOUT */
   .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
   section { padding: 5rem 0; }
 
@@ -98,12 +100,12 @@
   .metric-num { font-family: var(--font-mono); font-size: 1.9rem; font-weight: 700; color: var(--amber); display: block; }
   .metric-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; display: block; }
 
-  /* TICKER */
+  /* TICKER — inline strip only, no iframe needed */
   .ticker-wrap { background: var(--bg3); border-top: 1px solid var(--border-amber); border-bottom: 1px solid var(--border-amber); overflow: hidden; padding: 0.85rem 0; }
-  .ticker-track { display: flex; gap: 0; white-space: nowrap; animation: ticker 38s linear infinite; }
+  .ticker-track { display: flex; white-space: nowrap; animation: ticker 38s linear infinite; }
   .ticker-track:hover { animation-play-state: paused; }
   .ticker-item { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); padding: 0 2.5rem; letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
-  .ticker-item .ti { color: var(--amber); font-size: 0.7rem; }
+  .ticker-item .ti { color: var(--amber); }
   @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
   /* PROBLEM */
@@ -117,39 +119,16 @@
   .insight-block p { font-size: 1rem; line-height: 1.8; max-width: 860px; }
   .insight-block p strong { color: var(--amber); font-weight: 700; }
 
-  /* AUDIT TOOL */
-  .audit-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .audit-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
-  .audit-form-box { background: var(--bg3); border: 1px solid var(--border-amber); overflow: hidden; }
-  .audit-form-header { background: rgba(245,158,11,0.07); border-bottom: 1px solid var(--border-amber); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-  .audit-form-header span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--amber); letter-spacing: 0.1em; }
-  .audit-form-body { padding: 1.75rem; }
-  .audit-input-row { margin-bottom: 1.25rem; }
-  .audit-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
-  .audit-input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); font-family: var(--font-mono); font-size: 0.82rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; }
-  .audit-input:focus { border-color: var(--border-amber); }
-  .audit-input::placeholder { color: var(--text-dim); }
-  .audit-select { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); font-family: var(--font-mono); font-size: 0.82rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; appearance: none; cursor: pointer; }
-  .audit-select:focus { border-color: var(--border-amber); }
-  .audit-btn { width: 100%; background: var(--amber); color: #000; border: none; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem; cursor: pointer; transition: opacity 0.2s; margin-top: 0.5rem; }
-  .audit-btn:hover { opacity: 0.85; }
-  .audit-results { display: none; }
-  .audit-results.show { display: block; }
-  .audit-terminal { background: var(--bg); border: 1px solid var(--border-amber); font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.9; overflow: hidden; }
-  .audit-terminal-bar { background: rgba(245,158,11,0.06); border-bottom: 1px solid var(--border); padding: 0.5rem 1rem; display: flex; align-items: center; gap: 0.4rem; }
-  .audit-terminal-body { padding: 1.25rem; }
-  .audit-score-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-top: 1.5rem; }
-  .audit-score-card { background: var(--bg2); border: 1px solid var(--border); padding: 1rem 1.25rem; }
-  .audit-score-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; display: block; }
-  .audit-score-val { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; }
-  .score-warn { color: #f97316; }
-  .score-bad { color: #ef4444; }
-  .score-ok { color: var(--green); }
-  .audit-cta { margin-top: 1.5rem; background: var(--amber-glow); border: 1px solid var(--border-amber); padding: 1.25rem; }
-  .audit-cta p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.6; }
-  .audit-cta p strong { color: var(--text); }
-  .audit-cta a { display: inline-block; background: var(--amber); color: #000; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.65rem 1.5rem; text-decoration: none; transition: opacity 0.2s; }
-  .audit-cta a:hover { opacity: 0.85; }
+  /* IFRAME SECTIONS */
+  .embed-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .embed-intro { padding: 5rem 0 2rem; }
+
+  iframe.tool-embed {
+    width: 100%;
+    border: none;
+    display: block;
+    background: transparent;
+  }
 
   /* ABOUT */
   .about-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -160,39 +139,6 @@
   .cred-item { background: var(--bg); border: 1px solid var(--border); padding: 1.25rem; }
   .cred-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
   .cred-value { font-size: 0.875rem; color: var(--text); font-weight: 600; line-height: 1.4; }
-
-  /* QUIZ */
-  .quiz-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .quiz-box { background: var(--bg2); border: 1px solid var(--border); max-width: 720px; margin: 0 auto; overflow: hidden; }
-  .quiz-progress-bar { height: 3px; background: var(--border); }
-  .quiz-progress-fill { height: 100%; background: var(--amber); transition: width 0.4s ease; }
-  .quiz-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .quiz-step-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.12em; }
-  .quiz-step-label span { color: var(--amber); }
-  .quiz-body { padding: 2.5rem 2rem; min-height: 260px; }
-  .quiz-q { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
-  .quiz-hint { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
-  .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .quiz-option { background: var(--bg); border: 1px solid var(--border); padding: 1rem 1.25rem; cursor: pointer; font-size: 0.875rem; color: var(--text-muted); transition: all 0.18s; text-align: left; font-family: var(--font-head); line-height: 1.4; }
-  .quiz-option:hover { border-color: var(--border-amber); color: var(--text); }
-  .quiz-option.selected { border-color: var(--amber); color: var(--text); background: var(--amber-glow); }
-  .quiz-option strong { display: block; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; font-size: 0.9rem; }
-  .quiz-nav { padding: 1.5rem 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .quiz-back { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem; padding: 0.6rem 1.25rem; cursor: pointer; transition: all 0.18s; }
-  .quiz-back:hover { border-color: var(--border-amber); color: var(--text); }
-  .quiz-next { background: var(--amber); color: #000; border: none; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.5rem; cursor: pointer; transition: opacity 0.18s; opacity: 0.4; pointer-events: none; }
-  .quiz-next.active { opacity: 1; pointer-events: auto; }
-  .quiz-next:hover { opacity: 0.85; }
-  .quiz-result { padding: 2.5rem 2rem; }
-  .quiz-result-badge { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.75rem; display: inline-block; margin-bottom: 1.25rem; }
-  .badge-yes { background: rgba(16,217,136,0.12); border: 1px solid rgba(16,217,136,0.3); color: var(--green); }
-  .badge-maybe { background: var(--amber-glow); border: 1px solid var(--border-amber); color: var(--amber); }
-  .badge-no { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #ef4444; }
-  .quiz-result h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.75rem; }
-  .quiz-result p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; max-width: 560px; }
-  .quiz-result p strong { color: var(--amber); }
-  .quiz-restart { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; padding: 0.5rem 1rem; cursor: pointer; margin-left: 1rem; transition: all 0.18s; }
-  .quiz-restart:hover { border-color: var(--border-amber); color: var(--amber); }
 
   /* PRICING */
   .plan-card { background: var(--bg2); border: 1px solid var(--amber); background: linear-gradient(150deg, rgba(245,158,11,0.07) 0%, var(--bg2) 55%); box-shadow: 0 0 60px rgba(245,158,11,0.06), 0 0 120px rgba(245,158,11,0.03); padding: 3rem; max-width: 680px; margin: 0 auto; }
@@ -212,44 +158,6 @@
   .plan-cta { width: 100%; padding: 1rem; background: var(--amber); color: #000; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; display: block; text-align: center; text-decoration: none; transition: opacity 0.2s; }
   .plan-cta:hover { opacity: 0.85; }
 
-  /* ROI CALCULATOR */
-  .roi-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .roi-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .roi-controls { background: var(--bg3); border: 1px solid var(--border-amber); padding: 2rem; }
-  .roi-control-row { margin-bottom: 2rem; }
-  .roi-control-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; display: flex; justify-content: space-between; }
-  .roi-control-label .val { color: var(--amber); font-weight: 700; }
-  .roi-slider { width: 100%; appearance: none; height: 4px; background: var(--border); outline: none; border-radius: 2px; cursor: pointer; }
-  .roi-slider::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; background: var(--amber); border-radius: 50%; cursor: pointer; border: 2px solid var(--bg); }
-  .roi-slider::-moz-range-thumb { width: 18px; height: 18px; background: var(--amber); border-radius: 50%; cursor: pointer; border: 2px solid var(--bg); }
-  .roi-results { display: flex; flex-direction: column; gap: 1rem; }
-  .roi-card { background: var(--bg3); border: 1px solid var(--border); padding: 1.5rem 2rem; }
-  .roi-card.highlight { border-color: var(--amber); background: var(--amber-glow); }
-  .roi-card-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .roi-card-value { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1.1; }
-  .roi-card.highlight .roi-card-value { color: var(--green); }
-  .roi-card-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
-  .roi-breakeven { margin-top: 0.5rem; background: var(--bg); border: 1px solid var(--border-amber); border-left: 3px solid var(--amber); padding: 1rem 1.25rem; }
-  .roi-breakeven p { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
-  .roi-breakeven p strong { color: var(--amber); }
-
-  /* TIMELINE */
-  .timeline-wrap { border-top: 1px solid var(--border); }
-  .timeline { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; margin-top: 3rem; position: relative; }
-  .timeline::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 1px; background: var(--border-amber); z-index: 0; }
-  .timeline-step { padding: 0 1rem; text-align: center; cursor: pointer; }
-  .timeline-step.active .tl-node { background: var(--amber); color: #000; border-color: var(--amber); }
-  .tl-node { width: 56px; height: 56px; border: 1px solid var(--border); background: var(--bg2); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; transition: all 0.25s; z-index: 1; letter-spacing: 0.05em; }
-  .timeline-step:hover .tl-node { border-color: var(--border-amber); color: var(--amber); }
-  .tl-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .tl-title { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); line-height: 1.3; }
-  .timeline-step.active .tl-title { color: var(--text); }
-  .timeline-detail { margin-top: 2.5rem; background: var(--bg2); border: 1px solid var(--border-amber); border-left: 3px solid var(--amber); padding: 2rem 2.5rem; transition: all 0.3s; }
-  .timeline-detail-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
-  .timeline-detail h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; }
-  .timeline-detail p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; max-width: 700px; }
-  .timeline-detail p strong { color: var(--text); }
-
   /* CTA */
   .cta-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); }
   .cta-inner { display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; }
@@ -267,16 +175,15 @@
   .cta-btn.outline { background: transparent; color: var(--amber); border: 1px solid var(--border-amber); }
   .cta-btn:hover { opacity: 0.82; }
 
-  footer { padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer { padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
   .footer-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
   .footer-logo strong { color: var(--amber); }
   .footer-right { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
   .footer-right a { color: var(--text-muted); text-decoration: none; }
-  hr.divider { border: none; border-top: 1px solid var(--border); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { animation: fadeUp 0.55s ease both; }
-  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; }
+  .d2 { animation-delay: 0.22s; }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -286,14 +193,12 @@
     .hero { grid-template-columns: 1fr; gap: 2.5rem; }
     .metrics-inner { grid-template-columns: repeat(2,1fr); padding: 0 1.5rem; }
     .metric { border-bottom: 1px solid var(--border); }
-    .problem-grid, .audit-inner, .about-inner, .roi-inner, .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .timeline { grid-template-columns: 1fr; }
-    .timeline::before { display: none; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .features-grid { grid-template-columns: 1fr; }
     .plan-card { padding: 2rem; }
     .plan-pricing { flex-direction: column; gap: 1.25rem; }
-    .quiz-options { grid-template-columns: 1fr; }
-    .audit-score-grid { grid-template-columns: 1fr; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .cta-box { min-width: auto; }
     .cta-steps { flex-direction: column; }
     footer { flex-direction: column; gap: 1rem; padding: 1.5rem; text-align: center; }
@@ -366,8 +271,7 @@
 
 <!-- SOCIAL PROOF TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-track" id="ticker">
-    <!-- items repeated twice for seamless loop -->
+  <div class="ticker-track">
     <span class="ticker-item"><span class="ti">✦</span> MCIM Chartered Marketer</span>
     <span class="ticker-item"><span class="ti">✦</span> 20+ Years B2B Marketing</span>
     <span class="ticker-item"><span class="ti">✦</span> Technology Co-Founder</span>
@@ -382,7 +286,7 @@
     <span class="ticker-item"><span class="ti">✦</span> S&amp;FE Awards Winner 2023</span>
     <span class="ticker-item"><span class="ti">✦</span> Canterbury Business Awards SME Winner</span>
     <span class="ticker-item"><span class="ti">✦</span> Sunstone Systems — Acquired by WJ Group</span>
-    <!-- duplicate for loop -->
+    <!-- duplicate for seamless loop -->
     <span class="ticker-item"><span class="ti">✦</span> MCIM Chartered Marketer</span>
     <span class="ticker-item"><span class="ti">✦</span> 20+ Years B2B Marketing</span>
     <span class="ticker-item"><span class="ti">✦</span> Technology Co-Founder</span>
@@ -432,77 +336,22 @@
 </div>
 
 <!-- AUDIT TOOL -->
-<div class="audit-wrap">
+<div class="embed-wrap" id="audit">
   <div class="container">
-    <section id="audit">
-      <div class="audit-inner">
-        <div>
-          <span class="section-tag">02 — Free Tool</span>
-          <h2>Run Your Own<br><span class="accent">Digital Audit.</span></h2>
-          <p class="section-intro" style="margin-bottom:1.5rem;">Tell us about your business and we'll generate a realistic picture of where you stand right now — and what it's probably costing you.</p>
-          <p style="font-size:0.82rem; color: var(--text-dim); line-height:1.7; font-family: var(--font-mono);">// Based on sector benchmarks for CCTV and network installation businesses in the UK. Results are indicative — your actual situation may vary. We'll give you a proper assessment on the call.</p>
-        </div>
-        <div>
-          <div class="audit-form-box">
-            <div class="audit-form-header">
-              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-              <span>audit_tool_v1.sh</span>
-            </div>
-            <div class="audit-form-body" id="auditForm">
-              <div class="audit-input-row">
-                <label class="audit-label">Business type</label>
-                <select class="audit-select" id="bizType">
-                  <option value="">Select your trade</option>
-                  <option value="cctv">CCTV Installation</option>
-                  <option value="network">Network / IT Infrastructure</option>
-                  <option value="electric">Electrical Contractor</option>
-                  <option value="security">Security Systems</option>
-                  <option value="other">Other technical trade</option>
-                </select>
-              </div>
-              <div class="audit-input-row">
-                <label class="audit-label">Your location (town or city)</label>
-                <input class="audit-input" id="bizLocation" type="text" placeholder="e.g. Maidstone, Kent" />
-              </div>
-              <div class="audit-input-row">
-                <label class="audit-label">How would you describe your current website?</label>
-                <select class="audit-select" id="websiteStatus">
-                  <option value="">Select one</option>
-                  <option value="none">I don't have one</option>
-                  <option value="old">Got one — haven't touched it in years</option>
-                  <option value="ok">Got one — reasonably up to date</option>
-                  <option value="good">Got one — pretty happy with it</option>
-                </select>
-              </div>
-              <div class="audit-input-row">
-                <label class="audit-label">Average contract value</label>
-                <select class="audit-select" id="contractVal">
-                  <option value="">Select range</option>
-                  <option value="2000">Under £2,000</option>
-                  <option value="5000">£2,000 – £5,000</option>
-                  <option value="10000">£5,000 – £15,000</option>
-                  <option value="25000">£15,000 – £50,000</option>
-                  <option value="50000">£50,000+</option>
-                </select>
-              </div>
-              <button class="audit-btn" id="auditRunBtn" onclick="runAudit()">Run My Audit →</button>
-            </div>
-          </div>
-          <div class="audit-results" id="auditResults">
-            <div class="audit-terminal">
-              <div class="audit-terminal-bar">
-                <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);margin-left:0.5rem;" id="auditTermTitle">running audit...</span>
-              </div>
-              <div class="audit-terminal-body" id="auditTermBody"></div>
-            </div>
-            <div class="audit-score-grid" id="auditScoreGrid"></div>
-            <div class="audit-cta" id="auditCtaBox"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="embed-intro">
+      <span class="section-tag">02 — Free Tool</span>
+      <h2>Run Your Own <span class="accent">Digital Audit.</span></h2>
+      <p class="section-intro">Tell us about your business and get a realistic picture of where you stand right now — and what your current digital presence is probably costing you in missed contracts.</p>
+    </div>
   </div>
+  <iframe
+    class="tool-embed"
+    src="audit-tool.html"
+    id="auditFrame"
+    title="Free Digital Audit Tool"
+    scrolling="no"
+    height="620">
+  </iframe>
 </div>
 
 <!-- ABOUT -->
@@ -579,128 +428,60 @@
 </div>
 
 <!-- ROI CALCULATOR -->
-<div class="roi-wrap">
+<div class="embed-wrap" id="roi">
   <div class="container">
-    <section id="roi">
+    <div class="embed-intro">
       <span class="section-tag">05 — Return on Investment</span>
       <h2>What Does <span class="accent">£250 a Month</span> Actually Buy You?</h2>
-      <p class="section-intro">Move the sliders to match your business. The numbers update in real time.</p>
-      <div class="roi-inner">
-        <div>
-          <div class="roi-controls">
-            <div class="roi-control-row">
-              <div class="roi-control-label">
-                <span>Average contract value</span>
-                <span class="val" id="roiContractLabel">£5,000</span>
-              </div>
-              <input type="range" class="roi-slider" id="roiContract" min="1000" max="50000" step="500" value="5000">
-            </div>
-            <div class="roi-control-row">
-              <div class="roi-control-label">
-                <span>Extra enquiries per month from marketing</span>
-                <span class="val" id="roiEnquiriesLabel">3</span>
-              </div>
-              <input type="range" class="roi-slider" id="roiEnquiries" min="1" max="20" step="1" value="3">
-            </div>
-            <div class="roi-control-row" style="margin-bottom:0;">
-              <div class="roi-control-label">
-                <span>Conversion rate on enquiries</span>
-                <span class="val" id="roiConvLabel">30%</span>
-              </div>
-              <input type="range" class="roi-slider" id="roiConv" min="10" max="80" step="5" value="30">
-            </div>
-          </div>
-          <div class="roi-breakeven" style="margin-top:1rem;">
-            <p id="roiBreakevenText"></p>
-          </div>
-        </div>
-        <div class="roi-results">
-          <div class="roi-card">
-            <div class="roi-card-label">New contracts per month</div>
-            <div class="roi-card-value" id="roiContracts">—</div>
-            <div class="roi-card-sub">Based on your conversion rate</div>
-          </div>
-          <div class="roi-card">
-            <div class="roi-card-label">Additional monthly revenue</div>
-            <div class="roi-card-value" id="roiMonthly">—</div>
-            <div class="roi-card-sub">Before marketing costs</div>
-          </div>
-          <div class="roi-card highlight">
-            <div class="roi-card-label">Net annual gain</div>
-            <div class="roi-card-value" id="roiAnnual">—</div>
-            <div class="roi-card-sub">After all fees, setup &amp; retainer</div>
-          </div>
-          <div class="roi-card">
-            <div class="roi-card-label">Return on investment</div>
-            <div class="roi-card-value" id="roiPercent">—</div>
-            <div class="roi-card-sub">Annual ROI on total spend</div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <p class="section-intro">Move the sliders to match your business. The numbers update in real time — see exactly what the Growth Engine needs to deliver to pay for itself.</p>
+    </div>
   </div>
+  <iframe
+    class="tool-embed"
+    src="roi-calculator.html"
+    id="roiFrame"
+    title="ROI Calculator"
+    scrolling="no"
+    height="640">
+  </iframe>
 </div>
 
 <!-- QUALIFIER QUIZ -->
-<div class="quiz-wrap">
+<div class="embed-wrap" style="background: var(--bg);" id="quiz">
   <div class="container">
-    <section id="quiz">
+    <div class="embed-intro">
       <span class="section-tag">06 — Is This Right for You?</span>
-      <h2>Four Questions.<br><span class="accent">An Honest Answer.</span></h2>
-      <p class="section-intro">Not every business needs this service right now. Answer honestly — and we'll tell you straight whether it makes sense.</p>
-      <div class="quiz-box">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div></div>
-        <div class="quiz-header">
-          <span class="quiz-step-label">Question <span id="quizStepNum">1</span> of 4</span>
-          <span class="quiz-step-label" id="quizCategoryLabel" style="color:var(--amber);"></span>
-        </div>
-        <div class="quiz-body" id="quizBody"></div>
-        <div class="quiz-nav">
-          <button class="quiz-back" id="quizBack" onclick="quizBack()" style="visibility:hidden;">← Back</button>
-          <button class="quiz-next" id="quizNext" onclick="quizNext()">Next →</button>
-        </div>
-      </div>
-    </section>
+      <h2>Four Questions. <span class="accent">An Honest Answer.</span></h2>
+      <p class="section-intro">Not every business needs this service right now. Answer these honestly and get a straight answer — no sales spin either way.</p>
+    </div>
   </div>
+  <iframe
+    class="tool-embed"
+    src="qualifier-quiz.html"
+    id="quizFrame"
+    title="Qualifier Quiz"
+    scrolling="no"
+    height="620">
+  </iframe>
 </div>
 
-<!-- TIMELINE -->
-<div class="timeline-wrap">
+<!-- ONBOARDING TIMELINE -->
+<div class="embed-wrap" id="timeline">
   <div class="container">
-    <section id="timeline">
+    <div class="embed-intro">
       <span class="section-tag">07 — What Happens Next</span>
-      <h2>Exactly What You Get<br><span class="accent">and When.</span></h2>
-      <p class="section-intro">Technical buyers want to know the process. Here's precisely what happens after you book — no vagueness, no surprises.</p>
-      <div class="timeline" id="timeline">
-        <div class="timeline-step active" onclick="setStep(0)">
-          <div class="tl-node">DAY 1</div>
-          <div class="tl-label">Discovery</div>
-          <div class="tl-title">The 15-Min Call</div>
-        </div>
-        <div class="timeline-step" onclick="setStep(1)">
-          <div class="tl-node">WK 1</div>
-          <div class="tl-label">Foundation</div>
-          <div class="tl-title">Brand &amp; Brief</div>
-        </div>
-        <div class="timeline-step" onclick="setStep(2)">
-          <div class="tl-node">WK 2</div>
-          <div class="tl-label">Build</div>
-          <div class="tl-title">Site &amp; Copy Live</div>
-        </div>
-        <div class="timeline-step" onclick="setStep(3)">
-          <div class="tl-node">MO 1</div>
-          <div class="tl-label">Active</div>
-          <div class="tl-title">SEO &amp; Social On</div>
-        </div>
-        <div class="timeline-step" onclick="setStep(4)">
-          <div class="tl-node">MO 3</div>
-          <div class="tl-label">Results</div>
-          <div class="tl-title">Measurable Traction</div>
-        </div>
-      </div>
-      <div class="timeline-detail" id="timelineDetail"></div>
-    </section>
+      <h2>Exactly What You Get <span class="accent">and When.</span></h2>
+      <p class="section-intro">Technical buyers want to know the process. Here's precisely what happens after you book — no vagueness, no surprises. Click each stage to see the detail.</p>
+    </div>
   </div>
+  <iframe
+    class="tool-embed"
+    src="onboarding-timeline.html"
+    id="timelineFrame"
+    title="Onboarding Timeline"
+    scrolling="no"
+    height="560">
+  </iframe>
 </div>
 
 <!-- CTA -->
@@ -730,234 +511,43 @@
   </div>
 </div>
 
-<footer style="max-width:100%; padding: 2rem 4rem; display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border);">
+<footer>
   <div class="footer-logo"><strong>Marketing for my Mates</strong> — marketingformymates.com</div>
   <div class="footer-right"><a href="mailto:hello@marketingformymates.com">hello@marketingformymates.com</a> &nbsp;·&nbsp; Built for local B2B trades</div>
 </footer>
 
 <script>
-// ---- SCROLL ANIMATIONS ----
+// Scroll fade-ins for native page elements
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.pain-card, .cred-item, .cta-step, .plan-card, .roi-card, .timeline-step').forEach(el => {
+document.querySelectorAll('.pain-card, .cred-item, .cta-step, .plan-card').forEach(el => {
   el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease';
   obs.observe(el);
 });
 
-// ---- AUDIT TOOL ----
-function runAudit() {
-  var biz = document.getElementById('bizType').value;
-  var loc = document.getElementById('bizLocation').value.trim();
-  var web = document.getElementById('websiteStatus').value;
-  var con = document.getElementById('contractVal').value;
-  if (!biz || !loc || !web || !con) { alert('Please fill in all four fields to run your audit.'); return; }
-
-  var bizNames = { cctv:'CCTV Installation', network:'Network / IT Infrastructure', electric:'Electrical Contractor', security:'Security Systems', other:'Technical Trade' };
-  var webScores = { none: { rank:'Page 4+', visitors:'0–5/mo', score:'bad', label:'No web presence' }, old: { rank:'Page 3–4', visitors:'8–22/mo', score:'warn', label:'Weak presence' }, ok: { rank:'Page 2–3', visitors:'25–60/mo', score:'warn', label:'Below potential' }, good: { rank:'Page 1–2', visitors:'60–120/mo', score:'ok', label:'Decent foundation' } };
-  var ws = webScores[web];
-  var conNum = parseInt(con);
-  var missedJobs = web === 'none' ? 18 : web === 'old' ? 12 : web === 'ok' ? 6 : 3;
-  var missedVal = (missedJobs * conNum).toLocaleString('en-GB');
-  var compSpend = web === 'good' ? '£1,500–£3,000' : '£2,500–£5,000';
-
-  document.getElementById('auditForm').style.display='none';
-  var results = document.getElementById('auditResults');
-  results.classList.add('show');
-  document.getElementById('auditTermTitle').textContent = 'audit — ' + (loc || 'your area') + ' — ' + bizNames[biz];
-
-  var lines = [
-    { t:'prompt', v:'$ run digital_presence_scan --business="' + bizNames[biz] + '"' },
-    { t:'mute', v:'// scanning local search landscape...' },
-    { t: ws.score === 'bad' ? 'warn' : ws.score === 'warn' ? 'warn' : 'out', v:(ws.score==='ok'?'✓':'⚠') + '  Current estimated ranking: ' + ws.rank },
-    { t: ws.score === 'bad' ? 'warn' : ws.score === 'ok' ? 'out' : 'warn', v:(ws.score==='ok'?'✓':'⚠') + '  Estimated organic visitors: ' + ws.visitors },
-    { t:'mute', v:'// checking competitor activity in ' + (loc||'your area') + '...' },
-    { t:'warn', v:'⚠  Estimated competitor monthly spend: ' + compSpend },
-    { t:'warn', v:'⚠  You are currently losing est. ' + missedJobs + ' contracts/year' },
-    { t:'warn', v:'⚠  Estimated missed pipeline: £' + missedVal + '/year' },
-    { t:'mute', v:'// diagnosis complete.' },
-  ];
-
-  var body = document.getElementById('auditTermBody');
-  body.innerHTML = '';
-  var i = 0;
-  function addLine() {
-    if (i >= lines.length) { buildScores(ws, missedJobs, conNum, missedVal, compSpend, loc); return; }
-    var l = lines[i]; i++;
-    var div = document.createElement('div');
-    var cls = l.t === 'prompt' ? 't-prompt' : l.t === 'mute' ? 't-mute' : l.t === 'warn' ? 't-warn' : 't-out';
-    div.innerHTML = '<span class="' + cls + '">' + l.v + '</span>';
-    body.appendChild(div);
-    setTimeout(addLine, 180);
-  }
-  addLine();
+// Auto-resize iframes to fit their content height
+function resizeFrame(iframe) {
+  try {
+    var h = iframe.contentWindow.document.body.scrollHeight;
+    if (h && h > 100) iframe.style.height = h + 'px';
+  } catch(e) {}
 }
 
-function buildScores(ws, missedJobs, conNum, missedVal, compSpend, loc) {
-  var grid = document.getElementById('auditScoreGrid');
-  var scoreClass = ws.score === 'bad' ? 'score-bad' : ws.score === 'warn' ? 'score-warn' : 'score-ok';
-  grid.innerHTML =
-    '<div class="audit-score-card"><span class="audit-score-label">Est. Google Ranking</span><span class="audit-score-val ' + scoreClass + '">' + ws.rank + '</span></div>' +
-    '<div class="audit-score-card"><span class="audit-score-label">Organic Visitors</span><span class="audit-score-val score-warn">' + ws.visitors + '</span></div>' +
-    '<div class="audit-score-card"><span class="audit-score-label">Contracts Lost / Year</span><span class="audit-score-val score-bad">~' + missedJobs + '</span></div>' +
-    '<div class="audit-score-card"><span class="audit-score-label">Est. Missed Revenue</span><span class="audit-score-val score-bad">£' + missedVal + '</span></div>';
-  var ctaBox = document.getElementById('auditCtaBox');
-  ctaBox.innerHTML = '<p>Based on these numbers, <strong>the Growth Engine pays for itself if it wins you just one extra contract every 1–2 months.</strong> At £250/month that\'s a straightforward calculation — especially against an estimated £' + missedVal + ' in missed pipeline each year.</p><a href="#contact">Book a Free 15-Min Chat →</a>';
-}
-
-// ---- ROI CALCULATOR ----
-function updateROI() {
-  var contract = parseInt(document.getElementById('roiContract').value);
-  var enquiries = parseInt(document.getElementById('roiEnquiries').value);
-  var conv = parseInt(document.getElementById('roiConv').value) / 100;
-  document.getElementById('roiContractLabel').textContent = '£' + contract.toLocaleString('en-GB');
-  document.getElementById('roiEnquiriesLabel').textContent = enquiries;
-  document.getElementById('roiConvLabel').textContent = Math.round(conv * 100) + '%';
-  var monthlyContracts = enquiries * conv;
-  var monthlyRevenue = monthlyContracts * contract;
-  var annualRevenue = monthlyRevenue * 12;
-  var annualCost = 500 + (250 * 12);
-  var netGain = annualRevenue - annualCost;
-  var roi = Math.round((netGain / annualCost) * 100);
-  var breakevenJobs = Math.ceil(annualCost / contract);
-  document.getElementById('roiContracts').textContent = monthlyContracts.toFixed(1);
-  document.getElementById('roiMonthly').textContent = '£' + Math.round(monthlyRevenue).toLocaleString('en-GB');
-  document.getElementById('roiAnnual').textContent = netGain >= 0 ? '+£' + Math.round(netGain).toLocaleString('en-GB') : '-£' + Math.abs(Math.round(netGain)).toLocaleString('en-GB');
-  document.getElementById('roiPercent').textContent = roi + '%';
-  document.getElementById('roiBreakevenText').innerHTML = 'At £' + contract.toLocaleString('en-GB') + ' per contract, <strong>you need just ' + breakevenJobs + ' extra job' + (breakevenJobs !== 1 ? 's' : '') + ' per year to break even</strong> on the total annual spend — setup fee included. Everything beyond that is profit.';
-}
-['roiContract','roiEnquiries','roiConv'].forEach(id => document.getElementById(id).addEventListener('input', updateROI));
-updateROI();
-
-// ---- QUALIFIER QUIZ ----
-var quizQuestions = [
-  {
-    cat: 'Business Type',
-    q: 'What best describes your business right now?',
-    hint: 'Be honest — this helps us give you the right answer.',
-    opts: [
-      { label: 'Sole trader or small team', sub: 'Under 5 people, owner-operated', val: 'small' },
-      { label: 'Growing SME', sub: '5–20 people, looking to scale', val: 'sme' },
-      { label: 'Established local business', sub: 'Steady turnover, want more leads', val: 'established' },
-      { label: 'Just starting out', sub: 'Under 12 months trading', val: 'startup' }
-    ]
-  },
-  {
-    cat: 'Current Situation',
-    q: 'Where does most of your new work come from today?',
-    hint: 'Pick the one that accounts for most of your pipeline.',
-    opts: [
-      { label: 'Word of mouth only', sub: 'Referrals and repeat clients', val: 'wom' },
-      { label: 'Mix of referrals and inbound', sub: 'Some online, mostly personal', val: 'mix' },
-      { label: 'Existing marketing', sub: 'Ads, SEO, social — already working', val: 'marketing' },
-      { label: 'I\'m not sure', sub: 'Honestly, it varies', val: 'unsure' }
-    ]
-  },
-  {
-    cat: 'Contract Value',
-    q: 'What\'s a typical contract worth to you?',
-    hint: 'Think average, not best case.',
-    opts: [
-      { label: 'Under £1,000', sub: 'Mainly smaller residential jobs', val: 'low' },
-      { label: '£1,000 – £5,000', sub: 'Mix of residential and commercial', val: 'mid' },
-      { label: '£5,000 – £20,000', sub: 'Mainly commercial contracts', val: 'high' },
-      { label: '£20,000+', sub: 'Large commercial or enterprise', val: 'enterprise' }
-    ]
-  },
-  {
-    cat: 'Ambition',
-    q: 'What does success look like for you in 12 months?',
-    hint: 'Pick the one that resonates most.',
-    opts: [
-      { label: 'More consistent lead flow', sub: 'Stop relying on word of mouth', val: 'leads' },
-      { label: 'Win bigger contracts', sub: 'Look credible enough to pitch up the chain', val: 'bigger' },
-      { label: 'Reduce sales effort', sub: 'Let marketing do the heavy lifting', val: 'passive' },
-      { label: 'I\'m not sure yet', sub: 'Still figuring out priorities', val: 'unsure' }
-    ]
-  }
-];
-var quizAnswers = [];
-var quizStep = 0;
-
-function renderQuiz() {
-  var q = quizQuestions[quizStep];
-  document.getElementById('quizStepNum').textContent = quizStep + 1;
-  document.getElementById('quizCategoryLabel').textContent = q.cat;
-  document.getElementById('quizProgress').style.width = ((quizStep / 4) * 100) + '%';
-  document.getElementById('quizBack').style.visibility = quizStep > 0 ? 'visible' : 'hidden';
-  document.getElementById('quizNext').classList.remove('active');
-  var html = '<div class="quiz-q">' + q.q + '</div><div class="quiz-hint">' + q.hint + '</div><div class="quiz-options">';
-  q.opts.forEach(function(o, i) {
-    var sel = quizAnswers[quizStep] === o.val ? ' selected' : '';
-    html += '<div class="quiz-option' + sel + '" onclick="selectOpt(this, \'' + o.val + '\')">' +
-      '<strong>' + o.label + '</strong>' + o.sub + '</div>';
+document.querySelectorAll('iframe.tool-embed').forEach(function(f) {
+  f.addEventListener('load', function() { resizeFrame(f); });
+  // Poll briefly after load to catch JS-driven height changes
+  f.addEventListener('load', function() {
+    var t = 0;
+    var poll = setInterval(function() {
+      resizeFrame(f);
+      t++;
+      if (t > 10) clearInterval(poll);
+    }, 300);
   });
-  html += '</div>';
-  document.getElementById('quizBody').innerHTML = html;
-  if (quizAnswers[quizStep]) document.getElementById('quizNext').classList.add('active');
-  document.getElementById('quizNext').textContent = quizStep === 3 ? 'Get My Result →' : 'Next →';
-}
-
-function selectOpt(el, val) {
-  document.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
-  el.classList.add('selected');
-  quizAnswers[quizStep] = val;
-  document.getElementById('quizNext').classList.add('active');
-}
-
-function quizNext() {
-  if (!quizAnswers[quizStep]) return;
-  if (quizStep < 3) { quizStep++; renderQuiz(); }
-  else { showQuizResult(); }
-}
-
-function quizBack() {
-  if (quizStep > 0) { quizStep--; renderQuiz(); }
-}
-
-function showQuizResult() {
-  document.getElementById('quizProgress').style.width = '100%';
-  document.getElementById('quizBack').style.visibility = 'hidden';
-  document.getElementById('quizNext').style.display = 'none';
-  document.getElementById('quizStepNum').textContent = '✓';
-  document.getElementById('quizCategoryLabel').textContent = 'Your Result';
-
-  var a = quizAnswers;
-  var isGoodFit = (a[2] === 'mid' || a[2] === 'high' || a[2] === 'enterprise') && a[3] !== 'unsure';
-  var isTooEarly = a[2] === 'low' || a[3] === 'unsure';
-  var badge, title, body;
-
-  if (isGoodFit && !isTooEarly) {
-    badge = '<span class="quiz-result-badge badge-yes">✓ Strong fit</span>';
-    title = "You're exactly who this is built for.";
-    body = "Your contract values make the maths straightforward — <strong>you need one or two extra jobs per month</strong> and the service pays for itself many times over. With your current reliance on word of mouth and your growth ambitions, consistent marketing isn't optional any more. It's the gap between where you are and where you want to be.";
-  } else if (isTooEarly) {
-    badge = '<span class="quiz-result-badge badge-maybe">→ Not quite yet</span>';
-    title = "Honestly — it might be a bit early.";
-    body = "If your average contract is under £1,000 or you're still figuring out your direction, the full service might be ahead of where you need to be right now. <strong>That said, book a call anyway</strong> — I'll tell you what I'd actually recommend for your stage, and there's no obligation. Better to have an honest conversation than to spend money you don't need to.";
-  } else {
-    badge = '<span class="quiz-result-badge badge-yes">✓ Good fit</span>';
-    title = "This will work well for you.";
-    body = "Based on your answers, consistent marketing could make a meaningful difference to your pipeline. <strong>The Growth Engine is designed for businesses exactly like yours</strong> — established enough to have something worth promoting, ambitious enough to want more. Book the free call and let's talk specifics.";
-  }
-
-  document.getElementById('quizBody').innerHTML = '<div class="quiz-result">' + badge + '<h3>' + title + '</h3><p>' + body + '</p>' +
-    '<a href="#contact" class="btn-primary" style="font-size:0.78rem; padding:0.75rem 1.75rem;">Book a Free 15-Min Chat →</a>' +
-    '<button class="quiz-restart" onclick="resetQuiz()">Start again</button></div>';
-}
-
-function resetQuiz() {
-  quizAnswers = []; quizStep = 0;
-  document.getElementById('quizNext').style.display = '';
-  renderQuiz();
-}
-
-renderQuiz();
-
-// ---- TIMELINE ----
-var tlSteps = [
-  { tag: 'Day 1 — Discovery', title: 'The 15-Minute Call', body: 'We talk through your business, your market, your current situation, and what you want to achieve. No pitch, no slide deck. <strong>I ask questions, you answer honestly, and we work out together whether this makes sense.</strong> If it does, we agree a start date. If it doesn\'t, I\'ll tell you that too and suggest what I\'d actually recommend instead.' },
-  { tag: 'Week 1 — Foundation', title: 'Brand Brief and Business Deep-Dive', body: 'I send you a short brief document — the only bit of work you\'ll ever really need to do. You tell me about your business, your best clients, the contracts you want more of, and your competitors. <strong>From that single document, I build everything.</strong> You won\'t be chased for content, copy approvals, or design feedback rounds. I get on with it.' },
-  { tag: 'Week
+});
+</script>
+</body>
+</html>
