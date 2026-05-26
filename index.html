@@ -14,16 +14,13 @@
     --bg2: #111827;
     --bg3: #141c2b;
     --amber: #f59e0b;
-    --amber-dim: #92600a;
-    --amber-glow: rgba(245,158,11,0.12);
+    --amber-glow: rgba(245,158,11,0.10);
     --green: #10d988;
-    --green-dim: rgba(16,217,136,0.08);
     --text: #e8eaf0;
     --text-muted: #7b8498;
     --text-dim: #4b5368;
     --border: rgba(255,255,255,0.07);
     --border-amber: rgba(245,158,11,0.3);
-    --border-green: rgba(16,217,136,0.2);
     --font-head: 'Cabinet Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
@@ -38,14 +35,13 @@
     overflow-x: hidden;
   }
 
-  /* GRID BACKGROUND */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image:
       linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(245,158,11,0.025) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
@@ -60,8 +56,8 @@
     align-items: center;
     padding: 1.25rem 4rem;
     border-bottom: 1px solid var(--border);
-    background: rgba(10,13,18,0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(10,13,18,0.88);
+    backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -69,67 +65,84 @@
 
   .logo {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--amber);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
-  .logo span {
-    color: var(--text-muted);
-    font-weight: 400;
-  }
+  .logo span { color: var(--text-dim); font-weight: 400; }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-family: var(--font-mono);
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--amber); }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-family: var(--font-mono); transition: color 0.2s; }
+  nav ul a:hover { color: var(--amber); }
 
   .nav-cta {
     background: var(--amber);
     color: #000;
-    border: none;
     padding: 0.6rem 1.4rem;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
     text-decoration: none;
     letter-spacing: 0.05em;
     transition: opacity 0.2s;
+    border: none;
   }
 
   .nav-cta:hover { opacity: 0.85; }
 
-  /* SECTIONS */
-  section { padding: 5rem 4rem; max-width: 1200px; margin: 0 auto; }
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+
+  section { padding: 5rem 0; }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .section-tag::before { content: '// '; color: var(--text-dim); }
+
+  h2 {
+    font-size: clamp(1.9rem, 3vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  h2 .accent { color: var(--amber); }
+
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
 
   /* HERO */
+  .hero-wrap {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   .hero-tag {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--amber);
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -141,10 +154,10 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-size: clamp(2.5rem, 4.5vw, 3.9rem);
     font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
     margin-bottom: 1.5rem;
   }
 
@@ -153,24 +166,19 @@
   .hero-sub {
     font-size: 1.1rem;
     color: var(--text-muted);
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 2.5rem;
-    max-width: 480px;
+    max-width: 500px;
   }
 
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
   .btn-primary {
     background: var(--amber);
     color: #000;
-    padding: 0.85rem 2rem;
+    padding: 0.9rem 2rem;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-decoration: none;
     letter-spacing: 0.06em;
@@ -182,11 +190,11 @@
 
   .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
 
-  .btn-secondary {
+  .btn-ghost {
     color: var(--text-muted);
-    padding: 0.85rem 2rem;
+    padding: 0.9rem 2rem;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 500;
     text-decoration: none;
     letter-spacing: 0.06em;
@@ -195,19 +203,18 @@
     transition: all 0.2s;
   }
 
-  .btn-secondary:hover { border-color: var(--border-amber); color: var(--amber); }
+  .btn-ghost:hover { border-color: var(--border-amber); color: var(--amber); }
 
-  /* HERO TERMINAL VISUAL */
-  .hero-visual {
+  /* TERMINAL */
+  .terminal {
     background: var(--bg3);
     border: 1px solid var(--border-amber);
-    padding: 0;
-    font-family: var(--font-mono);
     overflow: hidden;
+    font-family: var(--font-mono);
   }
 
   .terminal-bar {
-    background: rgba(245,158,11,0.08);
+    background: rgba(245,158,11,0.07);
     border-bottom: 1px solid var(--border-amber);
     padding: 0.65rem 1rem;
     display: flex;
@@ -220,25 +227,19 @@
   .dot-y { background: #febc2e; }
   .dot-g { background: #28c840; }
 
-  .terminal-title {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    margin-left: 0.5rem;
-    letter-spacing: 0.08em;
-  }
+  .terminal-title { font-size: 0.68rem; color: var(--text-dim); margin-left: 0.5rem; letter-spacing: 0.08em; }
 
-  .terminal-body { padding: 1.5rem; font-size: 0.78rem; line-height: 2; }
+  .terminal-body { padding: 1.5rem; font-size: 0.77rem; line-height: 2.1; }
 
   .t-prompt { color: var(--amber); }
-  .t-cmd { color: var(--text); }
   .t-out { color: var(--green); }
   .t-mute { color: var(--text-dim); }
   .t-warn { color: #f97316; }
 
   .blink {
     display: inline-block;
-    width: 8px;
-    height: 14px;
+    width: 7px;
+    height: 13px;
     background: var(--amber);
     animation: blink 1s step-end infinite;
     vertical-align: middle;
@@ -247,12 +248,11 @@
 
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-  /* METRICS ROW */
+  /* METRICS STRIP */
   .metrics-strip {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     background: var(--bg2);
-    padding: 0;
   }
 
   .metrics-inner {
@@ -260,71 +260,28 @@
     grid-template-columns: repeat(4, 1fr);
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 4rem;
   }
 
-  .metric {
-    padding: 2rem;
-    border-right: 1px solid var(--border);
-    text-align: center;
-  }
-
+  .metric { padding: 2rem 1rem; border-right: 1px solid var(--border); text-align: center; }
   .metric:last-child { border-right: none; }
 
   .metric-num {
     font-family: var(--font-mono);
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 700;
     color: var(--amber);
     display: block;
   }
 
-  .metric-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-    display: block;
-  }
+  .metric-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; display: block; }
 
-  /* SECTION LABELS */
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--amber);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  .section-tag::before {
-    content: '// ';
-    color: var(--text-dim);
-  }
-
-  h2 {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.25rem;
-  }
-
-  h2 .accent { color: var(--amber); }
-
-  .section-intro {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    line-height: 1.75;
-    margin-bottom: 3rem;
-  }
-
-  /* PROBLEM SECTION */
+  /* PROBLEM */
   .problem-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
   }
 
   .pain-card {
@@ -338,64 +295,72 @@
 
   .pain-icon {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--amber);
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
     display: block;
   }
 
-  .pain-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    color: var(--text);
-  }
+  .pain-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; }
+  .pain-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
 
-  .pain-card p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* INSIGHT BLOCK */
   .insight-block {
     background: var(--bg3);
     border: 1px solid var(--border-amber);
     border-left: 3px solid var(--amber);
     padding: 2rem 2.5rem;
-    margin-top: 3rem;
   }
 
-  .insight-block p {
-    font-size: 1.05rem;
-    color: var(--text);
-    line-height: 1.8;
-    max-width: 820px;
-  }
-
+  .insight-block p { font-size: 1rem; line-height: 1.8; max-width: 860px; }
   .insight-block p strong { color: var(--amber); font-weight: 700; }
 
-  /* PRICING */
-  .pricing-grid {
+  /* ABOUT */
+  .about-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .about-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 3rem;
-    align-items: start;
+    gap: 5rem;
+    align-items: center;
   }
 
+  .about-text p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.25rem; }
+  .about-text p strong { color: var(--text); }
+
+  .cred-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .cred-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+  }
+
+  .cred-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .cred-value { font-size: 0.875rem; color: var(--text); font-weight: 600; line-height: 1.4; }
+
+  /* PRICING */
   .plan-card {
     background: var(--bg2);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    transition: border-color 0.2s;
-  }
-
-  .plan-card.featured {
-    border-color: var(--amber);
-    background: linear-gradient(160deg, rgba(245,158,11,0.06) 0%, var(--bg2) 60%);
-    box-shadow: 0 0 40px rgba(245,158,11,0.07), 0 0 80px rgba(245,158,11,0.04);
+    border: 1px solid var(--amber);
+    background: linear-gradient(150deg, rgba(245,158,11,0.07) 0%, var(--bg2) 55%);
+    box-shadow: 0 0 60px rgba(245,158,11,0.06), 0 0 120px rgba(245,158,11,0.03);
+    padding: 3rem;
+    max-width: 680px;
+    margin: 0 auto;
   }
 
   .plan-badge {
@@ -404,183 +369,127 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.3rem 0.75rem;
+    padding: 0.3rem 0.8rem;
     background: var(--amber);
     color: #000;
     display: inline-block;
-    margin-bottom: 1.5rem;
-  }
-
-  .plan-badge.lite {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
+    margin-bottom: 1.75rem;
   }
 
   .plan-name {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: var(--text-dim);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
 
-  .plan-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-  }
+  .plan-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; }
+
+  .plan-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; }
 
   .plan-pricing {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .setup-fee {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .setup-fee span {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .monthly {
     display: flex;
-    align-items: baseline;
-    gap: 0.25rem;
-    margin-top: 0.5rem;
+    align-items: flex-end;
+    gap: 2.5rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
   }
 
-  .monthly-amount {
+  .price-block {}
+
+  .price-label {
     font-family: var(--font-mono);
-    font-size: 2.8rem;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-amount {
+    font-family: var(--font-mono);
+    font-size: 2.6rem;
     font-weight: 700;
     color: var(--amber);
     line-height: 1;
   }
 
-  .monthly-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+  .price-amount.setup { font-size: 1.8rem; color: var(--text); }
+  .price-period { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+  .price-divider {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
   }
 
-  .features-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 2rem;
     margin-bottom: 2rem;
   }
 
-  .features-list li {
-    font-size: 0.875rem;
-    color: var(--text-muted);
+  .feat {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.65rem;
     align-items: flex-start;
+    font-size: 0.875rem;
+    color: var(--text);
     line-height: 1.5;
   }
 
-  .features-list li::before {
+  .feat::before {
     content: '→';
     font-family: var(--font-mono);
     color: var(--amber);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     flex-shrink: 0;
-    margin-top: 0.1rem;
+    margin-top: 0.15rem;
   }
-
-  .features-list li.bright { color: var(--text); }
 
   .plan-cta {
     width: 100%;
-    padding: 0.9rem;
+    padding: 1rem;
+    background: var(--amber);
+    color: #000;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    border: none;
     cursor: pointer;
-    border: 1px solid var(--amber);
-    transition: all 0.2s;
     display: block;
     text-align: center;
     text-decoration: none;
+    transition: opacity 0.2s;
   }
 
-  .plan-cta.primary { background: var(--amber); color: #000; }
-  .plan-cta.secondary { background: transparent; color: var(--amber); }
   .plan-cta:hover { opacity: 0.85; }
 
-  /* ADDONS */
-  .addons-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .addon-pill {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 1rem 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .addon-pill span:first-child {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-  }
-
-  .addon-price {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--amber);
-  }
-
-  /* CTA SECTION */
-  .cta-section {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 5rem 4rem;
-  }
+  /* CTA / CONTACT */
+  .cta-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); }
 
   .cta-inner {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 4rem;
+    gap: 5rem;
     align-items: center;
   }
 
-  .cta-steps {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
+  .cta-steps { display: flex; gap: 2rem; margin-top: 2rem; }
 
-  .cta-step {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
+  .cta-step { display: flex; gap: 1rem; align-items: flex-start; }
 
   .step-num {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: #000;
     background: var(--amber);
@@ -592,13 +501,8 @@
     flex-shrink: 0;
   }
 
-  .step-text {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  .step-text strong { color: var(--text); display: block; font-size: 0.875rem; margin-bottom: 0.15rem; }
+  .step-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+  .step-text strong { color: var(--text); display: block; margin-bottom: 0.1rem; }
 
   .cta-box {
     background: var(--bg);
@@ -608,88 +512,63 @@
     min-width: 280px;
   }
 
-  .cta-box-tag {
+  .cta-box-tag { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+
+  .cta-box h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .cta-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  .cta-btn {
+    width: 100%;
+    padding: 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.2s;
     margin-bottom: 0.75rem;
   }
 
-  .cta-box h3 {
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-box p {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
+  .cta-btn.filled { background: var(--amber); color: #000; border: 1px solid var(--amber); }
+  .cta-btn.outline { background: transparent; color: var(--amber); border: 1px solid var(--border-amber); }
+  .cta-btn:hover { opacity: 0.82; }
 
   /* FOOTER */
   footer {
     padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%;
   }
 
-  .footer-logo {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-dim);
-  }
-
+  .footer-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
   .footer-logo strong { color: var(--amber); }
-
-  .footer-right {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-dim);
-  }
-
+  .footer-right { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
   .footer-right a { color: var(--text-muted); text-decoration: none; }
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0;
-  }
+  hr.divider { border: none; border-top: 1px solid var(--border); }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.55s ease both; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; } .d3 { animation-delay: 0.34s; }
 
-  .fade-up {
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     nav ul, .nav-cta { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2.5rem; }
-    section { padding: 3.5rem 1.5rem; }
-    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 0 1.5rem; }
+    .hero-wrap { padding: 4rem 0; }
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+    .metrics-inner { grid-template-columns: repeat(2,1fr); padding: 0 1.5rem; }
     .metric { border-bottom: 1px solid var(--border); }
     .problem-grid { grid-template-columns: 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .addons-row { grid-template-columns: 1fr; }
-    .cta-inner { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .plan-card { padding: 2rem; }
+    .plan-pricing { flex-direction: column; gap: 1.25rem; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .cta-box { min-width: auto; }
     .cta-steps { flex-direction: column; }
     footer { flex-direction: column; gap: 1rem; padding: 1.5rem; text-align: center; }
@@ -700,243 +579,263 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">MFMM<span>.co</span></div>
-  <ul class="nav-links">
+  <div class="logo">Marketing for my Mates<span>.com</span></div>
+  <ul>
     <li><a href="#problem">The Problem</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">The Service</a></li>
     <li><a href="#contact">Get Started</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Book a Chat</a>
+  <a href="#contact" class="nav-cta">Book a Free Chat</a>
 </nav>
 
 <!-- HERO -->
-<div style="max-width:100%; padding: 0 4rem;">
-  <div class="hero">
-    <div class="fade-up">
-      <span class="hero-tag">For Small Businesses</span>
-      <h1>Your Job is <span class="accent">Winning Contracts.</span> Not Chasing Clicks.</h1>
-      <p class="hero-sub">You're brilliant at what you do on site. But while you're pulling cable and commissioning systems, your bigger competitors are spending serious money making sure customers never find you. That's the gap we close.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Book a Free 15-Min Chat →</a>
-        <a href="#pricing" class="btn-secondary">See Pricing</a>
+<div class="hero-wrap">
+  <div class="container">
+    <div class="hero">
+      <div class="fade-up">
+        <span class="hero-tag">For CCTV &amp; Network Installers</span>
+        <h1>You're Brilliant On Site.<br><span class="accent">You Shouldn't Have to Be a Marketer Too.</span></h1>
+        <p class="hero-sub">You're pulling cable, commissioning systems, and running a business. Marketing is the last thing you have time for — and the one thing your bigger competitors are using to quietly take contracts that should be yours.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Book a Free 15-Min Chat →</a>
+          <a href="#pricing" class="btn-ghost">See the Service</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-visual fade-up delay-2">
-      <div class="terminal-bar">
-        <div class="dot dot-r"></div>
-        <div class="dot dot-y"></div>
-        <div class="dot dot-g"></div>
-        <span class="terminal-title">marketing_audit.sh — client: TechSec_Installations</span>
-      </div>
-      <div class="terminal-body">
-        <div><span class="t-prompt">$ </span><span class="t-cmd">run digital_presence_check</span></div>
-        <div><span class="t-mute">// scanning local search visibility...</span></div>
-        <div><span class="t-warn">⚠  Website last updated: 2021</span></div>
-        <div><span class="t-warn">⚠  Google ranking: page 3+</span></div>
-        <div><span class="t-warn">⚠  Monthly organic visitors: 11</span></div>
-        <div><span class="t-warn">⚠  Social posts (90 days): 0</span></div>
-        <div style="margin-top:0.5rem;"><span class="t-mute">// checking competitor spend...</span></div>
-        <div><span class="t-out">✓  Competitor A monthly ad spend: £3,200</span></div>
-        <div><span class="t-out">✓  Competitor B SEO articles/month: 4</span></div>
-        <div style="margin-top:0.5rem;"><span class="t-mute">// estimated lost contracts (12mo): </span></div>
-        <div><span class="t-warn">⚠  £40,000–£80,000</span></div>
-        <div style="margin-top:0.75rem;"><span class="t-prompt">$ </span><span class="t-cmd">load solution --plan=full_service</span></div>
-        <div><span class="t-out">✓  Deploying marketing engine...</span><span class="blink"></span></div>
+      <div class="terminal fade-up d2">
+        <div class="terminal-bar">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+          <span class="terminal-title">digital_audit.sh — target: Your_Business</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">$ </span>run presence_check --local</div>
+          <div><span class="t-mute">// scanning visibility in your area...</span></div>
+          <div><span class="t-warn">⚠  Website last updated: 2021</span></div>
+          <div><span class="t-warn">⚠  Google ranking: page 3+</span></div>
+          <div><span class="t-warn">⚠  Monthly organic visitors: 14</span></div>
+          <div><span class="t-warn">⚠  Social posts (90 days): 0</span></div>
+          <div style="margin-top:0.5rem;"><span class="t-mute">// scanning competitor activity...</span></div>
+          <div><span class="t-out">✓  Competitor A: £3,200/mo ad spend</span></div>
+          <div><span class="t-out">✓  Competitor B: 4 SEO articles/mo</span></div>
+          <div style="margin-top:0.5rem;"><span class="t-mute">// estimated missed pipeline (12mo):</span></div>
+          <div><span class="t-warn">⚠  £40,000 – £80,000</span></div>
+          <div style="margin-top:0.75rem;"><span class="t-prompt">$ </span>deploy --plan=growth_engine</div>
+          <div><span class="t-out">✓  Marketing engine deploying...</span><span class="blink"></span></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- METRICS STRIP -->
+<!-- METRICS -->
 <div class="metrics-strip">
   <div class="metrics-inner">
     <div class="metric">
-      <span class="metric-num">£150</span>
-      <span class="metric-label">to get started on the Lite plan</span>
+      <span class="metric-num">£500</span>
+      <span class="metric-label">one-off setup fee</span>
     </div>
     <div class="metric">
-      <span class="metric-num">£50/mo</span>
-      <span class="metric-label">ongoing — no surprises</span>
+      <span class="metric-num">£250/mo</span>
+      <span class="metric-label">full service, no surprises</span>
     </div>
     <div class="metric">
       <span class="metric-num">15 min</span>
       <span class="metric-label">free discovery call</span>
     </div>
     <div class="metric">
-      <span class="metric-num">100%</span>
-      <span class="metric-label">hands-off for you</span>
+      <span class="metric-num">0 hrs</span>
+      <span class="metric-label">required from you monthly</span>
     </div>
   </div>
 </div>
 
 <!-- PROBLEM -->
-<section id="problem">
-  <span class="section-tag">01 — The Problem</span>
-  <h2>Your Bigger Competitors Are <span class="accent">Drowning You Out.</span> And You Probably Know It.</h2>
-  <p class="section-intro">Most skilled trades have a basic website. A Facebook page that hasn't been touched in six months. Maybe a Google listing with three reviews from 2019. That used to be fine. It isn't anymore.</p>
+<div style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <section id="problem">
+      <span class="section-tag">01 — The Problem</span>
+      <h2>Your Bigger Competitors Are Spending Serious Money Making Sure <span class="accent">Customers Never Find You.</span></h2>
+      <p class="section-intro">Most skilled trades have a website. A Facebook page that hasn't been touched in six months. A Google listing with a handful of old reviews. That used to be enough. It isn't any more.</p>
 
-  <div class="problem-grid">
-    <div class="pain-card">
-      <span class="pain-icon">[ERR_001]</span>
-      <h3>You're invisible where it counts</h3>
-      <p>When a facilities manager searches for a CCTV installer in your area, they're not flicking through leaflets. They're Googling. And the businesses that show up consistently are the ones with active, well-optimised digital presences, not necessarily the best operators.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">[ERR_002]</span>
-      <h3>Large competitors are outspending you massively</h3>
-      <p>Regional and national players spend thousands a month on SEO, content, and ads. Not because they're better at the job but because they know that visibility wins contracts before price or quality even gets a look-in. Small businesses lose work they should have won.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">[ERR_003]</span>
-      <h3>Your customers want local. They just can't find you.</h3>
-      <p>Plenty of buyers actively prefer a local, reliable provider. They want someone who'll pick up the phone, knows the area, and won't disappear after the install. But if your digital footprint is weak, those customers go with whoever they can actually find.</p>
-    </div>
+      <div class="problem-grid">
+        <div class="pain-card">
+          <span class="pain-icon">[ERR_001] — Visibility</span>
+          <h3>You're invisible where the decision is made</h3>
+          <p>When a facilities manager searches for a CCTV installer in your area, they're not looking at trade directories. They're Googling. The businesses that show up consistently aren't always the best — they're just the most visible. And visible wins the conversation before price or quality even matters.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">[ERR_002] — Spend Gap</span>
+          <h3>The budget gap is bigger than you think</h3>
+          <p>Regional and national competitors spend thousands every month on SEO, content, and ads. Not because they're better at the job — because they know that digital presence compounds over time. Small operators lose work they should have won to businesses that are simply louder online.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">[ERR_003] — Discovery</span>
+          <h3>Your ideal customers prefer local — they just can't find you</h3>
+          <p>Plenty of buyers actively want a local, responsive provider. Someone who picks up the phone, knows the area, and sticks around after the install. But if your digital presence is weak, those customers land with whoever they can actually find. That should be you.</p>
+        </div>
+      </div>
+
+      <div class="insight-block">
+        <p>You don't need to match their budget. You need <strong>consistent, targeted marketing running quietly in the background while you get on with the job.</strong> A sharp website, regular content, and basic local SEO — done properly and kept up — will outperform most of what your competitors are doing. And it will put you in front of customers who are already looking for exactly what you offer.</p>
+      </div>
+    </section>
   </div>
+</div>
 
-  <div class="insight-block">
-    <p>The good news? You don't need to match their budget. You need <strong>consistent, targeted marketing that works in the background while you get on with the job.</strong> Regular content, a professional web presence, and basic SEO done properly will outperform most of what your local competitors are doing and put you in front of the customers already looking for exactly what you offer.</p>
+<!-- ABOUT -->
+<div class="about-wrap">
+  <div class="container">
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <span class="section-tag">02 — Who's Behind This</span>
+          <h2>Started as a Favour.<br><span class="accent">Turned Into a Service.</span></h2>
+          <p>Honestly? I was always getting asked to help. A mate in CCTV installation needed a better website. Someone else running a network outfit wanted to know why they weren't showing up on Google. Another wanted a couple of social posts to look credible when pitching a contract. I'd help, it would work, and they'd say: <strong>"Why aren't you doing this for everyone?"</strong></p>
+          <p>So I started Marketing for my Mates to extend that offer properly — with the same no-jargon, straight-talking approach. I'm not an agency. I'm a person with serious marketing experience who genuinely understands the technical trades sector and wants to see good operators win the work they deserve.</p>
+          <p style="margin-bottom:0;">My background is in B2B marketing, technology commercialisation, and public sector health. I co-founded a globally recognised surveillance and IoT platform — Sunstone Systems — built it from nothing, won contracts with Chevron, Rivian Automotive, and Network Rail, and helped take it through acquisition. I know what it takes to build credibility in a technical market.</p>
+        </div>
+        <div>
+          <div class="cred-grid">
+            <div class="cred-item">
+              <span class="cred-label">Qualification</span>
+              <span class="cred-value">MCIM — Chartered Institute of Marketing</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Background</span>
+              <span class="cred-value">Technology Co-Founder &amp; Patent Inventor</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Sector Experience</span>
+              <span class="cred-value">20+ years B2B, tech &amp; public sector</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Notable Clients</span>
+              <span class="cred-value">Chevron · Rivian Automotive · Network Rail</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Recognition</span>
+              <span class="cred-value">IFSEC Global Top 50 Most Influential</span>
+            </div>
+            <div class="cred-item">
+              <span class="cred-label">Publications</span>
+              <span class="cred-value">15+ articles in IFSEC, PSI &amp; Security Buyer</span>
+            </div>
+          </div>
+          <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: var(--amber-glow); border: 1px solid var(--border-amber);">
+            <p style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.7;">
+              <span style="color: var(--amber);">→</span>&nbsp; Full background at <a href="https://www.simonlegrand.co.uk" target="_blank" style="color: var(--amber); text-decoration: none;">simonlegrand.co.uk</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-<hr class="divider">
+</div>
 
 <!-- PRICING -->
-<section id="pricing">
-  <span class="section-tag">02 — The Solution</span>
-  <h2>Two Plans. Transparent Pricing. <span class="accent">No Guesswork.</span></h2>
-  <p class="section-intro">We're not an agency that disappears with a retainer. Think of us as a part-time marketing department, one that knows the technical trades sector and works quietly in the background to bring you better-quality enquiries.</p>
+<div style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <section id="pricing">
+      <span class="section-tag">03 — The Service</span>
+      <h2>One Plan. Everything Included.<br><span class="accent">Nothing to Figure Out.</span></h2>
+      <p class="section-intro">I offer one service, done properly. No starter tiers, no upsell ladders. You get a full marketing operation running in the background from day one — and you get on with the work.</p>
 
-  <div class="pricing-grid">
-    <!-- LITE -->
-    <div class="plan-card">
-      <span class="plan-badge lite">Foundation</span>
-      <div class="plan-name">Plan 01</div>
-      <div class="plan-title">Digital Foundation — Lite</div>
-      <div class="plan-pricing">
-        <div class="setup-fee">One-off setup: <span>£150</span></div>
-        <div class="monthly">
-          <span class="monthly-amount">£50</span>
-          <span class="monthly-label">&nbsp;/ month</span>
+      <div class="plan-card">
+        <span class="plan-badge">⚡ The Growth Engine — Full Service</span>
+        <div class="plan-name">The Only Plan</div>
+        <div class="plan-title">Your marketing department, without the overhead.</div>
+        <div class="plan-sub">Everything your business needs to show up, look credible, and generate better enquiries — consistently, without any effort from you.</div>
+
+        <div class="plan-pricing">
+          <div class="price-block">
+            <div class="price-label">One-off setup</div>
+            <div class="price-amount setup">£500</div>
+            <div class="price-period">Paid once to get everything built right</div>
+          </div>
+          <div class="price-divider">+</div>
+          <div class="price-block">
+            <div class="price-label">Monthly retainer</div>
+            <div class="price-amount">£250</div>
+            <div class="price-period">/ month — no contracts, no surprises</div>
+          </div>
         </div>
-      </div>
-      <ul class="features-list">
-        <li class="bright">1-page professional business card website</li>
-        <li class="bright">Premium hosting included, no extras</li>
-        <li class="bright">Domain connection to your existing domain</li>
-        <li class="bright">Up to 30 mins of minor text &amp; image updates per month</li>
-        <li>A clean, credible digital presence that doesn't let you down</li>
-        <li>Perfect if you want a solid foundation before scaling up</li>
-      </ul>
-      <a href="#contact" class="plan-cta secondary">Get Started with Lite →</a>
-    </div>
 
-    <!-- FULL SERVICE -->
-    <div class="plan-card featured">
-      <span class="plan-badge">⚡ Best Value — Growth Engine</span>
-      <div class="plan-name">Plan 02</div>
-      <div class="plan-title">Full Service — Growth Engine</div>
-      <div class="plan-pricing">
-        <div class="setup-fee">One-off setup: <span>£500</span></div>
-        <div class="monthly">
-          <span class="monthly-amount">£250</span>
-          <span class="monthly-label">&nbsp;/ month</span>
+        <div class="features-grid">
+          <div class="feat">Custom 3–5 page website, built for your market</div>
+          <div class="feat">B2B copywriting — sharp, sector-specific, professional</div>
+          <div class="feat">Brand fundamentals: logo direction, colours, tone of voice</div>
+          <div class="feat">Premium monthly hosting included — no extras</div>
+          <div class="feat">1 high-value local SEO article per month</div>
+          <div class="feat">4 scheduled B2B social media posts per month</div>
+          <div class="feat">Ranking for the real searches your customers make</div>
+          <div class="feat">Consistent presence online — even when you're on site</div>
         </div>
-      </div>
-      <ul class="features-list">
-        <li class="bright">Custom 3–5 page website built for your market</li>
-        <li class="bright">B2B copywriting. Sharp, professional and sector-specific</li>
-        <li class="bright">Brand fundamentals: logo direction, colours, tone of voice</li>
-        <li class="bright">Premium monthly hosting included</li>
-        <li class="bright">1 high-value local SEO article per month, ranking for real searches</li>
-        <li class="bright">4 scheduled B2B social media posts per month, consistent presence, zero effort from you</li>
-        <li>This is the one that starts generating leads while you're on site</li>
-      </ul>
-      <a href="#contact" class="plan-cta primary">Start the Growth Engine →</a>
-    </div>
-  </div>
 
-  <!-- ADDONS -->
-  <div style="margin-top: 3rem;">
-    <span class="section-tag" style="margin-bottom:1rem;">Lite Plan Add-Ons — Buy Only What You Need</span>
-    <div class="addons-row">
-      <div class="addon-pill">
-        <span>SEO article</span>
-        <span class="addon-price">£85 each</span>
+        <a href="#contact" class="plan-cta">Start the Growth Engine — Book a Free Chat →</a>
       </div>
-      <div class="addon-pill">
-        <span>New web page</span>
-        <span class="addon-price">£120 each</span>
-      </div>
-      <div class="addon-pill">
-        <span>À la carte — ask us</span>
-        <span class="addon-price">→</span>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
-
-<hr class="divider">
+</div>
 
 <!-- CTA -->
-<div class="cta-section" id="contact">
-  <div class="cta-inner">
-    <div>
-      <span class="section-tag">03 — Next Steps</span>
-      <h2>Ready to Stop Being the <span class="accent">Best-Kept Secret</span> in Your Area?</h2>
-      <p class="section-intro" style="margin-bottom:0;">No hard sell. No jargon. Just a straight 15-minute conversation about where you are, what you want, and whether we're the right fit.</p>
-      <div class="cta-steps">
-        <div class="cta-step">
-          <div class="step-num">1</div>
-          <div class="step-text"><strong>Book a call</strong>15 minutes, completely free</div>
+<div class="cta-section">
+  <div class="container">
+    <section id="contact">
+      <div class="cta-inner">
+        <div>
+          <span class="section-tag">04 — Get Started</span>
+          <h2>Ready to Stop Being the <span class="accent">Best-Kept Secret</span> in Your Area?</h2>
+          <p class="section-intro" style="margin-bottom: 0;">No hard sell. No jargon. A straight 15-minute conversation about where you are, what you want, and whether we're the right fit. If it's not right for you, I'll tell you.</p>
+          <div class="cta-steps">
+            <div class="cta-step">
+              <div class="step-num">1</div>
+              <div class="step-text"><strong>Book a free call</strong>15 minutes, no obligation</div>
+            </div>
+            <div class="cta-step">
+              <div class="step-num">2</div>
+              <div class="step-text"><strong>We get you set up</strong>Website, copy, brand — sorted</div>
+            </div>
+            <div class="cta-step">
+              <div class="step-num">3</div>
+              <div class="step-text"><strong>We handle everything</strong>You get back to the job</div>
+            </div>
+          </div>
         </div>
-        <div class="cta-step">
-          <div class="step-num">2</div>
-          <div class="step-text"><strong>Pick your plan</strong>Lite to get started, Full Service to grow</div>
-        </div>
-        <div class="cta-step">
-          <div class="step-num">3</div>
-          <div class="step-text"><strong>We handle the rest</strong>You get back to the job</div>
+        <div class="cta-box">
+          <div class="cta-box-tag">Free — no obligation</div>
+          <h3>Book a 15-Min Chat</h3>
+          <p>A straight conversation. No pitch deck, no pressure. Just an honest look at whether this makes sense for your business.</p>
+          <a href="mailto:hello@marketingformymates.com" class="cta-btn filled">Email Us Directly →</a>
+          <a href="https://www.marketingformymates.com" target="_blank" class="cta-btn outline">Visit the Website</a>
         </div>
       </div>
-    </div>
-    <div class="cta-box">
-      <div class="cta-box-tag">Free consultation</div>
-      <h3>Book a 15-Min Chat</h3>
-      <p>No obligation. Just a straight conversation about your business and how we can help.</p>
-      <a href="mailto:hello@marketingformymates.com" class="plan-cta primary" style="margin-bottom:0.75rem; display:block;">Email Us Directly →</a>
-      <a href="tel:+44" class="plan-cta secondary" style="display:block;">Or Call Us</a>
-    </div>
+    </section>
   </div>
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-logo">
-    <strong>Marketing for my Mates</strong> — marketingformymates.com
-  </div>
-  <div class="footer-right">
-    <a href="mailto:hello@marketingformymates.com">hello@marketingformymates.com</a>
-    &nbsp;·&nbsp;
-    Built for local B2B trades
-  </div>
+<footer class="container" style="max-width:100%; padding: 2rem 4rem;">
+  <div class="footer-logo"><strong>Marketing for my Mates</strong> — marketingformymates.com</div>
+  <div class="footer-right"><a href="mailto:hello@marketingformymates.com">hello@marketingformymates.com</a> &nbsp;·&nbsp; Built for local B2B trades</div>
 </footer>
 
 <script>
-  // Subtle scroll-based fade-in for sections
-  const observer = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateY(0)';
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.pain-card, .plan-card, .addon-pill, .cta-step').forEach(el => {
+  document.querySelectorAll('.pain-card, .cred-item, .cta-step, .plan-card').forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
+    el.style.transform = 'translateY(18px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+    obs.observe(el);
   });
 </script>
 </body>
