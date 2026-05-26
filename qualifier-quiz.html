@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is This Right For You? — Marketing for my Mates</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
+  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.10);
+  --green:#10d988;--text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
+  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+*{position:relative;z-index:1;}
+
+.page{max-width:760px;width:100%;}
+
+.page-header{margin-bottom:2.5rem;text-align:center;}
+.tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;display:inline-block;padding:0.3rem 0.8rem;border:1px solid var(--border-amber);background:var(--amber-glow);margin-bottom:1rem;}
+.tag::before{content:'// ';}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+h1 span{color:var(--amber);}
+.subtitle{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:520px;margin:0 auto;}
+
+/* QUIZ CARD */
+.quiz-card{background:var(--bg2);border:1px solid var(--border);overflow:hidden;width:100%;}
+
+.progress-bar{height:3px;background:var(--border);}
+.progress-fill{height:100%;background:var(--amber);transition:width 0.4s ease;}
+
+.quiz-header{padding:1.25rem 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.step-label{font-family:var(--mono);font-size:0.65rem;color:var(--dim);letter-spacing:0.1em;}
+.step-label em{color:var(--amber);font-style:normal;}
+.cat-label{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;}
+
+.quiz-body{padding:2.5rem 2rem;min-height:280px;}
+.q-text{font-size:1.2rem;font-weight:800;line-height:1.3;margin-bottom:0.5rem;}
+.q-hint{font-size:0.85rem;color:var(--muted);margin-bottom:1.75rem;}
+
+.options{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+.opt{background:var(--bg3);border:1px solid var(--border);padding:1.1rem 1.25rem;cursor:pointer;text-align:left;font-family:var(--head);transition:border-color 0.18s,background 0.18s;}
+.opt:hover{border-color:var(--border-amber);}
+.opt.selected{border-color:var(--amber);background:var(--amber-glow);}
+.opt strong{display:block;font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
+.opt span{font-size:0.8rem;color:var(--muted);}
+
+.quiz-nav{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:0.75rem;padding:0.65rem 1.25rem;cursor:pointer;transition:all 0.18s;}
+.btn-back:hover{border-color:var(--border-amber);color:var(--text);}
+.btn-next{background:var(--amber);color:#000;border:none;font-family:var(--mono);font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.75rem;cursor:pointer;transition:opacity 0.18s;opacity:0.35;pointer-events:none;}
+.btn-next.ready{opacity:1;pointer-events:auto;}
+.btn-next:hover{opacity:0.85;}
+
+/* RESULT */
+.result-body{padding:2.5rem 2rem;}
+.result-badge{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.8rem;display:inline-block;margin-bottom:1.25rem;}
+.badge-yes{background:rgba(16,217,136,0.1);border:1px solid rgba(16,217,136,0.3);color:var(--green);}
+.badge-soon{background:var(--amber-glow);border:1px solid var(--border-amber);color:var(--amber);}
+.badge-early{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#ef4444;}
+.result-body h2{font-size:1.4rem;font-weight:800;margin-bottom:0.85rem;line-height:1.25;}
+.result-body p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;max-width:560px;}
+.result-body p strong{color:var(--amber);}
+
+.result-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.btn-cta{display:inline-block;background:var(--amber);color:#000;font-family:var(--mono);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 1.75rem;text-decoration:none;transition:opacity 0.2s;}
+.btn-cta:hover{opacity:0.85;}
+.btn-restart{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:0.72rem;padding:0.65rem 1.1rem;cursor:pointer;transition:all 0.18s;}
+.btn-restart:hover{border-color:var(--border-amber);color:var(--amber);}
+
+@media(max-width:600px){
+  .options{grid-template-columns:1fr;}
+  .quiz-body{padding:1.75rem 1.25rem;}
+  .quiz-nav,.quiz-header{padding:1.25rem;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <span class="tag">Four Questions</span>
+    <h1>Is This <span>Right for You?</span></h1>
+    <p class="subtitle">Not every business needs this service right now. Answer these honestly and get a straight answer — no sales spin either way.</p>
+  </div>
+
+  <div class="quiz-card">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="quiz-header">
+      <span class="step-label">Question <em id="stepNum">1</em> of 4</span>
+      <span class="cat-label" id="catLabel"></span>
+    </div>
+    <div id="quizMain"></div>
+  </div>
+</div>
+
+<script>
+var Qs=[
+  {cat:'Your Business',q:'What best describes your business right now?',hint:'Be honest — this shapes the result.',opts:[
+    {l:'Sole trader or small team',s:'Under 5 people, owner-operated',v:'small'},
+    {l:'Growing SME',s:'5–20 people, looking to scale',v:'sme'},
+    {l:'Established local business',s:'Steady turnover, want more leads',v:'established'},
+    {l:'Just starting out',s:'Under 12 months trading',v:'startup'}
+  ]},
+  {cat:'Current Pipeline',q:'Where does most of your new work come from today?',hint:'Pick the one that accounts for the majority.',opts:[
+    {l:'Word of mouth only',s:'Referrals and repeat clients',v:'wom'},
+    {l:'Mix of referrals and inbound',s:'Some online, mostly personal',v:'mix'},
+    {l:'Active marketing already',s:'Ads, SEO, social — already running',v:'marketing'},
+    {l:'Honestly, not sure',s:'It varies and I can\'t pin it down',v:'unsure'}
+  ]},
+  {cat:'Contract Value',q:'What\'s a typical contract worth to you?',hint:'Think average job value, not best case.',opts:[
+    {l:'Under £1,000',s:'Mainly smaller residential jobs',v:'low'},
+    {l:'£1,000 – £5,000',s:'Mix of residential and commercial',v:'mid'},
+    {l:'£5,000 – £20,000',s:'Mainly commercial contracts',v:'high'},
+    {l:'£20,000+',s:'Large commercial or enterprise work',v:'enterprise'}
+  ]},
+  {cat:'Ambition',q:'What does success look like in 12 months?',hint:'Pick the one that resonates most right now.',opts:[
+    {l:'More consistent enquiries',s:'Stop relying entirely on word of mouth',v:'leads'},
+    {l:'Win bigger contracts',s:'Look credible enough to pitch up the chain',v:'bigger'},
+    {l:'Reduce my sales effort',s:'Let marketing work while I\'m on site',v:'passive'},
+    {l:'Still figuring that out',s:'Priority not fully clear yet',v:'unsure'}
+  ]}
+];
+
+var answers=[];
+var step=0;
+
+function render(){
+  var q=Qs[step];
+  document.getElementById('progressFill').style.width=((step/4)*100)+'%';
+  document.getElementById('stepNum').textContent=step+1;
+  document.getElementById('catLabel').textContent=q.cat;
+  var html='<div class="quiz-body"><p class="q-text">'+q.q+'</p><p class="q-hint">'+q.hint+'</p><div class="options">';
+  q.opts.forEach(function(o){
+    var sel=answers[step]===o.v?' selected':'';
+    html+='<div class="opt'+sel+'" onclick="pick(this,\''+o.v+'\')"><strong>'+o.l+'</strong><span>'+o.s+'</span></div>';
+  });
+  html+='</div></div><div class="quiz-nav">';
+  html+='<button class="btn-back" id="backBtn" onclick="back()" style="visibility:'+(step>0?'visible':'hidden')+'">← Back</button>';
+  html+='<button class="btn-next'+(answers[step]?' ready':'')+'" id="nextBtn" onclick="next()">'+(step===3?'Get My Result →':'Next →')+'</button>';
+  html+='</div>';
+  document.getElementById('quizMain').innerHTML=html;
+}
+
+function pick(el,val){
+  document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  answers[step]=val;
+  var nb=document.getElementById('nextBtn');
+  if(nb)nb.classList.add('ready');
+}
+
+function next(){
+  if(!answers[step])return;
+  if(step<3){step++;render();}
+  else showResult();
+}
+
+function back(){
+  if(step>0){step--;render();}
+}
+
+function showResult(){
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('stepNum').textContent='✓';
+  document.getElementById('catLabel').textContent='Your Result';
+
+  var a=answers;
+  var contractOk=(a[2]==='mid'||a[2]==='high'||a[2]==='enterprise');
+  var notReady=(a[2]==='low');
+  var unsureGoal=(a[3]==='unsure');
+  var alreadyMarketing=(a[1]==='marketing');
+  var startingOut=(a[0]==='startup');
+
+  var badge,title,body;
+
+  if(notReady||startingOut){
+    badge='<span class="result-badge badge-early">→ Not quite yet</span>';
+    title='Honestly — it might be a little early.';
+    body='If your average contract is under £1,000 or you\'re still very early in trading, the full service might be ahead of where you need to be right now. <strong>That said, book a call anyway</strong> — I\'ll tell you straight what I\'d actually recommend for your stage, and there\'s no obligation at all. Better an honest conversation than spending money you don\'t need to.';
+  } else if(alreadyMarketing&&contractOk){
+    badge='<span class="result-badge badge-soon">→ Worth a conversation</span>';
+    title='You\'ve got something running — let\'s see if we can do better.';
+    body='You\'re already investing in marketing, which is the right instinct. The question is whether what you have is working as hard as it could. <strong>If you\'re winning contracts consistently and your pipeline feels solid, you might not need us.</strong> But if there are gaps — inconsistent content, weak SEO, or a site that doesn\'t match the quality of your work — that\'s exactly what we fix. Worth fifteen minutes to find out.';
+  } else if(unsureGoal&&contractOk){
+    badge='<span class="result-badge badge-soon">→ Could be a good fit</span>';
+    title='The numbers stack up — the direction just needs a bit of clarity.';
+    body='Your contract values make the maths work well. The only thing worth exploring is what you actually want to achieve — <strong>book a call and we\'ll work through that together.</strong> Sometimes it just takes a conversation to make the priority obvious. No obligation, no pitch.';
+  } else {
+    badge='<span class="result-badge badge-yes">✓ Strong fit</span>';
+    title='You\'re exactly who this is built for.';
+    body='Your contract values make the calculation straightforward — <strong>you need one or two extra jobs per month and the service pays for itself many times over.</strong> With your current reliance on word of mouth and a clear growth ambition, consistent marketing isn\'t optional any more. It\'s the gap between where you are and where you want to be. Book the call — let\'s get you there.';
+  }
+
+  document.getElementById('quizMain').innerHTML=
+    '<div class="result-body">'+badge+
+    '<h2>'+title+'</h2>'+
+    '<p>'+body+'</p>'+
+    '<div class="result-actions">'+
+    '<a class="btn-cta" href="mailto:hello@marketingformymates.com">Book a Free 15-Min Chat →</a>'+
+    '<button class="btn-restart" onclick="restart()">Start again</button>'+
+    '</div></div>';
+}
+
+function restart(){
+  answers=[];step=0;
+  document.getElementById('progressFill').style.width='0%';
+  document.getElementById('stepNum').textContent='1';
+  render();
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Happens After You Book — Marketing for my Mates</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
+  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.10);
+  --green:#10d988;--text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
+  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+*{position:relative;z-index:1;}
+
+.page{max-width:960px;margin:0 auto;}
+.page-header{margin-bottom:3rem;}
+.tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;display:inline-block;padding:0.3rem 0.8rem;border:1px solid var(--border-amber);background:var(--amber-glow);margin-bottom:1rem;}
+.tag::before{content:'// ';}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+h1 span{color:var(--amber);}
+.subtitle{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:600px;}
+
+/* TIMELINE NAV */
+.tl-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-bottom:0;position:relative;}
+.tl-nav::after{content:'';position:absolute;top:27px;left:5%;right:5%;height:1px;background:var(--border-amber);z-index:0;}
+
+.tl-step{text-align:center;cursor:pointer;padding:0 0.5rem;}
+.tl-node{
+  width:54px;height:54px;margin:0 auto 1rem;
+  border:1px solid var(--border);background:var(--bg2);
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.25s;z-index:1;letter-spacing:0.03em;
+  position:relative;
+}
+.tl-step:hover .tl-node{border-color:var(--border-amber);color:var(--amber);}
+.tl-step.active .tl-node{background:var(--amber);color:#000;border-color:var(--amber);}
+.tl-step-label{font-family:var(--mono);font-size:0.58rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;}
+.tl-step-title{font-size:0.8rem;font-weight:700;color:var(--muted);line-height:1.3;}
+.tl-step.active .tl-step-title{color:var(--text);}
+
+/* DETAIL PANEL */
+.tl-detail{background:var(--bg2);border:1px solid var(--border-amber);margin-top:2rem;overflow:hidden;min-height:280px;}
+.tl-detail-bar{background:rgba(245,158,11,0.06);border-bottom:1px solid var(--border-amber);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.tl-detail-tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;}
+.tl-detail-nav{display:flex;gap:0.5rem;}
+.tl-nav-btn{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:0.68rem;padding:0.4rem 0.9rem;cursor:pointer;transition:all 0.18s;}
+.tl-nav-btn:hover:not(:disabled){border-color:var(--border-amber);color:var(--amber);}
+.tl-nav-btn:disabled{opacity:0.3;cursor:default;}
+.tl-nav-btn.next-btn{background:var(--amber);color:#000;border-color:var(--amber);}
+.tl-nav-btn.next-btn:hover:not(:disabled){opacity:0.85;}
+
+.tl-content{padding:2.5rem 2rem;}
+.tl-content h2{font-size:1.4rem;font-weight:800;margin-bottom:1rem;line-height:1.25;}
+.tl-content p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;max-width:760px;}
+.tl-content p:last-child{margin-bottom:0;}
+.tl-content p strong{color:var(--text);}
+.tl-content p em{color:var(--amber);font-style:normal;font-weight:700;}
+
+.checklist{list-style:none;margin:1rem 0;display:flex;flex-direction:column;gap:0.6rem;}
+.checklist li{font-size:0.875rem;color:var(--muted);display:flex;gap:0.75rem;align-items:flex-start;line-height:1.5;}
+.checklist li::before{content:'✓';font-family:var(--mono);color:var(--green);font-size:0.75rem;flex-shrink:0;margin-top:0.1rem;}
+.checklist li strong{color:var(--text);}
+
+/* PROGRESS DOTS */
+.dot-nav{display:flex;justify-content:center;gap:0.6rem;margin-top:1.5rem;}
+.dot-step{width:8px;height:8px;background:var(--border);border-radius:50%;cursor:pointer;transition:background 0.2s;}
+.dot-step.active{background:var(--amber);}
+
+.cta-strip{margin-top:2.5rem;background:var(--bg3);border:1px solid var(--border-amber);padding:1.75rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-strip p{font-size:0.9rem;color:var(--muted);line-height:1.6;flex:1;min-width:200px;}
+.cta-strip p strong{color:var(--text);}
+.cta-btn{display:inline-block;background:var(--amber);color:#000;font-family:var(--mono);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 1.75rem;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
+.cta-btn:hover{opacity:0.85;}
+
+@media(max-width:700px){
+  .tl-nav{grid-template-columns:1fr;gap:0.5rem;}
+  .tl-nav::after{display:none;}
+  .tl-node{width:44px;height:44px;font-size:0.58rem;}
+  .tl-content{padding:1.5rem 1.25rem;}
+  .cta-strip{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <span class="tag">The Process</span>
+    <h1>Exactly What Happens <span>After You Book.</span></h1>
+    <p class="subtitle">No vagueness. No "we'll figure it out." Here's precisely what you get and when — from the first call to measurable traction. Click each stage to see the detail.</p>
+  </div>
+
+  <!-- TIMELINE NAV -->
+  <div class="tl-nav" id="tlNav">
+    <div class="tl-step active" onclick="go(0)">
+      <div class="tl-node">DAY 1</div>
+      <div class="tl-step-label">Discovery</div>
+      <div class="tl-step-title">The Free Call</div>
+    </div>
+    <div class="tl-step" onclick="go(1)">
+      <div class="tl-node">WK 1</div>
+      <div class="tl-step-label">Foundation</div>
+      <div class="tl-step-title">Brand Brief</div>
+    </div>
+    <div class="tl-step" onclick="go(2)">
+      <div class="tl-node">WK 2</div>
+      <div class="tl-step-label">Build</div>
+      <div class="tl-step-title">Site Goes Live</div>
+    </div>
+    <div class="tl-step" onclick="go(3)">
+      <div class="tl-node">MO 1</div>
+      <div class="tl-step-label">Active</div>
+      <div class="tl-step-title">SEO &amp; Social On</div>
+    </div>
+    <div class="tl-step" onclick="go(4)">
+      <div class="tl-node">MO 3</div>
+      <div class="tl-step-label">Results</div>
+      <div class="tl-step-title">Traction Builds</div>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="tl-detail">
+    <div class="tl-detail-bar">
+      <span class="tl-detail-tag" id="detailTag"></span>
+      <div class="tl-detail-nav">
+        <button class="tl-nav-btn" id="btnPrev" onclick="go(current-1)">← Prev</button>
+        <button class="tl-nav-btn next-btn" id="btnNext" onclick="go(current+1)">Next →</button>
+      </div>
+    </div>
+    <div class="tl-content" id="detailContent"></div>
+  </div>
+
+  <!-- DOT NAV -->
+  <div class="dot-nav" id="dotNav"></div>
+
+  <div class="cta-strip">
+    <p><strong>Ready to start the clock?</strong> The free call is 15 minutes. No pitch deck, no pressure. If it's not right for you I'll tell you — and point you in a better direction.</p>
+    <a class="cta-btn" href="mailto:hello@marketingformymates.com">Book a Free Chat →</a>
+  </div>
+</div>
+
+<script>
+var steps=[
+  {
+    tag:'Day 1 — Discovery Call',
+    title:'The 15-Minute Call',
+    body:[
+      'We talk through your business, your market, your current situation, and what you want to achieve in the next 12 months. <strong>No pitch, no slide deck.</strong> I ask questions, you answer honestly, and we work out together whether this makes sense.',
+      'If it\'s a strong fit, we agree a start date and I\'ll send you a short brief document to complete — the one and only piece of work you\'ll need to do. If it\'s not the right time or I don\'t think this will work for your situation, <em>I\'ll say that clearly</em> and suggest what I\'d actually recommend instead.',
+    ],
+    checks:['No obligation, no sales pressure','Completely free — 15 minutes','Honest outcome either way — yes or no']
+  },
+  {
+    tag:'Week 1 — Foundation',
+    title:'Brand Brief and Business Deep-Dive',
+    body:[
+      'You complete the brief document I send over — it covers your business, your best clients, the types of contracts you want more of, your key competitors, and anything you\'re proud of that customers should know about.',
+      '<strong>From that single document, I build everything.</strong> You won\'t be chased for content, pulled into copy approval rounds, or asked to provide logos at 3am. I get on with it and come back to you with a first look at the brand direction before anything goes live.',
+    ],
+    checks:['One brief document — that\'s your total input','Brand direction: logo guidance, colours, tone of voice','No email chains, no revision marathons']
+  },
+  {
+    tag:'Week 2 — Build',
+    title:'Your New Website Goes Live',
+    body:[
+      '<strong>Your new 3–5 page website is built, written, and live.</strong> This isn\'t a template with your logo dropped in — it\'s written specifically for your market, structured to rank for the local searches your customers actually use, and designed to convert a facilities manager or procurement contact who lands on it cold.',
+      'Hosting is included in your monthly retainer. Your domain is connected. There\'s nothing left for you to action, approve, or manage. It just works.',
+    ],
+    checks:['Custom website — built for your market, not a template','B2B copywriting included — no generic filler','Premium hosting + domain connection included','Optimised for local search from day one']
+  },
+  {
+    tag:'Month 1 — Marketing Active',
+    title:'SEO and Social Media Switch On',
+    body:[
+      'The first local SEO article goes live — targeting a real search term your potential customers use when they\'re looking for what you offer in your area. This is proper, original content, not AI filler padded to hit a word count.',
+      '<strong>The first four social media posts are scheduled and published</strong> across your platforms. From this point forward, your digital presence is being actively maintained and grown every single month — without you having to think about it, approve anything, or produce a single piece of content yourself.',
+    ],
+    checks:['Month 1 SEO article targeting real local search terms','4 x B2B social posts scheduled and live','Consistent brand voice across all channels','Zero ongoing effort required from you']
+  },
+  {
+    tag:'Month 3 — Measurable Traction',
+    title:'Results You Can See',
+    body:[
+      'Search rankings start moving. Organic traffic is building. Your social presence is consistent and credible. <em>Most clients see their first attributable inbound enquiry between weeks 6 and 10.</em>',
+      '<strong>By month three you\'ll have a body of content working for you around the clock</strong>, a website that looks as good as your biggest local competitor, and a clear picture of what\'s performing. We\'ll share a simple monthly summary so you can see what\'s changed — no dashboards to log into, no jargon to decode.',
+    ],
+    checks:['Attributable enquiries typically start weeks 6–10','Monthly plain-English performance summary','Content library building month on month','Rankings improving for your target search terms']
+  }
+];
+
+var current=0;
+
+function go(i){
+  if(i<0||i>4)return;
+  current=i;
+  // update nav
+  document.querySelectorAll('.tl-step').forEach(function(s,j){s.classList.toggle('active',j===i);});
+  // update dots
+  document.querySelectorAll('.dot-step').forEach(function(d,j){d.classList.toggle('active',j===i);});
+  // buttons
+  document.getElementById('btnPrev').disabled=i===0;
+  document.getElementById('btnNext').disabled=i===4;
+  document.getElementById('btnNext').textContent=i===4?'— Done':'Next →';
+
+  var s=steps[i];
+  document.getElementById('detailTag').textContent=s.tag;
+
+  var html='<h2>'+s.title+'</h2>';
+  s.body.forEach(function(p){html+='<p>'+p+'</p>';});
+  html+='<ul class="checklist">';
+  s.checks.forEach(function(c){html+='<li>'+c+'</li>';});
+  html+='</ul>';
+  document.getElementById('detailContent').innerHTML=html;
+}
+
+// Build dot nav
+var dotNav=document.getElementById('dotNav');
+steps.forEach(function(_,i){
+  var d=document.createElement('div');
+  d.className='dot-step'+(i===0?' active':'');
+  d.onclick=function(){go(i);};
+  dotNav.appendChild(d);
+});
+
+go(0);
+</script>
+</body>
+</html>

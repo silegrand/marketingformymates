@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Calculator — Marketing for my Mates</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
+  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.10);
+  --green:#10d988;--text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
+  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+*{position:relative;z-index:1;}
+
+.page{max-width:960px;margin:0 auto;}
+.page-header{margin-bottom:3rem;}
+.tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;display:inline-block;padding:0.3rem 0.8rem;border:1px solid var(--border-amber);background:var(--amber-glow);margin-bottom:1rem;}
+.tag::before{content:'// ';}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+h1 span{color:var(--amber);}
+.subtitle{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:600px;}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+
+/* SLIDERS */
+.controls-panel{background:var(--bg2);border:1px solid var(--border);padding:2.25rem;}
+.controls-title{font-family:var(--mono);font-size:0.68rem;color:var(--dim);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+
+.control-row{margin-bottom:2.25rem;}
+.control-row:last-child{margin-bottom:0;}
+.ctrl-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;}
+.ctrl-label{font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.06em;}
+.ctrl-val{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--amber);}
+.ctrl-sub{font-family:var(--mono);font-size:0.6rem;color:var(--dim);margin-top:0.4rem;}
+
+/* Custom slider */
+input[type=range]{
+  width:100%;height:4px;appearance:none;background:var(--border);
+  outline:none;border-radius:2px;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;background:var(--amber);border-radius:50%;border:3px solid var(--bg);cursor:pointer;transition:transform 0.15s;}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;background:var(--amber);border-radius:50%;border:3px solid var(--bg);cursor:pointer;}
+
+.slider-track-wrap{position:relative;}
+.slider-fill{position:absolute;top:0;left:0;height:4px;background:var(--amber);border-radius:2px;pointer-events:none;margin-top:0px;}
+
+/* RESULTS */
+.results-panel{display:flex;flex-direction:column;gap:1rem;}
+
+.result-card{background:var(--bg2);border:1px solid var(--border);padding:1.4rem 1.75rem;transition:border-color 0.2s;}
+.result-card.primary{border-color:var(--amber);background:var(--amber-glow);}
+.rc-label{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem;display:block;}
+.rc-value{font-family:var(--mono);font-size:2.2rem;font-weight:700;color:var(--text);line-height:1;}
+.result-card.primary .rc-value{color:var(--green);}
+.rc-sub{font-size:0.78rem;color:var(--muted);margin-top:0.3rem;}
+
+.breakeven-box{background:var(--bg3);border:1px solid var(--border-amber);border-left:3px solid var(--amber);padding:1.25rem 1.5rem;}
+.breakeven-box p{font-family:var(--mono);font-size:0.75rem;color:var(--muted);line-height:1.7;}
+.breakeven-box p strong{color:var(--amber);}
+
+.assumption-note{background:var(--bg2);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-top:0.5rem;}
+.assumption-note p{font-family:var(--mono);font-size:0.65rem;color:var(--dim);line-height:1.7;}
+.assumption-note p strong{color:var(--muted);}
+
+.cta-strip{margin-top:2rem;background:var(--bg3);border:1px solid var(--border-amber);padding:1.75rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-strip p{font-size:0.9rem;color:var(--muted);line-height:1.6;flex:1;min-width:200px;}
+.cta-strip p strong{color:var(--text);}
+.cta-btn{display:inline-block;background:var(--amber);color:#000;font-family:var(--mono);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 1.75rem;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
+.cta-btn:hover{opacity:0.85;}
+
+@media(max-width:700px){
+  .calc-grid{grid-template-columns:1fr;}
+  .cta-strip{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <span class="tag">Return on Investment</span>
+    <h1>What Does <span>£250 a Month</span> Actually Buy You?</h1>
+    <p class="subtitle">Move the sliders to match your business. The numbers update in real time — see exactly what the Growth Engine needs to deliver to pay for itself.</p>
+  </div>
+
+  <div class="calc-grid">
+    <!-- CONTROLS -->
+    <div class="controls-panel">
+      <div class="controls-title">// adjust to match your business</div>
+
+      <div class="control-row">
+        <div class="ctrl-header">
+          <span class="ctrl-label">Average contract value</span>
+          <span class="ctrl-val" id="lblContract">£5,000</span>
+        </div>
+        <div class="slider-track-wrap">
+          <input type="range" id="sContract" min="500" max="50000" step="250" value="5000">
+        </div>
+        <div class="ctrl-sub">// drag to set your typical job value</div>
+      </div>
+
+      <div class="control-row">
+        <div class="ctrl-header">
+          <span class="ctrl-label">Extra enquiries per month from marketing</span>
+          <span class="ctrl-val" id="lblEnquiries">4</span>
+        </div>
+        <div class="slider-track-wrap">
+          <input type="range" id="sEnquiries" min="1" max="30" step="1" value="4">
+        </div>
+        <div class="ctrl-sub">// conservative = 2–4, realistic = 5–10</div>
+      </div>
+
+      <div class="control-row">
+        <div class="ctrl-header">
+          <span class="ctrl-label">Conversion rate on those enquiries</span>
+          <span class="ctrl-val" id="lblConv">30%</span>
+        </div>
+        <div class="slider-track-wrap">
+          <input type="range" id="sConv" min="5" max="80" step="5" value="30">
+        </div>
+        <div class="ctrl-sub">// typical B2B technical trades: 20–40%</div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-panel">
+      <div class="result-card">
+        <span class="rc-label">New contracts per month</span>
+        <div class="rc-value" id="rContracts">—</div>
+        <div class="rc-sub">Based on enquiries × conversion rate</div>
+      </div>
+      <div class="result-card">
+        <span class="rc-label">Additional monthly revenue</span>
+        <div class="rc-value" id="rMonthly">—</div>
+        <div class="rc-sub">Gross, before marketing costs</div>
+      </div>
+      <div class="result-card primary">
+        <span class="rc-label">Net annual gain</span>
+        <div class="rc-value" id="rAnnual">—</div>
+        <div class="rc-sub">After setup fee + 12 months retainer</div>
+      </div>
+      <div class="result-card">
+        <span class="rc-label">Annual ROI</span>
+        <div class="rc-value" id="rROI">—</div>
+        <div class="rc-sub">Return on total annual investment</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="breakeven-box" style="margin-top:1.5rem;" id="breakevenBox"></div>
+
+  <div class="assumption-note">
+    <p><strong>Assumptions:</strong> Setup fee £500 (one-off) + £250/month retainer = £3,500 total year-one cost. ROI calculated on year-one total spend. Results are illustrative — your actual pipeline will depend on market, competition, and timing. Typical clients begin seeing attributable enquiries in weeks 6–10.</p>
+  </div>
+
+  <div class="cta-strip">
+    <p><strong>Ready to run the real numbers?</strong> Book a free 15-minute call and we'll work through your actual pipeline together — no obligation, no pitch deck.</p>
+    <a class="cta-btn" href="mailto:hello@marketingformymates.com">Book a Free Chat →</a>
+  </div>
+</div>
+
+<script>
+function fmt(n){return Math.round(n).toLocaleString('en-GB');}
+
+function update(){
+  var contract=parseInt(document.getElementById('sContract').value);
+  var enquiries=parseInt(document.getElementById('sEnquiries').value);
+  var convPct=parseInt(document.getElementById('sConv').value);
+  var conv=convPct/100;
+
+  document.getElementById('lblContract').textContent='£'+fmt(contract);
+  document.getElementById('lblEnquiries').textContent=enquiries;
+  document.getElementById('lblConv').textContent=convPct+'%';
+
+  var monthlyContracts=enquiries*conv;
+  var monthlyRev=monthlyContracts*contract;
+  var annualRev=monthlyRev*12;
+  var annualCost=500+(250*12); // 3500
+  var net=annualRev-annualCost;
+  var roi=Math.round((net/annualCost)*100);
+  var breakevenJobs=Math.ceil(annualCost/contract);
+
+  document.getElementById('rContracts').textContent=monthlyContracts.toFixed(1);
+  document.getElementById('rMonthly').textContent='£'+fmt(monthlyRev);
+
+  var netEl=document.getElementById('rAnnual');
+  netEl.textContent=(net>=0?'+':'')+'£'+fmt(Math.abs(net));
+  netEl.style.color=net>=0?'var(--green)':'#ef4444';
+
+  document.getElementById('rROI').textContent=roi+'%';
+
+  document.getElementById('breakevenBox').innerHTML=
+    '<p>At £'+fmt(contract)+' per contract, <strong>you need just '+breakevenJobs+' extra job'+(breakevenJobs!==1?'s':'')+
+    ' per year to break even on the total year-one spend</strong> — setup fee included. That\'s '+
+    (breakevenJobs<=12?'less than one job per month':'around one job per month')+
+    '. Everything beyond that is profit.</p>';
+
+  // Update slider fill colours
+  ['sContract','sEnquiries','sConv'].forEach(function(id){
+    var sl=document.getElementById(id);
+    var pct=((sl.value-sl.min)/(sl.max-sl.min))*100;
+    sl.style.background='linear-gradient(to right, var(--amber) '+pct+'%, var(--border) '+pct+'%)';
+  });
+}
+
+['sContract','sEnquiries','sConv'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',update);
+});
+update();
+</script>
+</body>
+</html>

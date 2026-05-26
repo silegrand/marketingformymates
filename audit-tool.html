@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Digital Audit — Marketing for my Mates</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
+  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.10);
+  --green:#10d988;--orange:#f97316;--red:#ef4444;
+  --text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
+  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+*{position:relative;z-index:1;}
+
+.page{max-width:960px;margin:0 auto;}
+
+.page-header{margin-bottom:3rem;}
+.tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;display:inline-block;padding:0.3rem 0.8rem;border:1px solid var(--border-amber);background:var(--amber-glow);margin-bottom:1rem;}
+.tag::before{content:'// ';}
+h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+h1 span{color:var(--amber);}
+.subtitle{font-size:1rem;color:var(--muted);line-height:1.7;max-width:600px;}
+
+.audit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:start;}
+
+/* FORM PANEL */
+.form-panel{background:var(--bg3);border:1px solid var(--border-amber);overflow:hidden;}
+.panel-bar{background:rgba(245,158,11,0.07);border-bottom:1px solid var(--border-amber);padding:0.75rem 1.25rem;display:flex;align-items:center;gap:0.5rem;}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dot-r{background:#ff5f57;}.dot-y{background:#febc2e;}.dot-g{background:#28c840;}
+.bar-title{font-family:var(--mono);font-size:0.67rem;color:var(--dim);margin-left:0.4rem;letter-spacing:0.07em;}
+.panel-body{padding:1.75rem;}
+
+.field{margin-bottom:1.4rem;}
+.field-label{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.45rem;}
+.field select,.field input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:0.82rem;padding:0.75rem 1rem;outline:none;transition:border-color 0.2s;appearance:none;}
+.field select:focus,.field input:focus{border-color:var(--border-amber);}
+.field input::placeholder{color:var(--dim);}
+.run-btn{width:100%;background:var(--amber);color:#000;border:none;font-family:var(--mono);font-size:0.82rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.95rem;cursor:pointer;transition:opacity 0.2s;margin-top:0.25rem;}
+.run-btn:hover{opacity:0.85;}
+.run-btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+.disclaimer{margin-top:1.25rem;padding:0.9rem 1rem;background:var(--bg);border:1px solid var(--border);font-family:var(--mono);font-size:0.62rem;color:var(--dim);line-height:1.7;}
+
+/* RESULTS PANEL */
+.results-panel{display:flex;flex-direction:column;gap:1.25rem;}
+
+.terminal{background:var(--bg3);border:1px solid var(--border-amber);overflow:hidden;font-family:var(--mono);}
+.term-bar{background:rgba(245,158,11,0.07);border-bottom:1px solid var(--border-amber);padding:0.6rem 1rem;display:flex;align-items:center;gap:0.4rem;}
+.term-title{font-family:var(--mono);font-size:0.65rem;color:var(--dim);margin-left:0.4rem;letter-spacing:0.07em;}
+.term-body{padding:1.25rem;font-size:0.76rem;line-height:2;}
+.t-p{color:var(--amber);}.t-o{color:var(--green);}.t-m{color:var(--dim);}.t-w{color:var(--orange);}
+
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;}
+.score-card{background:var(--bg2);border:1px solid var(--border);padding:1.1rem 1.25rem;}
+.score-lbl{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.35rem;}
+.score-val{font-family:var(--mono);font-size:1.5rem;font-weight:700;line-height:1;}
+.s-bad{color:var(--red);}.s-warn{color:var(--orange);}.s-ok{color:var(--green);}
+
+.result-cta{background:var(--amber-glow);border:1px solid var(--border-amber);border-left:3px solid var(--amber);padding:1.5rem;}
+.result-cta p{font-size:0.875rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.result-cta p strong{color:var(--text);}
+.cta-btn{display:inline-block;background:var(--amber);color:#000;font-family:var(--mono);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.75rem 1.75rem;text-decoration:none;transition:opacity 0.2s;border:none;cursor:pointer;}
+.cta-btn:hover{opacity:0.85;}
+
+.hidden{display:none;}
+
+@media(max-width:700px){
+  .audit-grid{grid-template-columns:1fr;}
+  .score-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <span class="tag">Free Tool</span>
+    <h1>Run Your Own <span>Digital Audit.</span></h1>
+    <p class="subtitle">Tell us about your business and get a realistic picture of where you stand — and what your current digital presence is probably costing you in missed contracts.</p>
+  </div>
+
+  <div class="audit-grid">
+    <!-- FORM -->
+    <div>
+      <div class="form-panel">
+        <div class="panel-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="bar-title">audit_tool_v1.sh</span>
+        </div>
+        <div class="panel-body">
+          <div class="field">
+            <label class="field-label">Business type</label>
+            <select id="bizType">
+              <option value="">Select your trade</option>
+              <option value="cctv">CCTV Installation</option>
+              <option value="network">Network / IT Infrastructure</option>
+              <option value="electric">Electrical Contractor</option>
+              <option value="security">Security Systems</option>
+              <option value="other">Other technical trade</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label">Your location (town or city)</label>
+            <input id="bizLocation" type="text" placeholder="e.g. Maidstone, Kent" />
+          </div>
+          <div class="field">
+            <label class="field-label">How would you describe your current website?</label>
+            <select id="websiteStatus">
+              <option value="">Select one</option>
+              <option value="none">I don't have one</option>
+              <option value="old">Got one — haven't touched it in years</option>
+              <option value="ok">Got one — reasonably up to date</option>
+              <option value="good">Got one — pretty happy with it</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label">Average contract value</label>
+            <select id="contractVal">
+              <option value="">Select range</option>
+              <option value="1500">Under £2,000</option>
+              <option value="3500">£2,000 – £5,000</option>
+              <option value="10000">£5,000 – £15,000</option>
+              <option value="30000">£15,000 – £50,000</option>
+              <option value="60000">£50,000+</option>
+            </select>
+          </div>
+          <button class="run-btn" id="runBtn" onclick="runAudit()">Run My Audit →</button>
+        </div>
+      </div>
+      <div class="disclaimer">// Results are sector benchmarks for UK technical trades. Actual figures vary. We'll give you a proper assessment on the free call.</div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-panel" id="resultsPanel">
+      <div class="terminal" id="terminalBox">
+        <div class="term-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="term-title" id="termTitle">waiting for input...</span>
+        </div>
+        <div class="term-body" id="termBody">
+          <div><span class="t-m">// Enter your details and click Run My Audit</span></div>
+          <div><span class="t-m">// Results will appear here</span></div>
+        </div>
+      </div>
+      <div class="score-grid hidden" id="scoreGrid"></div>
+      <div class="result-cta hidden" id="resultCta"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var BIZ_LABELS = {cctv:'CCTV Installation',network:'Network / IT Infrastructure',electric:'Electrical Contractor',security:'Security Systems',other:'Technical Trade'};
+var WEB_DATA = {
+  none:{rank:'Page 4+',visitors:'0–5/mo',rankCls:'s-bad',visCls:'s-bad',lostJobs:18,compSpend:'£3,000–£6,000'},
+  old: {rank:'Page 3–4',visitors:'8–22/mo',rankCls:'s-bad',visCls:'s-warn',lostJobs:12,compSpend:'£2,500–£5,000'},
+  ok:  {rank:'Page 2–3',visitors:'25–60/mo',rankCls:'s-warn',visCls:'s-warn',lostJobs:6,compSpend:'£1,500–£3,000'},
+  good:{rank:'Page 1–2',visitors:'60–140/mo',rankCls:'s-ok',visCls:'s-ok',lostJobs:3,compSpend:'£1,000–£2,500'}
+};
+
+function fmt(n){return n.toLocaleString('en-GB');}
+
+function runAudit(){
+  var biz=document.getElementById('bizType').value;
+  var loc=document.getElementById('bizLocation').value.trim();
+  var web=document.getElementById('websiteStatus').value;
+  var con=document.getElementById('contractVal').value;
+  if(!biz||!loc||!web||!con){alert('Please complete all four fields.');return;}
+
+  var btn=document.getElementById('runBtn');
+  btn.disabled=true;btn.textContent='Running...';
+
+  var wd=WEB_DATA[web];
+  var conNum=parseInt(con);
+  var missed=wd.lostJobs*conNum;
+
+  document.getElementById('scoreGrid').classList.add('hidden');
+  document.getElementById('resultCta').classList.add('hidden');
+
+  var title='audit — '+loc+' — '+BIZ_LABELS[biz];
+  document.getElementById('termTitle').textContent=title;
+
+  var lines=[
+    {c:'t-p',v:'$ run digital_presence_scan --location="'+loc+'"'},
+    {c:'t-m',v:'// initialising audit for '+BIZ_LABELS[biz]+'...'},
+    {c:'t-m',v:'// checking local search landscape...'},
+    {c:wd.rankCls==='s-ok'?'t-o':'t-w',v:(wd.rankCls==='s-ok'?'✓':'⚠')+'  Current estimated ranking: '+wd.rank},
+    {c:wd.visCls==='s-ok'?'t-o':'t-w',v:(wd.visCls==='s-ok'?'✓':'⚠')+'  Estimated organic visitors/mo: '+wd.visitors},
+    {c:'t-m',v:'// scanning competitor activity in '+loc+'...'},
+    {c:'t-w',v:'⚠  Competitor monthly est. spend: '+wd.compSpend+'/mo'},
+    {c:'t-w',v:'⚠  Contracts lost to competitors est: ~'+wd.lostJobs+'/year'},
+    {c:'t-w',v:'⚠  Estimated missed pipeline: £'+fmt(missed)+'/year'},
+    {c:'t-m',v:'// calculating opportunity cost...'},
+    {c:'t-o',v:'✓  Audit complete. Results below.'},
+  ];
+
+  var body=document.getElementById('termBody');
+  body.innerHTML='';
+  var i=0;
+  function next(){
+    if(i>=lines.length){showScores(wd,conNum,missed);btn.disabled=false;btn.textContent='Run Again →';return;}
+    var l=lines[i++];
+    var d=document.createElement('div');
+    d.innerHTML='<span class="'+l.c+'">'+l.v+'</span>';
+    body.appendChild(d);
+    body.scrollTop=body.scrollHeight;
+    setTimeout(next,i===1?0:200);
+  }
+  next();
+}
+
+function showScores(wd,conNum,missed){
+  var grid=document.getElementById('scoreGrid');
+  var breakevenJobs=Math.ceil((500+250*12)/conNum);
+  grid.innerHTML=
+    '<div class="score-card"><span class="score-lbl">Est. Google Ranking</span><span class="score-val '+wd.rankCls+'">'+wd.rank+'</span></div>'+
+    '<div class="score-card"><span class="score-lbl">Organic Visitors</span><span class="score-val '+wd.visCls+'">'+wd.visitors+'</span></div>'+
+    '<div class="score-card"><span class="score-lbl">Contracts Lost / Year</span><span class="score-val s-bad">~'+wd.lostJobs+'</span></div>'+
+    '<div class="score-card"><span class="score-lbl">Missed Pipeline / Year</span><span class="score-val s-bad">£'+missed.toLocaleString('en-GB')+'</span></div>';
+  grid.classList.remove('hidden');
+
+  var cta=document.getElementById('resultCta');
+  cta.innerHTML='<p>Based on these numbers, <strong>the Growth Engine pays for itself if it wins you just '+breakevenJobs+' extra job'+(breakevenJobs!==1?'s':'')+' per year</strong> — setup fee included. Book a free 15-minute call and we\'ll walk through your actual numbers together.</p><a class="cta-btn" href="mailto:hello@marketingformymates.com">Book a Free Chat →</a>';
+  cta.classList.remove('hidden');
+}
+</script>
+</body>
+</html>

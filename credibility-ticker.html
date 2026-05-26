@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credibility Strip — Marketing for my Mates</title>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
+  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.08);
+  --text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
+  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+*{position:relative;z-index:1;}
+
+.page{max-width:960px;margin:0 auto;}
+.page-header{margin-bottom:3rem;}
+.tag{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.2em;text-transform:uppercase;display:inline-block;padding:0.3rem 0.8rem;border:1px solid var(--border-amber);background:var(--amber-glow);margin-bottom:1rem;}
+.tag::before{content:'// ';}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+h1 span{color:var(--amber);}
+.subtitle{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:600px;}
+
+/* TICKER */
+.ticker-outer{overflow:hidden;border:1px solid var(--border-amber);background:var(--bg3);margin-bottom:2rem;}
+.ticker-label{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;padding:0.6rem 1.25rem;border-bottom:1px solid var(--border-amber);background:rgba(245,158,11,0.04);}
+.ticker-track-wrap{padding:0.9rem 0;overflow:hidden;position:relative;}
+.ticker-track-wrap::before,.ticker-track-wrap::after{content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;}
+.ticker-track-wrap::before{left:0;background:linear-gradient(to right,var(--bg3),transparent);}
+.ticker-track-wrap::after{right:0;background:linear-gradient(to left,var(--bg3),transparent);}
+.ticker-track{display:flex;white-space:nowrap;animation:scroll 42s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+.tick{display:inline-flex;align-items:center;gap:0.6rem;padding:0 2.25rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;flex-shrink:0;}
+.tick-dot{width:5px;height:5px;background:var(--amber);border-radius:50%;flex-shrink:0;}
+.tick.highlight{color:var(--text);}
+.tick.award{color:var(--amber);}
+@keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* CRED GRID */
+.cred-section{margin-bottom:2.5rem;}
+.cred-section-label{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+.cred-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;}
+.cred-card{background:var(--bg2);border:1px solid var(--border);padding:1.25rem 1.4rem;transition:border-color 0.2s;}
+.cred-card:hover{border-color:var(--border-amber);}
+.cred-card.featured{border-color:var(--border-amber);background:var(--amber-glow);}
+.cc-cat{font-family:var(--mono);font-size:0.58rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;display:block;}
+.cc-val{font-size:0.875rem;font-weight:700;color:var(--text);line-height:1.4;}
+.cc-sub{font-size:0.78rem;color:var(--muted);margin-top:0.2rem;line-height:1.4;}
+
+/* QUOTE */
+.quote-block{background:var(--bg3);border:1px solid var(--border-amber);border-left:3px solid var(--amber);padding:1.75rem 2rem;margin-bottom:2.5rem;}
+.quote-text{font-size:1.05rem;color:var(--text);line-height:1.8;font-style:italic;margin-bottom:0.75rem;}
+.quote-attr{font-family:var(--mono);font-size:0.68rem;color:var(--dim);letter-spacing:0.08em;}
+
+@media(max-width:700px){
+  .cred-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .cred-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <span class="tag">Credentials</span>
+    <h1>Why You Can <span>Trust the Work.</span></h1>
+    <p class="subtitle">I'm not a freelancer with a Canva subscription. Here's the background that means I understand your market, your clients, and what it takes to build something credible in a technical sector.</p>
+  </div>
+
+  <!-- LIVE TICKER -->
+  <div class="ticker-outer">
+    <div class="ticker-label">// continuous credentials feed — hover to pause</div>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+
+  <!-- QUALIFICATIONS & PROFESSIONAL -->
+  <div class="cred-section">
+    <div class="cred-section-label">Qualifications &amp; Professional</div>
+    <div class="cred-grid">
+      <div class="cred-card featured">
+        <span class="cc-cat">Marketing</span>
+        <div class="cc-val">MCIM</div>
+        <div class="cc-sub">Chartered Institute of Marketing — the UK's highest marketing designation</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Technology</span>
+        <div class="cc-val">Technology Co-Founder</div>
+        <div class="cc-sub">Co-founded Sunstone Systems from inception through to acquisition</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Intellectual Property</span>
+        <div class="cc-val">3 Granted Patents</div>
+        <div class="cc-sub">Listed inventor: solar CCTV, autonomous power, drone charging</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Cyber Security</span>
+        <div class="cc-val">IBM Certified Board Lead</div>
+        <div class="cc-sub">IBM Certified Cyber Security Board Lead</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">AI &amp; Technology</span>
+        <div class="cc-val">Responsible AI Institute</div>
+        <div class="cc-sub">Member 2025 — agentic AI and LLM systems</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Experience</span>
+        <div class="cc-val">20+ Years B2B</div>
+        <div class="cc-sub">Tech commercialisation, public sector, and enterprise business development</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTABLE CLIENTS -->
+  <div class="cred-section">
+    <div class="cred-section-label">Notable Clients &amp; Contracts</div>
+    <div class="cred-grid">
+      <div class="cred-card featured">
+        <span class="cc-cat">Energy / Global</span>
+        <div class="cc-val">Chevron Technology Ventures</div>
+        <div class="cc-sub">Accepted into CTV programme — 58 systems deployed in Kazakhstan</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Automotive / USA</span>
+        <div class="cc-val">Rivian Automotive</div>
+        <div class="cc-sub">Won contract beating 15 competitors across UK, Germany, and USA</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Infrastructure / UK</span>
+        <div class="cc-val">Network Rail</div>
+        <div class="cc-sub">Power station deployment and LiDAR tunnel detection</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Public Sector</span>
+        <div class="cc-val">NHS · Home Office · DfE</div>
+        <div class="cc-sub">Consultant across central government, NHS NIHR, and local authorities</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Distribution</span>
+        <div class="cc-val">WESCO Anixter</div>
+        <div class="cc-sub">Global distribution partnership — multiple live pipeline opportunities</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Exit</span>
+        <div class="cc-val">Acquired by WJ Group</div>
+        <div class="cc-sub">Sunstone Systems acquired — full exit as technology marketer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOGNITION -->
+  <div class="cred-section">
+    <div class="cred-section-label">Industry Recognition</div>
+    <div class="cred-grid">
+      <div class="cred-card featured">
+        <span class="cc-cat">Influence</span>
+        <div class="cc-val">IFSEC Global Top 50</div>
+        <div class="cc-sub">Most Influential in Security &amp; Fire — 2018</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Awards</span>
+        <div class="cc-val">S&amp;FE Awards Winner</div>
+        <div class="cc-sub">Security Partnering Initiative — 2023</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Awards</span>
+        <div class="cc-val">Canterbury Business Awards</div>
+        <div class="cc-sub">SME &amp; Innovation Winner — 2018</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Awards</span>
+        <div class="cc-val">Highways England</div>
+        <div class="cc-sub">Network Management Winner — 2020</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Publishing</span>
+        <div class="cc-val">15+ Published Articles</div>
+        <div class="cc-sub">IFSEC Global, PSI Magazine, Security Buyer, Security Matters</div>
+      </div>
+      <div class="cred-card">
+        <span class="cc-cat">Advisory</span>
+        <div class="cc-val">Industry Panels</div>
+        <div class="cc-sub">PSI, Security Matters, Security Buyer — content advisory panels 2024–25</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <p class="quote-text">"I know what it takes to build credibility in a technical market — because I've done it from scratch. Sunstone went from a blank sheet of paper to Chevron, Rivian, and Network Rail. That's the background I bring to every client."</p>
+    <span class="quote-attr">— Simon Legrand MCIM, Founder · marketingformymates.com · <a href="https://www.simonlegrand.co.uk" target="_blank" style="color:var(--amber);text-decoration:none;">simonlegrand.co.uk</a></span>
+  </div>
+</div>
+
+<script>
+var items=[
+  {t:'MCIM Chartered Marketer',cls:'highlight'},
+  {t:'20+ Years B2B Marketing',cls:''},
+  {t:'Technology Co-Founder',cls:'highlight'},
+  {t:'3 Granted Patents',cls:''},
+  {t:'Chevron Technology Ventures',cls:'highlight'},
+  {t:'Rivian Automotive',cls:''},
+  {t:'Network Rail',cls:''},
+  {t:'IFSEC Global Top 50 Most Influential',cls:'award'},
+  {t:'WESCO Anixter Global Partnership',cls:''},
+  {t:'Published: IFSEC · PSI · Security Buyer',cls:''},
+  {t:'IBM Certified Cyber Security Board Lead',cls:''},
+  {t:'NHS · Home Office · DfE Consultant',cls:''},
+  {t:'S&FE Awards Winner 2023',cls:'award'},
+  {t:'Canterbury Business Awards SME Winner',cls:'award'},
+  {t:'Responsible AI Institute Member',cls:''},
+  {t:'Sunstone Systems — Acquired by WJ Group',cls:'highlight'},
+  {t:'Highways England Network Management Winner',cls:'award'},
+  {t:'15+ Published Industry Articles',cls:''},
+];
+
+var track=document.getElementById('tickerTrack');
+var html='';
+// duplicate for seamless loop
+[0,1].forEach(function(){
+  items.forEach(function(item){
+    html+='<span class="tick '+item.cls+'"><span class="tick-dot"></span>'+item.t+'</span>';
+  });
+});
+track.innerHTML=html;
+</script>
+</body>
+</html>
