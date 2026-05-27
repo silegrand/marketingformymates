@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Marketing for my Mates</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8f7f4;
+    --bg2: #ffffff;
+    --bg3: #f0ede8;
+    --amber: #c2780a;
+    --amber-glow: rgba(194,120,10,0.08);
+    --green: #059669;
+    --text: #111827;
+    --text-muted: #4b5563;
+    --text-dim: #9ca3af;
+    --border: rgba(0,0,0,0.09);
+    --border-amber: rgba(194,120,10,0.35);
+    --font-head: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-head); line-height: 1.6; overflow-x: hidden; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(194,120,10,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(194,120,10,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+
+  * { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(248,247,244,0.94);
+    backdrop-filter: blur(14px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; text-decoration: none; }
+  .logo span { color: var(--text-dim); font-weight: 400; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-family: var(--font-mono); transition: color 0.2s; }
+  nav ul a:hover, nav ul a.active { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: #ffffff; padding: 0.6rem 1.4rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: none; letter-spacing: 0.05em; transition: opacity 0.2s; border: none; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+  section { padding: 5rem 0; }
+
+  .section-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+  .section-tag::before { content: '// '; color: var(--text-dim); }
+
+  h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.25rem; }
+  h1 .accent { color: var(--amber); }
+  h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .section-intro { font-size: 1.05rem; color: var(--text-muted); max-width: 640px; line-height: 1.75; }
+
+  /* HERO STRIP */
+  .hero-strip {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .filter-btn {
+    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--bg2); color: var(--text-muted);
+    cursor: pointer; transition: all 0.18s;
+  }
+  .filter-btn:hover { border-color: var(--border-amber); color: var(--amber); }
+  .filter-btn.active { background: var(--amber); color: #ffffff; border-color: var(--amber); }
+
+  /* PORTFOLIO GRID */
+  .portfolio-section { padding: 4rem 0 6rem; }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  /* CARD */
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--border-amber); transform: translateY(-3px); }
+  .project-card.hidden { display: none; }
+
+  .card-preview {
+    height: 200px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Unique accent colours per card */
+  .card-preview.vesta   { background: #eef2ff; }
+  .card-preview.paul    { background: #f0fdf4; }
+  .card-preview.assistiv{ background: #f0f9ff; }
+  .card-preview.fyrfly  { background: #fff7ed; }
+  .card-preview.tim     { background: #fdf4ff; }
+
+  .card-logo-area {
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .card-site-initial {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700;
+    border: 2px solid;
+  }
+
+  .vesta   .card-site-initial { color: #4f46e5; border-color: #4f46e5; background: rgba(79,70,229,0.06); }
+  .paul    .card-site-initial { color: #059669; border-color: #059669; background: rgba(5,150,105,0.06); }
+  .assistiv .card-site-initial { color: #0284c7; border-color: #0284c7; background: rgba(2,132,199,0.06); }
+  .fyrfly  .card-site-initial { color: #ea580c; border-color: #ea580c; background: rgba(234,88,12,0.06); }
+  .tim     .card-site-initial { color: #9333ea; border-color: #9333ea; background: rgba(147,51,234,0.06); }
+
+  .card-site-name {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
+    letter-spacing: 0.08em; text-align: center;
+  }
+
+  .card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .card-tag {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border); color: var(--text-dim);
+    background: var(--bg3);
+  }
+
+  .card-title { font-size: 1.05rem; font-weight: 800; line-height: 1.25; color: var(--text); }
+  .card-desc { font-size: 0.855rem; color: var(--text-muted); line-height: 1.7; flex: 1; }
+
+  .card-metrics {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .card-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+  .card-metric-val { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--amber); }
+  .card-metric-lbl { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.08em; }
+
+  .card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-link {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber);
+    text-decoration: none; letter-spacing: 0.07em;
+    display: flex; align-items: center; gap: 0.35rem;
+    transition: gap 0.18s;
+  }
+  .card-link:hover { gap: 0.6rem; }
+  .card-sector {
+    font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* FEATURED CARD — full width */
+  .project-card.featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    border-color: var(--border-amber);
+    background: linear-gradient(120deg, rgba(194,120,10,0.04) 0%, var(--bg2) 60%);
+  }
+  .project-card.featured .card-preview { width: 320px; flex-shrink: 0; height: auto; min-height: 240px; }
+  .project-card.featured .card-body { padding: 2rem 2.5rem; }
+  .project-card.featured .card-title { font-size: 1.3rem; }
+
+  /* TESTIMONIAL STRIP */
+  .testimonial-strip {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 0;
+  }
+  .testimonial-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    padding: 1.75rem;
+  }
+  .testimonial-quote {
+    font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
+    font-style: italic; margin-bottom: 1.25rem;
+  }
+  .testimonial-quote::before { content: '"'; color: var(--amber); font-size: 1.5rem; line-height: 0; vertical-align: -0.4rem; margin-right: 0.15rem; font-style: normal; }
+  .testimonial-attr { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.08em; }
+  .testimonial-attr strong { color: var(--text); display: block; margin-bottom: 0.1rem; }
+
+  /* CTA STRIP */
+  .cta-strip {
+    border-top: 1px solid var(--border);
+    padding: 5rem 0;
+  }
+  .cta-strip-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--amber); color: #ffffff;
+    padding: 0.9rem 2rem; font-family: var(--font-mono);
+    font-size: 0.8rem; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; display: inline-block;
+    border: 1px solid var(--amber); transition: all 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--text-muted); padding: 0.9rem 2rem;
+    font-family: var(--font-mono); font-size: 0.8rem;
+    text-decoration: none; letter-spacing: 0.06em;
+    border: 1px solid var(--border); display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--border-amber); color: var(--amber); }
+
+  footer {
+    padding: 2rem 4rem; display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
+  .footer-logo strong { color: var(--amber); }
+  .footer-right { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
+  .footer-right a { color: var(--text-muted); text-decoration: none; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.5s ease both; }
+
+  @media (max-width: 960px) {
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .project-card.featured { flex-direction: column; }
+    .project-card.featured .card-preview { width: 100%; min-height: 180px; }
+    .testimonial-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul, .nav-cta { display: none; }
+    .container, .testimonial-inner, .cta-strip-inner, footer { padding: 0 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-strip { padding: 3.5rem 0 3rem; }
+    .project-card.featured { grid-column: auto; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Marketing for my Mates<span>.com</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#pricing">The Service</a></li>
+    <li><a href="work.html" class="active">Our Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Book a Free Chat</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-strip">
+  <div class="container">
+    <span class="section-tag">Portfolio</span>
+    <h1>Real Businesses. <span class="accent">Real Results.</span></h1>
+    <p class="section-intro">Every site here started with a conversation, a blank brief, and a business that needed to show up better. Here's what we built — and what it's doing for them.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filter('all', this)">All Work</button>
+      <button class="filter-btn" onclick="filter('b2b', this)">B2B Services</button>
+      <button class="filter-btn" onclick="filter('tech', this)">Technology</button>
+      <button class="filter-btn" onclick="filter('personal', this)">Personal Brand</button>
+      <button class="filter-btn" onclick="filter('health', this)">Health &amp; Social</button>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="portfolio-section">
+  <div class="container">
+
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <!-- VESTA IT — FEATURED -->
+      <div class="project-card featured fade-up" data-tags="b2b,tech">
+        <div class="card-preview vesta">
+          <div class="card-logo-area">
+            <div class="card-site-initial">VI</div>
+            <div class="card-site-name">vestait.co.uk</div>
+          </div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column;">
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Website</span>
+              <span class="card-tag">B2B Copy</span>
+              <span class="card-tag">SEO</span>
+              <span class="card-tag">Brand</span>
+            </div>
+            <div class="card-title">Vesta IT Services — Enterprise Network &amp; IT Infrastructure</div>
+            <p class="card-desc">John Bushnell spent 27 years building one of the UK's most complex enterprise networks at Peel Ports Medway — 50 buildings, 60+ servers, 250+ networked clients. When he founded Vesta IT, he had the expertise. We built the presence. A full multi-page website with sector-specific B2B copywriting, service architecture across six disciplines, a named leadership profile, and a contact system built for commercial enquiries.</p>
+            <div class="card-metrics">
+              <div class="card-metric"><span class="card-metric-val">6</span><span class="card-metric-lbl">Service pages</span></div>
+              <div class="card-metric"><span class="card-metric-val">26+</span><span class="card-metric-lbl">Yrs expertise showcased</span></div>
+              <div class="card-metric"><span class="card-metric-val">250+</span><span class="card-metric-lbl">Clients in track record</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-link" href="https://www.vestait.co.uk" target="_blank">Visit vestait.co.uk →</a>
+            <span class="card-sector">Network &amp; IT Infrastructure · Kent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAUL SCHELHAAS -->
+      <div class="project-card fade-up" data-tags="personal,tech,b2b">
+        <div class="card-preview paul">
+          <div class="card-logo-area">
+            <div class="card-site-initial">PS</div>
+            <div class="card-site-name">paulschelhaas.com</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Personal Brand</span>
+            <span class="card-tag">B2B Copy</span>
+            <span class="card-tag">Advisory</span>
+          </div>
+          <div class="card-title">Paul Schelhaas — Deep-Tech Commercialisation Advisor</div>
+          <p class="card-desc">Serial entrepreneur, named patent inventor, and former CEO who sold to Chevron, Network Rail, and Wesco Anixter. Paul needed a personal brand platform that matched the credibility of his track record. We built a focused, direct site that positions him for PE-backed scale-ups and corporate venturing mandates — with Chevron's personal endorsement front and centre.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">14yr</span><span class="card-metric-lbl">CEO track record</span></div>
+            <div class="card-metric"><span class="card-metric-val">3</span><span class="card-metric-lbl">Granted patents</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.paulschelhaas.com" target="_blank">Visit paulschelhaas.com →</a>
+          <span class="card-sector">Commercialisation Advisory</span>
+        </div>
+      </div>
+
+      <!-- ASSISTIV -->
+      <div class="project-card fade-up" data-tags="health,tech">
+        <div class="card-preview assistiv">
+          <div class="card-logo-area">
+            <div class="card-site-initial">AS</div>
+            <div class="card-site-name">assistiv.co</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Health Tech</span>
+            <span class="card-tag">Website</span>
+            <span class="card-tag">Investor Copy</span>
+            <span class="card-tag">NHS</span>
+          </div>
+          <div class="card-title">Assistiv — Infrastructure for Independent Living</div>
+          <p class="card-desc">A health technology startup building passive home monitoring for the UK's 3.5 million older adults in the "Missing Middle" — too independent to qualify for care, too vulnerable to be left without support. We built a site that communicates a complex clinical proposition clearly to ICBs, local authorities, and academic advisors — including a 14:1 ROI case for commissioning bodies.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">3.5m</span><span class="card-metric-lbl">Target population</span></div>
+            <div class="card-metric"><span class="card-metric-val">14:1</span><span class="card-metric-lbl">Projected ROI</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.assistiv.co" target="_blank">Visit assistiv.co →</a>
+          <span class="card-sector">Health Technology · UK</span>
+        </div>
+      </div>
+
+      <!-- FYRFLY -->
+      <div class="project-card fade-up" data-tags="b2b,tech">
+        <div class="card-preview fyrfly">
+          <div class="card-logo-area">
+            <div class="card-site-initial">FF</div>
+            <div class="card-site-name">fyrflysystems.com</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Website</span>
+            <span class="card-tag">SEO</span>
+            <span class="card-tag">B2B Copy</span>
+            <span class="card-tag">Education</span>
+          </div>
+          <div class="card-title">Fyrfly Systems — Physical Security for Schools &amp; Public Sector</div>
+          <p class="card-desc">NSI NACOSS Gold certified specialists in CCTV, access control, intruder alarms, fire systems, and 24/7 monitoring — built specifically for education and public sector clients across the UK. We built a full multi-page site with sector landing pages across 10 UK regions for both schools and public sector, anchoring Fyrfly in local search for the procurement managers who find them.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">50+</span><span class="card-metric-lbl">Sites protected</span></div>
+            <div class="card-metric"><span class="card-metric-val">20</span><span class="card-metric-lbl">Regional SEO pages</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.fyrflysystems.com" target="_blank">Visit fyrflysystems.com →</a>
+          <span class="card-sector">Physical Security · Faversham, Kent</span>
+        </div>
+      </div>
+
+      <!-- TIM LEGRAND -->
+      <div class="project-card fade-up" data-tags="personal,health">
+        <div class="card-preview tim">
+          <div class="card-logo-area">
+            <div class="card-site-initial">TL</div>
+            <div class="card-site-name">timlegrand.org</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Academic</span>
+            <span class="card-tag">Personal Brand</span>
+            <span class="card-tag">Research</span>
+          </div>
+          <div class="card-title">Prof. Tim Legrand — ARC Future Fellow, University of Adelaide</div>
+          <p class="card-desc">Professor of Politics and International Relations, ARC Future Fellowship holder 2025–2029, and expert in sanctions, blacklists, counter-terrorism law, and transnational policy networks. A full academic profile site covering research, publications, grants, supervision, international engagements, and a global reach visualisation — built for a senior academic audience and institutional funders.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">ARC</span><span class="card-metric-lbl">Future Fellow</span></div>
+            <div class="card-metric"><span class="card-metric-val">2025</span><span class="card-metric-lbl">Fellowship start</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.timlegrand.org" target="_blank">Visit timlegrand.org →</a>
+          <span class="card-sector">Academic · University of Adelaide</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL STRIP -->
+<div class="testimonial-strip">
+  <div class="testimonial-inner">
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-quote">The site positions us exactly where we need to be. Facilities managers and procurement contacts now find us when they're searching — and when they land, they see the depth of experience behind the business straight away.</p>
+      <div class="testimonial-attr"><strong>John Bushnell</strong>Director, Vesta IT Services Ltd</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-quote">I needed something that matched the weight of the work — not a generic agency template. The copy is precise, the positioning is right, and it opens the right conversations with the right people.</p>
+      <div class="testimonial-attr"><strong>Paul Schelhaas</strong>Commercialisation Advisor · Former CEO, Sunstone IP Systems</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-quote">Translating a complex clinical proposition into something commissioning bodies actually understand and act on is genuinely hard. This site does it — without dumbing anything down.</p>
+      <div class="testimonial-attr"><strong>Simon Legrand MCIM</strong>Co-Founder, Assistiv Systems Ltd</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <div>
+      <span class="section-tag">Work With Us</span>
+      <h2>Want Results Like These <span style="color:var(--amber);">for Your Business?</span></h2>
+      <p class="section-intro" style="margin-bottom:0;">Every project starts with a free 15-minute conversation. No pitch deck. Just an honest look at whether we're the right fit.</p>
+    </div>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+      <a href="index.html#contact" class="btn-primary">Book a Free Chat →</a>
+      <a href="index.html#pricing" class="btn-ghost">See the Service</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><strong>Marketing for my Mates</strong> — marketingformymates.com</div>
+  <div class="footer-right"><a href="mailto:hello@marketingformymates.com">hello@marketingformymates.com</a> &nbsp;·&nbsp; Built for local B2B trades</div>
+</footer>
+
+<script>
+// Scroll fade-ins
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.project-card, .testimonial-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.2s';
+  obs.observe(el);
+});
+
+// Filter
+function filter(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (tag === 'all') {
+      card.classList.remove('hidden');
+    } else {
+      const tags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+      card.classList.toggle('hidden', !tags.includes(tag));
+    }
+    // Re-trigger fade
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    setTimeout(() => obs.observe(card), 10);
+  });
+}
+</script>
+</body>
+</html>
