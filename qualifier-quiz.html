@@ -8,14 +8,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0d12;--bg2:#111827;--bg3:#141c2b;
-  --amber:#f59e0b;--amber-glow:rgba(245,158,11,0.10);
-  --green:#10d988;--text:#e8eaf0;--muted:#7b8498;--dim:#4b5368;
-  --border:rgba(255,255,255,0.07);--border-amber:rgba(245,158,11,0.3);
+  --bg:#f8f7f4;--bg2:#ffffff;--bg3:#f0ede8;
+  --amber:#c2780a;--amber-glow:rgba(194,120,10,0.08);
+  --green:#059669;--text:#111827;--muted:#4b5563;--dim:#9ca3af;
+  --border:rgba(0,0,0,0.09);--border-amber:rgba(194,120,10,0.35);
   --mono:'JetBrains Mono',monospace;--head:'Cabinet Grotesk',sans-serif;
 }
-body{background:var(--bg);color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(245,158,11,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+body{background:#f8f7f4;color:var(--text);font-family:var(--head);min-height:100vh;padding:3rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(194,120,10,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(194,120,10,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
 *{position:relative;z-index:1;}
 
 .page{max-width:760px;width:100%;}
@@ -28,7 +28,7 @@ h1 span{color:var(--amber);}
 .subtitle{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:520px;margin:0 auto;}
 
 /* QUIZ CARD */
-.quiz-card{background:var(--bg2);border:1px solid var(--border);overflow:hidden;width:100%;}
+.quiz-card{background:#ffffff;border:1px solid var(--border);overflow:hidden;width:100%;}
 
 .progress-bar{height:3px;background:var(--border);}
 .progress-fill{height:100%;background:var(--amber);transition:width 0.4s ease;}
@@ -38,12 +38,12 @@ h1 span{color:var(--amber);}
 .step-label em{color:var(--amber);font-style:normal;}
 .cat-label{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.1em;}
 
-.quiz-body{padding:2.5rem 2rem;min-height:280px;}
+.quiz-body{padding:2.5rem 2rem;min-height:280px;background:#ffffff;}
 .q-text{font-size:1.2rem;font-weight:800;line-height:1.3;margin-bottom:0.5rem;}
 .q-hint{font-size:0.85rem;color:var(--muted);margin-bottom:1.75rem;}
 
 .options{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
-.opt{background:var(--bg3);border:1px solid var(--border);padding:1.1rem 1.25rem;cursor:pointer;text-align:left;font-family:var(--head);transition:border-color 0.18s,background 0.18s;}
+.opt{background:#f8f7f4;border:1px solid var(--border);padding:1.1rem 1.25rem;cursor:pointer;text-align:left;font-family:var(--head);transition:border-color 0.18s,background 0.18s;}
 .opt:hover{border-color:var(--border-amber);}
 .opt.selected{border-color:var(--amber);background:var(--amber-glow);}
 .opt strong{display:block;font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
@@ -59,9 +59,9 @@ h1 span{color:var(--amber);}
 /* RESULT */
 .result-body{padding:2.5rem 2rem;}
 .result-badge{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.8rem;display:inline-block;margin-bottom:1.25rem;}
-.badge-yes{background:rgba(16,217,136,0.1);border:1px solid rgba(16,217,136,0.3);color:var(--green);}
+.badge-yes{background:rgba(5,150,105,0.10);border:1px solid rgba(5,150,105,0.30);color:var(--green);}
 .badge-soon{background:var(--amber-glow);border:1px solid var(--border-amber);color:var(--amber);}
-.badge-early{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#ef4444;}
+.badge-early{background:rgba(220,38,38,0.07);border:1px solid rgba(220,38,38,0.18);color:#ef4444;}
 .result-body h2{font-size:1.4rem;font-weight:800;margin-bottom:0.85rem;line-height:1.25;}
 .result-body p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;max-width:560px;}
 .result-body p strong{color:var(--amber);}
