@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Work — Marketing for my Mates</title>
+<title>The Work | Marketing for my Mates</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -192,7 +192,26 @@
     letter-spacing: 0.08em; text-transform: uppercase;
   }
 
-  /* FEATURED CARD — full width */
+  /* VENTURE BADGE: labels my own companies honestly */
+  .venture-badge {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--text); color: #ffffff;
+    padding: 0.3rem 0.65rem;
+  }
+
+  /* GRID DIVIDER: separates client work from own ventures */
+  .grid-divider {
+    grid-column: 1 / -1;
+    padding: 2rem 0 0.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .grid-divider h2 { margin-bottom: 0.4rem; }
+  .grid-divider p { font-size: 0.9rem; color: var(--text-muted); max-width: 680px; line-height: 1.75; }
+
+  /* FEATURED CARD: full width */
   .project-card.featured {
     grid-column: 1 / -1;
     flex-direction: row;
@@ -212,7 +231,7 @@
   }
   .testimonial-inner {
     max-width: 1200px; margin: 0 auto; padding: 0 4rem;
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
   }
   .testimonial-card {
     background: var(--bg2); border: 1px solid var(--border);
@@ -292,7 +311,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#pricing">The Service</a></li>
-    <li><a href="work.html" class="active">Our Work</a></li>
+    <li><a href="work.html" class="active">The Work</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <a href="index.html#contact" class="nav-cta">Book a Free Chat</a>
@@ -302,8 +321,8 @@
 <div class="hero-strip">
   <div class="container">
     <span class="section-tag">Portfolio</span>
-    <h1>Real Businesses. <span class="accent">Real Results.</span></h1>
-    <p class="section-intro">Every site here started with a conversation, a blank brief, and a business that needed to show up better. Here's what we built and what it's doing for them.</p>
+    <h1>Built to Win <span class="accent">the Work.</span></h1>
+    <p class="section-intro">Some of these are client sites. Two are my own companies, clearly labelled, built on exactly the same system I sell. Judge the work first. Then note that when it's my own money on the line, this is still how I do it.</p>
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filter('all', this)">All Work</button>
       <button class="filter-btn" onclick="filter('b2b', this)">B2B Services</button>
@@ -320,7 +339,7 @@
 
     <div class="portfolio-grid" id="portfolioGrid">
 
-      <!-- VESTA IT — FEATURED -->
+      <!-- VESTA IT: FEATURED -->
       <div class="project-card featured fade-up" data-tags="b2b,tech">
         <div class="card-preview vesta">
           <div class="card-logo-area">
@@ -336,8 +355,11 @@
               <span class="card-tag">SEO</span>
               <span class="card-tag">Brand</span>
             </div>
-            <div class="card-title">Vesta IT Services — Enterprise Network &amp; IT Infrastructure</div>
-            <p class="card-desc">John Bushnell spent 27 years building one of the UK's most complex enterprise networks at Peel Ports Medway, 50 buildings, 60+ servers, 250+ networked clients. When he founded Vesta IT, he had the expertise. We built the presence. A full multi-page website with sector-specific B2B copywriting, service architecture across six disciplines, a named leadership profile, and a contact system built for commercial enquiries.</p>
+            <div class="card-title">Vesta IT Services: Enterprise Network &amp; IT Infrastructure</div>
+            <p class="card-desc">John Bushnell spent 27 years building one of the UK's most complex enterprise networks at Peel Ports Medway, 50 buildings, 60+ servers, 250+ networked clients. When he founded Vesta IT, he had the expertise. I built the presence. A full multi-page website with sector-specific B2B copywriting, service architecture across six disciplines, a named leadership profile, and a contact system built for commercial enquiries.</p>
+            <!-- TODO: swap one of these for a real outcome once Search Console data lands,
+                 e.g. "Page 1 for 'IT support Medway'" or "Enquiries: X in first 90 days".
+                 One outcome metric is worth all three input metrics. -->
             <div class="card-metrics">
               <div class="card-metric"><span class="card-metric-val">6</span><span class="card-metric-lbl">Service pages</span></div>
               <div class="card-metric"><span class="card-metric-val">26+</span><span class="card-metric-lbl">Yrs expertise showcased</span></div>
@@ -365,8 +387,8 @@
             <span class="card-tag">B2B Copy</span>
             <span class="card-tag">Advisory</span>
           </div>
-          <div class="card-title">Paul Schelhaas — Deep-Tech Commercialisation Advisor</div>
-          <p class="card-desc">Serial entrepreneur, named patent inventor, and former CEO who sold to Chevron, Network Rail, and Wesco Anixter. Paul needed a personal brand platform that matched the credibility of his track record. We built a focused, direct site that positions him for PE-backed scale-ups and corporate venturing mandates — with Chevron's personal endorsement front and centre.</p>
+          <div class="card-title">Paul Schelhaas: Deep-Tech Commercialisation Advisor</div>
+          <p class="card-desc">Serial entrepreneur, named patent inventor, and former CEO who sold to Chevron, Network Rail, and Wesco Anixter. Paul needed a personal brand platform that matched the credibility of his track record. I built a focused, direct site that positions him for PE-backed scale-ups and corporate venturing mandates, with Chevron's personal endorsement front and centre.</p>
           <div class="card-metrics">
             <div class="card-metric"><span class="card-metric-val">14yr</span><span class="card-metric-lbl">CEO track record</span></div>
             <div class="card-metric"><span class="card-metric-val">3</span><span class="card-metric-lbl">Granted patents</span></div>
@@ -375,62 +397,6 @@
         <div class="card-footer">
           <a class="card-link" href="https://www.paulschelhaas.com" target="_blank">Visit paulschelhaas.com →</a>
           <span class="card-sector">Commercialisation Advisory</span>
-        </div>
-      </div>
-
-      <!-- ASSISTIV -->
-      <div class="project-card fade-up" data-tags="health,tech">
-        <div class="card-preview assistiv">
-          <div class="card-logo-area">
-            <div class="card-site-initial">AS</div>
-            <div class="card-site-name">assistiv.co</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-tags">
-            <span class="card-tag">Health Tech</span>
-            <span class="card-tag">Website</span>
-            <span class="card-tag">Investor Copy</span>
-            <span class="card-tag">NHS</span>
-          </div>
-          <div class="card-title">Assistiv — Infrastructure for Independent Living</div>
-          <p class="card-desc">A health technology startup building passive home monitoring for the UK's 3.5 million older adults in the "Missing Middle" — too independent to qualify for care, too vulnerable to be left without support. We built a site that communicates a complex clinical proposition clearly to ICBs, local authorities, and academic advisors — including a 14:1 ROI case for commissioning bodies.</p>
-          <div class="card-metrics">
-            <div class="card-metric"><span class="card-metric-val">3.5m</span><span class="card-metric-lbl">Target population</span></div>
-            <div class="card-metric"><span class="card-metric-val">14:1</span><span class="card-metric-lbl">Projected ROI</span></div>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a class="card-link" href="https://www.assistiv.co" target="_blank">Visit assistiv.co →</a>
-          <span class="card-sector">Health Technology · UK</span>
-        </div>
-      </div>
-
-      <!-- FYRFLY -->
-      <div class="project-card fade-up" data-tags="b2b,tech">
-        <div class="card-preview fyrfly">
-          <div class="card-logo-area">
-            <div class="card-site-initial">FF</div>
-            <div class="card-site-name">fyrflysystems.com</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-tags">
-            <span class="card-tag">Website</span>
-            <span class="card-tag">SEO</span>
-            <span class="card-tag">B2B Copy</span>
-            <span class="card-tag">Education</span>
-          </div>
-          <div class="card-title">Fyrfly Systems — Physical Security for Schools &amp; Public Sector</div>
-          <p class="card-desc">NSI NACOSS Gold certified specialists in CCTV, access control, intruder alarms, fire systems, and 24/7 monitoring — built specifically for education and public sector clients across the UK. We built a full multi-page site with sector landing pages across 10 UK regions for both schools and public sector, anchoring Fyrfly in local search for the procurement managers who find them.</p>
-          <div class="card-metrics">
-            <div class="card-metric"><span class="card-metric-val">50+</span><span class="card-metric-lbl">Sites protected</span></div>
-            <div class="card-metric"><span class="card-metric-val">20</span><span class="card-metric-lbl">Regional SEO pages</span></div>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a class="card-link" href="https://www.fyrflysystems.com" target="_blank">Visit fyrflysystems.com →</a>
-          <span class="card-sector">Physical Security · Faversham, Kent</span>
         </div>
       </div>
 
@@ -448,8 +414,8 @@
             <span class="card-tag">Personal Brand</span>
             <span class="card-tag">Research</span>
           </div>
-          <div class="card-title">Prof. Tim Legrand — ARC Future Fellow, University of Adelaide</div>
-          <p class="card-desc">Professor of Politics and International Relations, ARC Future Fellowship holder 2025–2029, and expert in sanctions, blacklists, counter-terrorism law, and transnational policy networks. A full academic profile site covering research, publications, grants, supervision, international engagements, and a global reach visualisation — built for a senior academic audience and institutional funders.</p>
+          <div class="card-title">Prof. Tim Legrand: ARC Future Fellow, University of Adelaide</div>
+          <p class="card-desc">Professor of Politics and International Relations, ARC Future Fellowship holder 2025–2029, and expert in sanctions, blacklists, counter-terrorism law, and transnational policy networks. A full academic profile site covering research, publications, grants, supervision, international engagements, and a global reach visualisation. Built for a senior academic audience and institutional funders.</p>
           <div class="card-metrics">
             <div class="card-metric"><span class="card-metric-val">ARC</span><span class="card-metric-lbl">Future Fellow</span></div>
             <div class="card-metric"><span class="card-metric-val">2025</span><span class="card-metric-lbl">Fellowship start</span></div>
@@ -460,6 +426,71 @@
           <span class="card-sector">Academic · University of Adelaide</span>
         </div>
       </div>
+
+      <!-- DIVIDER: OWN VENTURES -->
+      <div class="grid-divider" id="ventureDivider">
+        <span class="section-tag">Own Ventures</span>
+        <h2>I Eat My Own Cooking</h2>
+        <p>These two are my companies. The SEO articles, the local landing pages, the structured data, the trade press placements. Every part of the monthly service runs live on these sites first. If it doesn't work for my business, it doesn't get sold to yours.</p>
+      </div>
+      <!-- FYRFLY -->
+      <div class="project-card fade-up" data-tags="b2b,tech">
+        <div class="card-preview fyrfly">
+          <span class="venture-badge">My Own Company</span>
+          <div class="card-logo-area">
+            <div class="card-site-initial">FF</div>
+            <div class="card-site-name">fyrflysystems.com</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Website</span>
+            <span class="card-tag">SEO</span>
+            <span class="card-tag">B2B Copy</span>
+            <span class="card-tag">Education</span>
+          </div>
+          <div class="card-title">Fyrfly Systems: Physical Security for Schools &amp; Public Sector</div>
+          <p class="card-desc">My physical security company. CCTV, access control, alarms and monitoring for schools and the public sector. This is the site I point people at when they ask what the monthly work actually looks like: 20 regional landing pages, structured data, sector copy written for procurement managers, and trade press articles linking back. The exact system I sell, running on my own business.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">50+</span><span class="card-metric-lbl">Sites protected</span></div>
+            <div class="card-metric"><span class="card-metric-val">20</span><span class="card-metric-lbl">Regional SEO pages</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.fyrflysystems.com" target="_blank">Visit fyrflysystems.com →</a>
+          <span class="card-sector">Physical Security · Faversham, Kent</span>
+        </div>
+      </div>
+
+      <!-- ASSISTIV -->
+      <div class="project-card fade-up" data-tags="health,tech">
+        <div class="card-preview assistiv">
+          <span class="venture-badge">My Own Company</span>
+          <div class="card-logo-area">
+            <div class="card-site-initial">AS</div>
+            <div class="card-site-name">assistiv.co</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Health Tech</span>
+            <span class="card-tag">Website</span>
+            <span class="card-tag">Investor Copy</span>
+            <span class="card-tag">NHS</span>
+          </div>
+          <div class="card-title">Assistiv: Infrastructure for Independent Living</div>
+          <p class="card-desc">My health technology venture. Passive home monitoring for the UK's 3.5 million older adults in the "Missing Middle." The marketing job here was hard: translating a complex clinical proposition into language that ICBs, local authorities and academic advisors act on, including a 14:1 ROI case for commissioners. If the system can sell this, it can sell your services.</p>
+          <div class="card-metrics">
+            <div class="card-metric"><span class="card-metric-val">3.5m</span><span class="card-metric-lbl">Target population</span></div>
+            <div class="card-metric"><span class="card-metric-val">14:1</span><span class="card-metric-lbl">Projected ROI</span></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <a class="card-link" href="https://www.assistiv.co" target="_blank">Visit assistiv.co →</a>
+          <span class="card-sector">Health Technology · UK</span>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -476,10 +507,6 @@
       <p class="testimonial-quote">I needed something that matched the weight of the work, not a generic agency template. The copy is precise, the positioning is right, and it opens the right conversations with the right people.</p>
       <div class="testimonial-attr"><strong>Paul Schelhaas</strong>Commercialisation Advisor · Former CEO, Sunstone IP Systems</div>
     </div>
-    <div class="testimonial-card fade-up">
-      <p class="testimonial-quote">Translating a complex clinical proposition into something commissioning bodies actually understand and act on is genuinely hard. This site does it, without dumbing anything down.</p>
-      <div class="testimonial-attr"><strong>Simon Legrand MCIM</strong>Co-Founder, Assistiv Systems Ltd</div>
-    </div>
   </div>
 </div>
 
@@ -487,9 +514,9 @@
 <div class="cta-strip">
   <div class="cta-strip-inner">
     <div>
-      <span class="section-tag">Work With Us</span>
-      <h2>Want Results Like These <span style="color:var(--amber);">for Your Business?</span></h2>
-      <p class="section-intro" style="margin-bottom:0;">Every project starts with a free 15-minute conversation. No pitch deck. Just an honest look at whether we're the right fit.</p>
+      <span class="section-tag">Work With Me</span>
+      <h2>Want It Done Properly <span style="color:var(--amber);">for Your Business?</span></h2>
+      <p class="section-intro" style="margin-bottom:0;">Every project starts with a free 15-minute conversation. No pitch deck. Just an honest look at whether I'm the right fit.</p>
     </div>
     <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
       <a href="index.html#contact" class="btn-primary">Book a Free Chat →</a>
@@ -499,7 +526,7 @@
 </div>
 
 <footer>
-  <div class="footer-logo"><strong>Marketing for my Mates</strong> — marketingformymates.com</div>
+  <div class="footer-logo"><strong>Marketing for my Mates</strong> · marketingformymates.com</div>
   <div class="footer-right"><a href="mailto:simon@marketingformymates.com">simon@marketingformymates.com</a> &nbsp;·&nbsp; Built for local B2B trades</div>
 </footer>
 
@@ -525,6 +552,9 @@ document.querySelectorAll('.project-card, .testimonial-card').forEach(el => {
 function filter(tag, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+
+  const divider = document.getElementById('ventureDivider');
+  if (divider) divider.style.display = (tag === 'all') ? '' : 'none';
 
   document.querySelectorAll('.project-card').forEach(card => {
     if (tag === 'all') {
