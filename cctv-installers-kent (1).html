@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Local service page, generated from the shared /for/ pattern.
+     Trade-specific parts: title, meta, canonical, headline, lead,
+     the problem section, the proof section and card, and the three
+     JSON-LD blocks at the foot of the page. Everything else is shared. -->
+
+<title>Marketing for CCTV Installers in Kent | Marketing for my Mates</title>
+<meta name="description" content="I build the website, write the copy, and run the local SEO for CCTV installers in Kent. £500 setup then £250 a month, no contract.">
+<link rel="canonical" href="https://www.marketingformymates.com/for/cctv-installers-kent.html">
+
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8f7f4;
+    --bg2: #ffffff;
+    --bg3: #f0ede8;
+    --amber: #c2780a;
+    --amber-glow: rgba(194,120,10,0.08);
+    --green: #059669;
+    --text: #111827;
+    --text-muted: #4b5563;
+    --text-dim: #9ca3af;
+    --border: rgba(0,0,0,0.09);
+    --border-amber: rgba(194,120,10,0.35);
+    --font-head: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-head); line-height: 1.6; overflow-x: hidden; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(194,120,10,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(194,120,10,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+
+  * { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(248,247,244,0.94);
+    backdrop-filter: blur(14px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; text-decoration: none; }
+  .logo span { color: var(--text-dim); font-weight: 400; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-family: var(--font-mono); transition: color 0.2s; }
+  nav ul a:hover, nav ul a.active { color: var(--amber); }
+  .nav-cta { background: var(--amber); color: #ffffff; padding: 0.6rem 1.4rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; cursor: pointer; text-decoration: none; letter-spacing: 0.05em; transition: opacity 0.2s; border: none; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+  section { padding: 5rem 0; }
+
+  .section-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+  .section-tag::before { content: '// '; color: var(--text-dim); }
+
+  h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 1.25rem; }
+  h1 .accent { color: var(--amber); }
+  h2 { font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .section-intro { font-size: 1.05rem; color: var(--text-muted); max-width: 640px; line-height: 1.75; }
+
+  /* HERO STRIP */
+  .hero-strip {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .filter-btn {
+    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--bg2); color: var(--text-muted);
+    cursor: pointer; transition: all 0.18s;
+  }
+  .filter-btn:hover { border-color: var(--border-amber); color: var(--amber); }
+  .filter-btn.active { background: var(--amber); color: #ffffff; border-color: var(--amber); }
+
+  /* PORTFOLIO GRID */
+  .portfolio-section { padding: 4rem 0 6rem; }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  /* CARD */
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--border-amber); transform: translateY(-3px); }
+  .project-card.hidden { display: none; }
+
+  .card-preview {
+    height: 200px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Unique accent colours per card */
+  .card-preview.vesta   { background: #eef2ff; }
+  .card-preview.paul    { background: #f0fdf4; }
+  .card-preview.assistiv{ background: #f0f9ff; }
+  .card-preview.fyrfly  { background: #fff7ed; }
+  .card-preview.tim     { background: #fdf4ff; }
+
+  .card-logo-area {
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .card-site-initial {
+    width: 56px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700;
+    border: 2px solid;
+  }
+
+  .vesta   .card-site-initial { color: #4f46e5; border-color: #4f46e5; background: rgba(79,70,229,0.06); }
+  .paul    .card-site-initial { color: #059669; border-color: #059669; background: rgba(5,150,105,0.06); }
+  .assistiv .card-site-initial { color: #0284c7; border-color: #0284c7; background: rgba(2,132,199,0.06); }
+  .fyrfly  .card-site-initial { color: #ea580c; border-color: #ea580c; background: rgba(234,88,12,0.06); }
+  .tim     .card-site-initial { color: #9333ea; border-color: #9333ea; background: rgba(147,51,234,0.06); }
+
+  .card-site-name {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);
+    letter-spacing: 0.08em; text-align: center;
+  }
+
+  .card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .card-tag {
+    font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border); color: var(--text-dim);
+    background: var(--bg3);
+  }
+
+  .card-title { font-size: 1.05rem; font-weight: 800; line-height: 1.25; color: var(--text); }
+  .card-desc { font-size: 0.855rem; color: var(--text-muted); line-height: 1.7; flex: 1; }
+
+  .card-metrics {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .card-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+  .card-metric-val { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--amber); }
+  .card-metric-lbl { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.08em; }
+
+  .card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-link {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber);
+    text-decoration: none; letter-spacing: 0.07em;
+    display: flex; align-items: center; gap: 0.35rem;
+    transition: gap 0.18s;
+  }
+  .card-link:hover { gap: 0.6rem; }
+  .card-sector {
+    font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* VENTURE BADGE: labels my own companies honestly */
+  .venture-badge {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--text); color: #ffffff;
+    padding: 0.3rem 0.65rem;
+  }
+
+  /* GRID DIVIDER: separates client work from own ventures */
+  .grid-divider {
+    grid-column: 1 / -1;
+    padding: 2rem 0 0.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .grid-divider h2 { margin-bottom: 0.4rem; }
+  .grid-divider p { font-size: 0.9rem; color: var(--text-muted); max-width: 680px; line-height: 1.75; }
+
+  /* FEATURED CARD: full width */
+  .project-card.featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    border-color: var(--border-amber);
+    background: linear-gradient(120deg, rgba(194,120,10,0.04) 0%, var(--bg2) 60%);
+  }
+  .project-card.featured .card-preview { width: 320px; flex-shrink: 0; height: auto; min-height: 240px; }
+  .project-card.featured .card-body { padding: 2rem 2.5rem; }
+  .project-card.featured .card-title { font-size: 1.3rem; }
+
+  /* TESTIMONIAL STRIP */
+  .testimonial-strip {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 0;
+  }
+  .testimonial-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    padding: 1.75rem;
+  }
+  .testimonial-quote {
+    font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
+    font-style: italic; margin-bottom: 1.25rem;
+  }
+  .testimonial-quote::before { content: '"'; color: var(--amber); font-size: 1.5rem; line-height: 0; vertical-align: -0.4rem; margin-right: 0.15rem; font-style: normal; }
+  .testimonial-attr { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.08em; }
+  .testimonial-attr strong { color: var(--text); display: block; margin-bottom: 0.1rem; }
+
+  /* CTA STRIP */
+  .cta-strip {
+    border-top: 1px solid var(--border);
+    padding: 5rem 0;
+  }
+  .cta-strip-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 4rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--amber); color: #ffffff;
+    padding: 0.9rem 2rem; font-family: var(--font-mono);
+    font-size: 0.8rem; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; display: inline-block;
+    border: 1px solid var(--amber); transition: all 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--text-muted); padding: 0.9rem 2rem;
+    font-family: var(--font-mono); font-size: 0.8rem;
+    text-decoration: none; letter-spacing: 0.06em;
+    border: 1px solid var(--border); display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--border-amber); color: var(--amber); }
+
+  footer {
+    padding: 2rem 4rem; display: flex;
+    justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
+  .footer-logo strong { color: var(--amber); }
+  .footer-right { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
+  .footer-right a { color: var(--text-muted); text-decoration: none; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.5s ease both; }
+
+  @media (max-width: 960px) {
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .project-card.featured { flex-direction: column; }
+    .project-card.featured .card-preview { width: 100%; min-height: 180px; }
+    .testimonial-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul, .nav-cta { display: none; }
+    .container, .testimonial-inner, .cta-strip-inner, footer { padding: 0 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-strip { padding: 3.5rem 0 3rem; }
+    .project-card.featured { grid-column: auto; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  /* ===================================================== */
+  /* /for/ LOCAL PAGE ADDITIONS (built on the shared base) */
+  /* ===================================================== */
+  .lead { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; max-width: 720px; }
+
+  .prose { max-width: 760px; margin-top: 0.5rem; }
+  .prose p { font-size: 1.02rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.15rem; }
+  .prose p strong { color: var(--text); font-weight: 700; }
+
+  /* OFFER BOX: the £250 offer, restated */
+  .offer-box {
+    max-width: 760px; margin-top: 2.75rem;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    padding: 2rem 2.25rem;
+  }
+  .offer-box h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .offer-box .offer-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; }
+  .offer-price { display: flex; align-items: baseline; gap: 1.25rem 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); margin: 1.25rem 0; }
+  .offer-price .p-setup { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .offer-price .p-main { font-size: 1.7rem; font-weight: 700; color: var(--amber); }
+  .offer-price .p-main small { font-size: 0.9rem; }
+  .offer-price .p-note { font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.14em; text-transform: uppercase; }
+  .offer-list { list-style: none; display: grid; gap: 0.5rem; margin: 0 0 1.5rem; }
+  .offer-list li { font-size: 0.9rem; color: var(--text-muted); padding-left: 1.4rem; position: relative; line-height: 1.6; }
+  .offer-list li::before { content: '→'; position: absolute; left: 0; color: var(--amber); font-family: var(--font-mono); }
+
+  /* SINGLE CASE STUDY */
+  .single-card { max-width: 640px; margin-top: 2.25rem; }
+
+  /* FAQ: native details/summary, fully crawlable, no JS needed */
+  .faq { max-width: 760px; margin-top: 1.75rem; }
+  .faq details { border: 1px solid var(--border); background: var(--bg2); margin-bottom: 0.6rem; }
+  .faq summary { cursor: pointer; list-style: none; padding: 1.1rem 1.25rem; font-weight: 700; font-size: 0.98rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-family: var(--font-mono); color: var(--amber); font-size: 1.25rem; flex-shrink: 0; line-height: 1; }
+  .faq details[open] summary::after { content: '\2212'; }
+  .faq details[open] summary { border-bottom: 1px solid var(--border); }
+  .faq .faq-a { padding: 1.1rem 1.25rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div class="hero-strip">
+  <div class="container">
+    <span class="section-tag">Local &middot; Kent</span>
+    <h1>Marketing for CCTV Installers <span class="accent">in Kent.</span></h1>
+    <p class="lead">I build the website, write the copy, and keep the site earning its place month after month. One person, one plan, no agency overhead. Built for CCTV installers who are busy on site, not sat behind a laptop.</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.75rem;">
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
+      <a href="../work.html" class="btn-ghost">See the Work</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <span class="section-tag">The Problem</span>
+    <h2>Why good CCTV installers in Kent lose work they should win</h2>
+    <div class="prose">
+      <p>Most CCTV installers in Kent win work through word of mouth and a listing or two. That holds up until the referrals slow down. The bigger jobs, the school contracts, the commercial fit-outs, the retail chains, almost always start with a search. A facilities manager types "CCTV installation Maidstone" or "access control near me" and picks from whoever shows up on the first screen. If that is not you, the job is gone before you ever knew it existed.</p>
+      <p>The firms ranking for those searches are rarely the best installers. They are the ones with a site built for how Google reads a local trade: a clear service list, a named area, sensible page structure, and content that answers what a buyer actually asks. Most installer sites in Kent were built once, years ago, and never touched since. They load slowly, say very little, and give Google no reason to put them ahead of anyone.</p>
+      <p>I fix that. I build the site, write the copy the way a procurement contact reads it, and publish one useful article a month so the site keeps gaining ground instead of going stale. Not a rebuild every two years. A presence that adds up over time. This is the exact system I run on my own CCTV and security company, Fyrfly Systems, before I would ever sell it to you.</p>
+    </div>
+
+    <div class="offer-box">
+      <h3>One plan. Everything included.</h3>
+      <p class="offer-sub">A custom website, B2B copy written for the people who actually sign off on CCTV and security work, premium hosting, one local SEO article a month, and four scheduled social posts. No tiers, no upsell ladder, no lock-in.</p>
+      <div class="offer-price">
+        <span class="p-setup">£500 setup</span>
+        <span class="p-main">+ £250<small>/month</small></span>
+        <span class="p-note">No contract &middot; Cancel any time</span>
+      </div>
+      <ul class="offer-list">
+        <li>Custom 3 to 5 page website built for your market</li>
+        <li>B2B copywriting that reads the way your buyers read</li>
+        <li>Premium hosting included, with no extras bolted on later</li>
+        <li>One local SEO article every month</li>
+        <li>Four scheduled B2B social posts every month</li>
+      </ul>
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div style="border-top:1px solid var(--border); background:var(--bg3);">
+  <div class="container">
+    <section>
+      <span class="section-tag">Proof</span>
+      <h2>The same system, running on my own security company</h2>
+      <p class="section-intro">I run a CCTV and physical security firm myself. Fyrfly Systems is where every part of this service goes live before it is sold to anyone. Judge it there first, then note that this is still how I work when the money on the line is my own.</p>
+      <div class="single-card">
+        <!-- Case study card: Fyrfly (own company, direct sector match for CCTV and security). -->
+        <div class="project-card fade-up" data-tags="b2b,tech">
+          <div class="card-preview fyrfly">
+            <span class="venture-badge">My Own Company</span>
+            <div class="card-logo-area">
+              <div class="card-site-initial">FF</div>
+              <div class="card-site-name">fyrflysystems.com</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Website</span>
+              <span class="card-tag">SEO</span>
+              <span class="card-tag">B2B Copy</span>
+              <span class="card-tag">Education</span>
+            </div>
+            <div class="card-title">Fyrfly Systems: Physical Security for Schools &amp; Public Sector</div>
+            <p class="card-desc">My physical security company. CCTV, access control, alarms and monitoring for schools and the public sector. This is the site I point people at when they ask what the monthly work actually looks like: 20 regional landing pages, structured data, sector copy written for procurement managers, and trade press articles linking back. The exact system I sell, running on my own business.</p>
+            <div class="card-metrics">
+              <div class="card-metric"><span class="card-metric-val">50+</span><span class="card-metric-lbl">Sites protected</span></div>
+              <div class="card-metric"><span class="card-metric-val">20</span><span class="card-metric-lbl">Regional SEO pages</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-link" href="https://www.fyrflysystems.com" target="_blank">Visit fyrflysystems.com &rarr;</a>
+            <span class="card-sector">Physical Security &middot; Faversham, Kent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <span class="section-tag">Questions</span>
+    <h2>Straight answers</h2>
+    <div class="faq">
+      <details>
+        <summary>How much does it cost?</summary>
+        <div class="faq-a">£500 once to get everything built, then £250 a month. No contract, cancel any time. That covers the website, the copywriting, premium hosting, one local SEO article a month, and four scheduled social posts. There is no separate agency fee and nothing gets bolted on later.</div>
+      </details>
+      <details>
+        <summary>Do I have to be based in Kent?</summary>
+        <div class="faq-a">No. I work with trades across Kent and the wider South East. This page is tuned for Kent because that is a search people make, but the service is identical wherever you are based.</div>
+      </details>
+      <details>
+        <summary>How is this different from a marketing agency?</summary>
+        <div class="faq-a">There is no account manager, no junior doing the actual work, and no retainer that quietly creeps upward. You deal with me directly. I built my own company's marketing on this exact system, so I am not testing anything on you that I have not already run on my own money.</div>
+      </details>
+      <details>
+        <summary>How long until it starts working?</summary>
+        <div class="faq-a">A new site can rank for your own name and clear local terms within a few weeks. The more competitive searches take a few months of consistent articles to climb. That is exactly why the monthly work matters more than a one-off build that sits still.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <div>
+      <span class="section-tag">Work With Me</span>
+      <h2>Want to be the firm they find first?</h2>
+      <p class="section-intro" style="margin-bottom:0;">Every project starts with a free 15-minute conversation. No pitch deck. Just an honest look at whether I'm the right fit.</p>
+    </div>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
+      <a href="../index.html#pricing" class="btn-ghost">See the Service</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../nav.js"></script>
+<script src="../footer.js"></script>
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.project-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.2s';
+  obs.observe(el);
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Marketing for my Mates",
+  "url": "https://www.marketingformymates.com/for/cctv-installers-kent.html",
+  "image": "https://www.marketingformymates.com/headshot.webp",
+  "description": "A website, B2B copywriting, hosting, monthly local SEO articles and social posts for CCTV installers in Kent.",
+  "priceRange": "££",
+  "founder": { "@type": "Person", "name": "Simon Legrand" },
+  "email": "simon@marketingformymates.com",
+  "areaServed": { "@type": "AdministrativeArea", "name": "Kent" },
+  "sameAs": [ "https://www.simonlegrand.co.uk" ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Digital marketing for CCTV installers",
+  "provider": { "@type": "ProfessionalService", "name": "Marketing for my Mates", "url": "https://www.marketingformymates.com" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "Kent" },
+  "description": "A website, B2B copywriting, hosting, monthly local SEO articles and social posts for CCTV installers in Kent.",
+  "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "250", "description": "£500 one-off setup, then £250 per month. No contract, cancel any time." }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How much does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "£500 once to get everything built, then £250 a month. No contract, cancel any time. That covers the website, the copywriting, premium hosting, one local SEO article a month, and four scheduled social posts." } },
+    { "@type": "Question", "name": "Do I have to be based in Kent?", "acceptedAnswer": { "@type": "Answer", "text": "No. I work with trades across Kent and the wider South East. This page is tuned for Kent because that is a search people make, but the service is identical wherever you are based." } },
+    { "@type": "Question", "name": "How is this different from a marketing agency?", "acceptedAnswer": { "@type": "Answer", "text": "There is no account manager, no junior doing the actual work, and no retainer that quietly creeps upward. You deal with me directly. I built my own company's marketing on this exact system." } },
+    { "@type": "Question", "name": "How long until it starts working?", "acceptedAnswer": { "@type": "Answer", "text": "A new site can rank for your own name and clear local terms within a few weeks. The more competitive searches take a few months of consistent articles to climb. That is why the monthly work matters more than a one-off build." } }
+  ]
+}
+</script>
+
+</body>
+</html>
