@@ -30,8 +30,12 @@
   if (!current) current = 'index.html';
 
   var items = links.map(function (l) {
+    var hasHash = l.href.indexOf('#') !== -1;
     var file = l.href.split('#')[0];
-    var active = (file === current) ? ' class="active"' : '';
+    // Only the current page's own link is active. Anchor links into a page
+    // (e.g. index.html#about) never count, so the homepage does not light up
+    // Home, About, The Service and Contact all at once.
+    var active = (!hasHash && file === current) ? ' class="active"' : '';
     return '<li><a href="' + p + l.href + '"' + active + '>' + l.label + '</a></li>';
   }).join('');
 
