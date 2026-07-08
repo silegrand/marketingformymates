@@ -1,5 +1,12 @@
-// footer.js: injects the shared footer: the "areas and trades" index plus
-// the branding row. One place to add a new local page, applied everywhere.
+// footer.js: injects the shared site footer on every page.
+//
+// A proper structured footer, modelled on the Fyrfly Systems layout:
+//   - a brand block (wordmark, one-line description, contact, location)
+//   - grouped link columns by category (Trades, Advice, Tools, Navigate)
+//   - a credentials row (the genuine trust signals used across the site)
+//   - a bottom bar (copyright and contact)
+//
+// Slate throughout, to match the site theme.
 //
 // How to use on a page:
 //   1. Put  <div id="site-footer"></div>  where the footer should sit.
@@ -7,70 +14,149 @@
 //        root pages:      <script src="footer.js"></script>
 //        pages in /for/:  <script src="../footer.js"></script>
 //
-// When you add a new local page, add one line to SITE_PAGES below. Paths are
-// written from the site root; the script adjusts them for the current folder.
-// Also add the new page to sitemap.xml, which is what actually guarantees
-// Google discovers it (see note in the reply).
+// To add a new local page, add one line to the relevant list below, then add
+// the same page to sitemap.xml (that is what actually gets it indexed).
+// Paths are written from the site root; the script adjusts them per folder.
 
 (function () {
   var mount = document.getElementById('site-footer');
   if (!mount) return;
 
+  // Work out how deep this page sits, so links resolve from any folder.
   var dir = location.pathname.substring(0, location.pathname.lastIndexOf('/') + 1);
-  var depth = (dir.match(/\//g) || []).length - 1;
+  var depth = (dir.match(/\//g) || []).length - 1;   //  "/" => 0 ,  "/for/" => 1
   var p = depth > 0 ? Array(depth + 1).join('../') : '';
 
-  // ---- SINGLE SOURCE OF TRUTH FOR LOCAL PAGES ---------------------------
-  var SITE_PAGES = [
+  // ---- SINGLE SOURCE OF TRUTH FOR SITE LINKS ---------------------------
+  var TRADES = [
     { href: 'for/builders-kent.html',        label: 'Builders in Kent' },
     { href: 'for/electricians-kent.html',    label: 'Electricians in Kent' },
     { href: 'for/plumbers-kent.html',        label: 'Plumbers &amp; heating in Kent' },
     { href: 'for/telecoms-kent.html',        label: 'Telecoms &amp; cabling in Kent' },
     { href: 'for/cctv-installers-kent.html', label: 'CCTV installers in Kent' }
   ];
-  // -----------------------------------------------------------------------
+  var ADVICE = [
+    { href: 'advice/why-installers-lose-contracts.html', label: 'Why installers lose contracts' },
+    { href: 'advice/what-a-trades-website-needs.html',   label: 'What a trades website needs' },
+    { href: 'advice/retainer-vs-agency-build.html',      label: 'Retainer vs agency build' },
+    { href: 'advice.html',                               label: 'All advice' }
+  ];
+  var TOOLS = [
+    { href: 'audit-tool.html',          label: 'Free digital audit' },
+    { href: 'roi-calculator.html',      label: 'ROI calculator' },
+    { href: 'qualifier-quiz.html',      label: 'Is this right for you?' },
+    { href: 'onboarding-timeline.html', label: 'What happens after you book' }
+  ];
+  var NAVIGATE = [
+    { href: 'index.html',         label: 'Home' },
+    { href: 'index.html#about',   label: 'About' },
+    { href: 'index.html#pricing', label: 'The Service' },
+    { href: 'work.html',          label: 'The Work' },
+    { href: 'index.html#contact', label: 'Contact' }
+  ];
+  var CREDENTIALS = [
+    'MCIM Chartered Marketer',
+    '3 Granted Patents',
+    'Technology Co-Founder',
+    'Faversham, Kent',
+    'Local B2B trades'
+  ];
+  // ----------------------------------------------------------------------
 
   var here = location.pathname.replace(/^\//, '');   // e.g. "for/builders-kent.html"
+  if (here === '' || here.charAt(here.length - 1) === '/') here += 'index.html';
 
-  var links = SITE_PAGES.map(function (pg) {
-    var current = (here === pg.href) ? ' class="current"' : '';
-    return '<a href="' + p + pg.href + '"' + current + '>' + pg.label + '</a>';
+  function col(title, items) {
+    var links = items.map(function (it) {
+      var file = it.href.split('#')[0];
+      var isHash = it.href.indexOf('#') !== -1;
+      var current = (!isHash && file === here) ? ' class="mfm-current"' : '';
+      return '<a href="' + p + it.href + '"' + current + '>' + it.label + '</a>';
+    }).join('');
+    return '<div class="mfm-col"><h3>' + title + '</h3><nav>' + links + '</nav></div>';
+  }
+
+  var pills = CREDENTIALS.map(function (c) {
+    return '<span class="mfm-pill">' + c + '</span>';
   }).join('');
 
-  // Styles for the index block, injected once so the footer renders correctly
-  // on any page, including the homepage, whatever that page's own CSS contains.
-  if (!document.getElementById('site-footer-css')) {
+  // Scoped styles, injected once. Everything is namespaced under .mfm-footer so
+  // it renders identically on any page, whatever that page's own CSS contains.
+  if (!document.getElementById('mfm-footer-css')) {
     var css = document.createElement('style');
-    css.id = 'site-footer-css';
-    css.textContent =
-      // Ink footer: one warm near-black anchor at the base of every page.
-      // Amber is lifted slightly (#94a3b8) so it stays legible on dark.
-      '.page-index{border-top:1px solid rgba(0,0,0,0.09);background:#1b1a16;padding:3.75rem 0;}' +
-      '.page-index h2{font-size:1.15rem;margin-bottom:0.4rem;color:#f6f4ef;}' +
-      '.page-index .idx-intro{font-size:0.85rem;color:#9c968c;max-width:640px;margin-bottom:1.75rem;line-height:1.7;}' +
-      '.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.35rem 1.75rem;}' +
-      '.index-grid a{font-family:var(--font-mono);font-size:0.73rem;color:#cbc6bd;text-decoration:none;padding:0.28rem 0;transition:color 0.18s;letter-spacing:0.02em;}' +
-      '.index-grid a:hover{color:#94a3b8;}' +
-      '.index-grid a.current{color:#94a3b8;font-weight:700;}' +
-      'footer{background:#1b1a16;border-top:1px solid rgba(255,255,255,0.07);}' +
-      '.footer-logo{color:#9c968c;}' +
-      '.footer-logo strong{color:#94a3b8;}' +
-      '.footer-right{color:#948f86;}' +
-      '.footer-right a{color:#cbc6bd;text-decoration:none;}' +
-      '.footer-right a:hover{color:#94a3b8;}';
+    css.id = 'mfm-footer-css';
+    css.textContent = [
+      '.mfm-footer{background:#0f172a;color:#94a3b8;',
+        'font-family:var(--font-head,"Cabinet Grotesk",system-ui,sans-serif);',
+        'border-top:1px solid rgba(148,163,184,0.14);}',
+      '.mfm-footer *{box-sizing:border-box;}',
+      '.mfm-footer .mfm-inner{max-width:1200px;margin:0 auto;padding:4rem 4rem 0;}',
+      '.mfm-footer .mfm-cols{display:grid;',
+        'grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:2.5rem 2rem;',
+        'padding-bottom:3rem;border-bottom:1px solid rgba(148,163,184,0.12);}',
+      '.mfm-footer .mfm-brand .mfm-word{font-size:1.15rem;font-weight:800;',
+        'color:#f8fafc;letter-spacing:-0.01em;margin:0 0 0.75rem;}',
+      '.mfm-footer .mfm-brand .mfm-word span{color:#94a3b8;font-weight:500;}',
+      '.mfm-footer .mfm-brand p{font-size:0.82rem;line-height:1.65;',
+        'color:#94a3b8;margin:0 0 1.1rem;max-width:30ch;}',
+      '.mfm-footer .mfm-brand a.mfm-email{font-family:var(--font-mono,"JetBrains Mono",monospace);',
+        'font-size:0.78rem;color:#cbd5e1;text-decoration:none;',
+        'border-bottom:1px solid rgba(203,213,225,0.3);padding-bottom:1px;transition:color 0.18s,border-color 0.18s;}',
+      '.mfm-footer .mfm-brand a.mfm-email:hover{color:#f8fafc;border-color:#f8fafc;}',
+      '.mfm-footer .mfm-brand .mfm-loc{display:block;margin-top:0.9rem;',
+        'font-family:var(--font-mono,"JetBrains Mono",monospace);font-size:0.7rem;',
+        'letter-spacing:0.04em;color:#64748b;}',
+      '.mfm-footer .mfm-col h3{font-family:var(--font-mono,"JetBrains Mono",monospace);',
+        'font-size:0.68rem;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;',
+        'color:#e2e8f0;margin:0 0 1.1rem;}',
+      '.mfm-footer .mfm-col nav{display:flex;flex-direction:column;gap:0.6rem;}',
+      '.mfm-footer .mfm-col nav a{font-size:0.82rem;line-height:1.35;color:#94a3b8;',
+        'text-decoration:none;transition:color 0.16s;}',
+      '.mfm-footer .mfm-col nav a:hover{color:#f1f5f9;}',
+      '.mfm-footer .mfm-col nav a.mfm-current{color:#f1f5f9;font-weight:700;}',
+      '.mfm-footer .mfm-creds{display:flex;flex-wrap:wrap;gap:0.5rem 0.6rem;',
+        'padding:1.75rem 0;border-bottom:1px solid rgba(148,163,184,0.12);}',
+      '.mfm-footer .mfm-pill{font-family:var(--font-mono,"JetBrains Mono",monospace);',
+        'font-size:0.68rem;letter-spacing:0.03em;color:#cbd5e1;',
+        'border:1px solid rgba(148,163,184,0.28);border-radius:2px;padding:0.32rem 0.7rem;}',
+      '.mfm-footer .mfm-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;',
+        'align-items:center;gap:0.75rem 1.5rem;padding:1.5rem 0 2.25rem;',
+        'font-family:var(--font-mono,"JetBrains Mono",monospace);font-size:0.7rem;color:#64748b;}',
+      '.mfm-footer .mfm-bottom a{color:#94a3b8;text-decoration:none;transition:color 0.16s;}',
+      '.mfm-footer .mfm-bottom a:hover{color:#f1f5f9;}',
+      '@media(max-width:900px){',
+        '.mfm-footer .mfm-inner{padding:3rem 1.5rem 0;}',
+        '.mfm-footer .mfm-cols{grid-template-columns:1fr 1fr;gap:2rem 1.5rem;}',
+        '.mfm-footer .mfm-brand{grid-column:1/-1;}}',
+      '@media(max-width:520px){',
+        '.mfm-footer .mfm-cols{grid-template-columns:1fr;}',
+        '.mfm-footer .mfm-bottom{flex-direction:column;align-items:flex-start;}}'
+    ].join('');
     document.head.appendChild(css);
   }
 
+  var year = new Date().getFullYear();
+
   mount.outerHTML =
-    '<div class="page-index">' +
-      '<div class="container">' +
-        '<h2>Areas and trades I cover</h2>' +
-        '<p class="idx-intro">Each page below is a real local service page. Same plan, same honesty, tuned to the trade and the town.</p>' +
-        '<div class="index-grid">' + links + '</div>' +
+    '<footer class="mfm-footer"><div class="mfm-inner">' +
+      '<div class="mfm-cols">' +
+        '<div class="mfm-brand">' +
+          '<p class="mfm-word">Marketing for my Mates<span>.com</span></p>' +
+          '<p>Honest, month-to-month marketing for local B2B trades. ' +
+             'No contracts, no jargon, no lock-in. Just the work that wins contracts.</p>' +
+          '<a class="mfm-email" href="mailto:simon@marketingformymates.com">simon@marketingformymates.com</a>' +
+          '<span class="mfm-loc">Faversham, Kent &middot; Serving trades across Kent</span>' +
+        '</div>' +
+        col('Trades I cover', TRADES) +
+        col('Free advice', ADVICE) +
+        col('Free tools', TOOLS) +
+        col('Navigate', NAVIGATE) +
       '</div>' +
-    '</div>' +
-    '<footer>' +
-      '<div class="footer-logo"><strong>Marketing for my Mates</strong> &middot; marketingformymates.com</div>' +
-      '<div class="footer-right"><a href="mailto:simon@marketingformymates.com">simon@marketingformymates.com</a> &nbsp;&middot;&nbsp; Built for local B2B trades</div>' +
-    '</footer>';
+      '<div class="mfm-creds">' + pills + '</div>' +
+      '<div class="mfm-bottom">' +
+        '<span>&copy; ' + year + ' Marketing for my Mates &middot; marketingformymates.com</span>' +
+        '<span>Built for local B2B trades &middot; ' +
+          '<a href="mailto:simon@marketingformymates.com">Get in touch</a></span>' +
+      '</div>' +
+    '</div></footer>';
 })();
