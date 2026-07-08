@@ -172,6 +172,10 @@
     border-top: 1px solid var(--border);
   }
   .card-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+
+  .card-sites { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
+  .card-sites a { font-family: var(--font-mono); font-size: 0.66rem; color: var(--amber); text-decoration: none; letter-spacing: 0.04em; transition: opacity 0.18s; }
+  .card-sites a:hover { opacity: 0.6; }
   .card-metric-val { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--amber); }
   .card-metric-lbl { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.08em; }
 
@@ -460,21 +464,28 @@
           <span class="venture-badge">My Own Company</span>
           <div class="card-logo-area">
             <div class="card-site-initial">AS</div>
-            <div class="card-site-name">assistiv.co</div>
+            <div class="card-site-name">4-site ecosystem</div>
           </div>
         </div>
         <div class="card-body">
           <div class="card-tags">
             <span class="card-tag">Health Tech</span>
-            <span class="card-tag">Website</span>
+            <span class="card-tag">4-Site Ecosystem</span>
+            <span class="card-tag">Platform</span>
             <span class="card-tag">Investor Copy</span>
             <span class="card-tag">NHS</span>
           </div>
           <div class="card-title">Assistiv: Infrastructure for Independent Living</div>
-          <p class="card-desc">My health technology venture. Passive home monitoring for the UK's 3.5 million older adults in the "Missing Middle." The marketing job here was hard: translating a complex clinical proposition into language that ICBs, local authorities and academic advisors act on, including a 14:1 ROI case for commissioners. If the system can sell this, it can sell your services.</p>
+          <p class="card-desc">My health technology venture, and not a single website but four connected ones. I designed, built and market the whole Assistiv ecosystem: assistiv.co and assistiv.services as the public face, assistiv.cloud as the data platform, and assistiv.tools for the screening tools. The hard part was the marketing, turning a complex clinical proposition into language that ICBs, local authorities and commissioners act on, including a 14:1 ROI case. If the system can sell this across four connected sites, it can sell your services.</p>
+          <div class="card-sites">
+            <a href="https://www.assistiv.co" target="_blank">assistiv.co</a>
+            <a href="https://www.assistiv.services" target="_blank">assistiv.services</a>
+            <a href="https://www.assistiv.cloud" target="_blank">assistiv.cloud</a>
+            <a href="https://www.assistiv.tools" target="_blank">assistiv.tools</a>
+          </div>
           <div class="card-metrics">
-            <div class="card-metric"><span class="card-metric-val">3.5m</span><span class="card-metric-lbl">Target population</span></div>
-            <div class="card-metric"><span class="card-metric-val">14:1</span><span class="card-metric-lbl">Projected ROI</span></div>
+            <div class="card-metric"><span class="card-metric-val">4</span><span class="card-metric-lbl">Connected sites</span></div>
+            <div class="card-metric"><span class="card-metric-val">14:1</span><span class="card-metric-lbl">Commissioner ROI</span></div>
           </div>
         </div>
         <div class="card-footer">
