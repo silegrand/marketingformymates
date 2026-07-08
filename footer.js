@@ -73,7 +73,7 @@
       var current = (!isHash && file === here) ? ' class="mfm-current"' : '';
       return '<a href="' + p + it.href + '"' + current + '>' + it.label + '</a>';
     }).join('');
-    return '<div class="mfm-col"><h3>' + title + '</h3><nav>' + links + '</nav></div>';
+    return '<div class="mfm-col"><h3>' + title + '</h3><div class="mfm-links">' + links + '</div></div>';
   }
 
   var pills = CREDENTIALS.map(function (c) {
@@ -86,10 +86,16 @@
     var css = document.createElement('style');
     css.id = 'mfm-footer-css';
     css.textContent = [
-      '.mfm-footer{background:#0f172a;color:#94a3b8;',
+      // Hard reset: stop any bare element rule on the host page (its sticky
+      // nav{}, footer{}, a{}, p{}, span{} etc.) leaking box, background or
+      // positioning into the footer. This is what caused the white boxes.
+      '.mfm-footer,.mfm-footer *{box-sizing:border-box;}',
+      '.mfm-footer *{margin:0;padding:0;border:0;background:transparent;',
+        'position:static;box-shadow:none;backdrop-filter:none;float:none;}',
+      '.mfm-footer{display:block;margin:0;padding:0;position:static;',
+        'background:#0f172a;color:#94a3b8;',
         'font-family:var(--font-head,"Cabinet Grotesk",system-ui,sans-serif);',
         'border-top:1px solid rgba(148,163,184,0.14);}',
-      '.mfm-footer *{box-sizing:border-box;}',
       '.mfm-footer .mfm-inner{max-width:1200px;margin:0 auto;padding:4rem 4rem 0;}',
       '.mfm-footer .mfm-cols{display:grid;',
         'grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:2.5rem 2rem;',
@@ -109,11 +115,11 @@
       '.mfm-footer .mfm-col h3{font-family:var(--font-mono,"JetBrains Mono",monospace);',
         'font-size:0.68rem;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;',
         'color:#e2e8f0;margin:0 0 1.1rem;}',
-      '.mfm-footer .mfm-col nav{display:flex;flex-direction:column;gap:0.6rem;}',
-      '.mfm-footer .mfm-col nav a{font-size:0.82rem;line-height:1.35;color:#94a3b8;',
+      '.mfm-footer .mfm-col .mfm-links{display:flex;flex-direction:column;gap:0.6rem;}',
+      '.mfm-footer .mfm-col .mfm-links a{font-size:0.82rem;line-height:1.35;color:#94a3b8;',
         'text-decoration:none;transition:color 0.16s;}',
-      '.mfm-footer .mfm-col nav a:hover{color:#f1f5f9;}',
-      '.mfm-footer .mfm-col nav a.mfm-current{color:#f1f5f9;font-weight:700;}',
+      '.mfm-footer .mfm-col .mfm-links a:hover{color:#f1f5f9;}',
+      '.mfm-footer .mfm-col .mfm-links a.mfm-current{color:#f1f5f9;font-weight:700;}',
       '.mfm-footer .mfm-creds{display:flex;flex-wrap:wrap;gap:0.5rem 0.6rem;',
         'padding:1.75rem 0;border-bottom:1px solid rgba(148,163,184,0.12);}',
       '.mfm-footer .mfm-pill{font-family:var(--font-mono,"JetBrains Mono",monospace);',
