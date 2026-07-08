@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How a £250 a month retainer compares to a one-off agency build | Marketing for my Mates</title>
-<meta name="description" content="An honest comparison of the two ways to get a trades website: a one-off agency lump sum, or a monthly retainer. Including where each one wins.">
-<link rel="canonical" href="https://www.marketingformymates.com/advice/retainer-vs-agency-build.html">
+
+<!-- Local service page, generated from the shared /for/ pattern.
+     Trade-specific parts: title, meta, canonical, headline, lead,
+     the problem section, the proof section and card, and the three
+     JSON-LD blocks at the foot of the page. Everything else is shared. -->
+
+<title>Marketing for Telecoms &amp; Cabling Firms in Kent | Marketing for my Mates</title>
+<meta name="description" content="I build the website, write the copy, and run the local SEO for telecoms and cabling firms in Kent. £500 setup then £250 a month, no contract.">
+<link rel="canonical" href="https://www.marketingformymates.com/for/telecoms-kent.html">
+
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -292,7 +299,8 @@
   }
   @media (max-width: 640px) {
     nav { padding: 1rem 1.5rem; }
-    nav ul, .nav-cta { display: none; }
+    nav ul { display: none; }
+    .nav-cta { padding: 0.5rem 1rem; font-size: 0.72rem; }
     .container, .testimonial-inner, .cta-strip-inner, footer { padding: 0 1.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .hero-strip { padding: 3.5rem 0 3rem; }
@@ -300,106 +308,229 @@
     footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 
-  /* ===== ARTICLE PAGES ===== */
-  .article-hero { padding-top: 1rem; }
-  .article-hero h1 { font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin: 0.75rem 0 1.1rem; max-width: 820px; }
-  .article-standfirst { font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; max-width: 720px; margin-bottom: 1.75rem; }
-  .article-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: flex; gap: 0.75rem 1.25rem; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 1.25rem; }
-  .article-body { max-width: 700px; margin-top: 2.5rem; }
-  .article-body h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; margin: 2.75rem 0 1rem; line-height: 1.2; }
-  .article-body p { font-size: 1.06rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.15rem; }
-  .article-body strong { color: var(--text); font-weight: 700; }
-  .article-body ul { margin: 0 0 1.15rem; padding: 0; list-style: none; }
-  .article-body li { font-size: 1.06rem; color: var(--text-muted); line-height: 1.75; padding-left: 1.6rem; position: relative; margin-bottom: 0.6rem; }
-  .article-body li::before { content: '\2192'; position: absolute; left: 0; color: var(--amber); font-family: var(--font-mono); }
-  .article-cta { max-width: 700px; margin-top: 3rem; background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--amber); padding: 2rem 2.25rem; }
-  .article-cta h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.6rem; }
-  .article-cta p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
-  .article-back { display: inline-block; margin-top: 2.75rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.03em; }
-  .article-back:hover { color: var(--amber); }
+  /* ===================================================== */
+  /* /for/ LOCAL PAGE ADDITIONS (built on the shared base) */
+  /* ===================================================== */
+  .lead { font-size: 1.15rem; color: var(--text-muted); line-height: 1.7; max-width: 720px; }
 
-  /* ===== ADVICE LISTING ===== */
-  .advice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
-  .advice-card { background: var(--bg2); border: 1px solid var(--border); padding: 1.75rem; text-decoration: none; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
-  .advice-card:hover { border-color: var(--amber); transform: translateY(-3px); }
-  .advice-card .ac-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.85rem; }
-  .advice-card h2 { font-size: 1.3rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 0.65rem; color: var(--text); }
-  .advice-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem; }
-  .advice-card .ac-more { margin-top: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text); font-weight: 700; }
-  @media (max-width: 640px) { .advice-grid { grid-template-columns: 1fr; } }
+  .prose { max-width: 760px; margin-top: 0.5rem; }
+  .prose p { font-size: 1.02rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.15rem; }
+  .prose p strong { color: var(--text); font-weight: 700; }
+
+  /* OFFER BOX: the £250 offer, restated */
+  .offer-box {
+    max-width: 760px; margin-top: 2.75rem;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    padding: 2rem 2.25rem;
+  }
+  .offer-box h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .offer-box .offer-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; }
+  .offer-price { display: flex; align-items: baseline; gap: 1.25rem 1.5rem; flex-wrap: wrap; font-family: var(--font-mono); margin: 1.25rem 0; }
+  .offer-price .p-setup { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .offer-price .p-main { font-size: 1.7rem; font-weight: 700; color: var(--amber); }
+  .offer-price .p-main small { font-size: 0.9rem; }
+  .offer-price .p-note { font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.14em; text-transform: uppercase; }
+  .offer-list { list-style: none; display: grid; gap: 0.5rem; margin: 0 0 1.5rem; }
+  .offer-list li { font-size: 0.9rem; color: var(--text-muted); padding-left: 1.4rem; position: relative; line-height: 1.6; }
+  .offer-list li::before { content: '→'; position: absolute; left: 0; color: var(--amber); font-family: var(--font-mono); }
+
+  /* SINGLE CASE STUDY */
+  .single-card { max-width: 640px; margin-top: 2.25rem; }
+
+  /* FAQ: native details/summary, fully crawlable, no JS needed */
+  .faq { max-width: 760px; margin-top: 1.75rem; }
+  .faq details { border: 1px solid var(--border); background: var(--bg2); margin-bottom: 0.6rem; }
+  .faq summary { cursor: pointer; list-style: none; padding: 1.1rem 1.25rem; font-weight: 700; font-size: 0.98rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-family: var(--font-mono); color: var(--amber); font-size: 1.25rem; flex-shrink: 0; line-height: 1; }
+  .faq details[open] summary::after { content: '\2212'; }
+  .faq details[open] summary { border-bottom: 1px solid var(--border); }
+  .faq .faq-a { padding: 1.1rem 1.25rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
 </style>
 </head>
 <body>
 
 <div id="site-nav"></div>
+<main>
+
+<div class="hero-strip">
+  <div class="container">
+    <span class="section-tag">Local &middot; Kent</span>
+    <h1>Marketing for Telecoms &amp; Cabling Firms <span class="accent">in Kent.</span></h1>
+    <p class="lead">I build the website, write the copy, and keep it working month after month. One person, one plan, no agency overhead. Built for telecoms and network cabling firms selling to businesses, not chasing consumer call-outs.</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.75rem;">
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
+      <a href="../work.html" class="btn-ghost">See the Work</a>
+    </div>
+  </div>
+</div>
 
 <section>
-  <div class="container article-hero">
-    <span class="section-tag">Advice</span>
-    <h1>How a £250 a month retainer compares to a one-off agency build</h1>
-    <p class="article-standfirst">There are two common ways to get a website for your trade business. Pay an agency a lump sum once, or pay a smaller amount every month. Here is an honest look at both, including where each one wins.</p>
-    <div class="article-meta">
-      <span>By Simon Legrand</span>
-      <span>8 July 2026</span>
-      <span>5 min read</span>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0;">
   <div class="container">
-    <div class="article-body">
-<h2>The one-off agency build</h2>
-<p>You pay a single lump sum, often somewhere between two and eight thousand pounds. An agency builds you a website, hands it over, and that is that. You own it.</p>
-<p>This can be the right choice. If you just want a tidy online business card, you are not chasing new work online, and you are happy to leave the site alone for years, a one-off build does the job.</p>
-<p>The catch is what happens after the invoice is paid. The site sits still. Nobody updates it. Google prefers sites that stay active, so a page that never changes slowly slips down the results. When you do need a change, a new service, a new number, a fresh photo, it usually means going back to the agency and paying again. Two years on, a lot of these sites look dated and bring in very little.</p>
-
-<h2>The monthly retainer</h2>
-<p>You pay a smaller setup fee, then a set amount each month. In return, the site keeps getting worked on. New content, ongoing local SEO, fixes, updates. The website is treated as something that keeps earning, rather than a job that is finished and forgotten.</p>
-<p>This suits you if you actually want the site to bring in enquiries over time, not just exist. The trade-off is honest. You are paying every month, and if you stop, the ongoing work stops too. You are paying for a service, not just a product.</p>
-
-<h2>The maths, plainly</h2>
-<p>Say an agency build costs you £5,000 up front. My plan is £500 to set up, then £250 a month. That works out at £3,500 in the first year, then £3,000 a year after that.</p>
-<p>Over a couple of years the total spend lands in a similar place. The difference is what you get for it. With the one-off, you pay once and the site then stands still. With the retainer, you keep getting work done every month, so the site keeps improving and keeps showing up. One is a purchase. The other is an ongoing hand on the tiller.</p>
-
-<h2>Which one suits you</h2>
-<ul>
-<li>Go with a <strong>one-off build</strong> if you want a simple site, you will never really touch it, and being found online is not a priority.</li>
-<li>Go with a <strong>monthly retainer</strong> if you want the website to actually win you work, and you would rather it kept moving than went stale.</li>
-</ul>
-
-<h2>A quick word on my own plan</h2>
-<p>I run the retainer model. £500 to set up, then £250 a month, no contract, cancel whenever you like. I am not going to pretend it is right for everyone, because it is not. If you genuinely just need a one-page card and nothing more, an agency one-off might suit you better.</p>
-<p>For most trades who want to win work online though, a site that keeps moving beats one that stands still. That is the whole reason I built my service the way I did, and it is the same system I run on my own company before I sell it to anyone.</p>
+    <span class="section-tag">The Problem</span>
+    <h2>Why good telecoms firms in Kent get overlooked by the businesses that need them</h2>
+    <div class="prose">
+      <p>Telecoms and cabling is a B2B sale, and business buyers research online long before they pick up the phone. An office manager fitting out a new unit searches "structured cabling Kent" or "business phone systems Medway" and builds a shortlist from what they find. An IT manager scoping a network refresh does the same. If your firm is not on that shortlist, you are not in the running, and you will never know the tender existed.</p>
+      <p>The firms who make those shortlists are not always the most capable. They are the ones with a site built for how a business buyer reads it: clear service lines, sector credibility, accreditations named, and content aimed at procurement and IT rather than consumers. A lot of telecoms sites in Kent still read like a 2015 brochure. They undersell real capability and give Google little to rank.</p>
+      <p>I build the site, write the copy the way an IT manager or facilities lead reads it, and publish one useful article a month so the site keeps gaining ground. Not a static brochure. A presence that compounds. I run this same system on my own ventures first, so you are never the test case.</p>
     </div>
 
-    <div class="article-cta">
-      <h3>Prefer a site that keeps earning?</h3>
-      <p>My plan is £500 to set up, then £250 a month, no contract. The site keeps getting worked on for as long as you want it to.</p>
-      <a href="../index.html#pricing" class="btn-primary">See how it works &rarr;</a>
+    <div class="offer-box">
+      <h3>One plan. Everything included.</h3>
+      <p class="offer-sub">A custom website, B2B copy written for the people who actually sign off on cabling and network contracts, premium hosting, one local SEO article a month, and four scheduled social posts. No tiers, no upsell ladder, no lock-in.</p>
+      <div class="offer-price">
+        <span class="p-setup">£500 setup</span>
+        <span class="p-main">+ £250<small>/month</small></span>
+        <span class="p-note">No contract &middot; Cancel any time</span>
+      </div>
+      <ul class="offer-list">
+        <li>Custom 3 to 5 page website built for your market</li>
+        <li>B2B copywriting that reads the way your buyers read</li>
+        <li>Premium hosting included, with no extras bolted on later</li>
+        <li>One local SEO article every month</li>
+        <li>Four scheduled B2B social posts every month</li>
+      </ul>
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
     </div>
-
-    <a href="../advice.html" class="article-back">&larr; Back to all advice</a>
   </div>
 </section>
 
+<div style="border-top:1px solid var(--border); background:var(--bg3);">
+  <div class="container">
+    <section>
+      <span class="section-tag">Proof</span>
+      <h2>A client in exactly your world</h2>
+      <p class="section-intro">Vesta IT Services runs enterprise networks and IT infrastructure across Kent. I built their entire online presence on this system: the site, the B2B copy, the service architecture. It is the closest match to the buyers you are chasing.</p>
+      <div class="single-card">
+        <!-- Case study card: Vesta IT (real client, sector match for telecoms and cabling). -->
+        <div class="project-card fade-up" data-tags="b2b,tech">
+          <div class="card-preview vesta">
+            <div class="card-logo-area">
+              <div class="card-site-initial">VI</div>
+              <div class="card-site-name">vestait.co.uk</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">Website</span>
+              <span class="card-tag">B2B Copy</span>
+              <span class="card-tag">SEO</span>
+              <span class="card-tag">Brand</span>
+            </div>
+            <div class="card-title">Vesta IT Services: Enterprise Network &amp; IT Infrastructure</div>
+            <p class="card-desc">John Bushnell spent 27 years building one of the UK's most complex enterprise networks at Peel Ports Medway. When he founded Vesta IT, he had the expertise. I built the presence: a full multi-page website with sector-specific B2B copywriting, service architecture across six disciplines, a named leadership profile, and a contact system built for commercial enquiries.</p>
+            <div class="card-metrics">
+              <div class="card-metric"><span class="card-metric-val">6</span><span class="card-metric-lbl">Service pages</span></div>
+              <div class="card-metric"><span class="card-metric-val">250+</span><span class="card-metric-lbl">Clients in track record</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="card-link" href="https://www.vestait.co.uk" target="_blank">Visit vestait.co.uk &rarr;</a>
+            <span class="card-sector">Network &amp; IT Infrastructure &middot; Kent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <span class="section-tag">Questions</span>
+    <h2>Straight answers</h2>
+    <div class="faq">
+      <details>
+        <summary>How much does it cost?</summary>
+        <div class="faq-a">£500 once to get everything built, then £250 a month. No contract, cancel any time. That covers the website, the copywriting, premium hosting, one local SEO article a month, and four scheduled social posts. There is no separate agency fee and nothing gets bolted on later.</div>
+      </details>
+      <details>
+        <summary>Do I have to be based in Kent?</summary>
+        <div class="faq-a">No. I work with trades across Kent and the wider South East. This page is tuned for Kent because that is a search people make, but the service is identical wherever you are based.</div>
+      </details>
+      <details>
+        <summary>How is this different from a marketing agency?</summary>
+        <div class="faq-a">There is no account manager, no junior doing the actual work, and no retainer that quietly creeps upward. You deal with me directly. I built my own company's marketing on this exact system, so I am not testing anything on you that I have not already run on my own money.</div>
+      </details>
+      <details>
+        <summary>How long until it starts working?</summary>
+        <div class="faq-a">A new site can rank for your own name and clear local terms within a few weeks. The more competitive searches take a few months of consistent articles to climb. That is exactly why the monthly work matters more than a one-off build that sits still.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <div>
+      <span class="section-tag">Work With Me</span>
+      <h2>Want to be the firm they find first?</h2>
+      <p class="section-intro" style="margin-bottom:0;">Every project starts with a free 15-minute conversation. No pitch deck. Just an honest look at whether I'm the right fit.</p>
+    </div>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+      <a href="../index.html#contact" class="btn-primary">Book a Free Chat &rarr;</a>
+      <a href="../index.html#pricing" class="btn-ghost">See the Service</a>
+    </div>
+  </div>
+</div>
+
+</main>
 <div id="site-footer"></div>
 
 <script src="../nav.js"></script>
 <script src="../footer.js"></script>
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.project-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.2s';
+  obs.observe(el);
+});
+</script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "How a £250 a month retainer compares to a one-off agency build",
-  "description": "An honest comparison of the two ways to get a trades website: a one-off agency lump sum, or a monthly retainer. Including where each one wins.",
-  "datePublished": "2026-07-08",
-  "dateModified": "2026-07-08",
-  "author": { "@type": "Person", "name": "Simon Legrand" },
-  "publisher": { "@type": "Organization", "name": "Marketing for my Mates" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.marketingformymates.com/advice/retainer-vs-agency-build.html" },
-  "url": "https://www.marketingformymates.com/advice/retainer-vs-agency-build.html"
+  "@type": "ProfessionalService",
+  "name": "Marketing for my Mates",
+  "url": "https://www.marketingformymates.com/for/telecoms-kent.html",
+  "image": "https://www.marketingformymates.com/headshot.webp",
+  "description": "A website, B2B copywriting, hosting, monthly local SEO articles and social posts for telecoms and cabling firms in Kent.",
+  "priceRange": "££",
+  "founder": { "@type": "Person", "name": "Simon Legrand" },
+  "email": "simon@marketingformymates.com",
+  "areaServed": { "@type": "AdministrativeArea", "name": "Kent" },
+  "sameAs": [ "https://www.simonlegrand.co.uk" ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Digital marketing for telecoms and cabling firms",
+  "provider": { "@type": "ProfessionalService", "name": "Marketing for my Mates", "url": "https://www.marketingformymates.com" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "Kent" },
+  "description": "A website, B2B copywriting, hosting, monthly local SEO articles and social posts for telecoms and cabling firms in Kent.",
+  "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "250", "description": "£500 one-off setup, then £250 per month. No contract, cancel any time." }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How much does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "£500 once to get everything built, then £250 a month. No contract, cancel any time. That covers the website, the copywriting, premium hosting, one local SEO article a month, and four scheduled social posts." } },
+    { "@type": "Question", "name": "Do I have to be based in Kent?", "acceptedAnswer": { "@type": "Answer", "text": "No. I work with trades across Kent and the wider South East. This page is tuned for Kent because that is a search people make, but the service is identical wherever you are based." } },
+    { "@type": "Question", "name": "How is this different from a marketing agency?", "acceptedAnswer": { "@type": "Answer", "text": "There is no account manager, no junior doing the actual work, and no retainer that quietly creeps upward. You deal with me directly. I built my own company's marketing on this exact system." } },
+    { "@type": "Question", "name": "How long until it starts working?", "acceptedAnswer": { "@type": "Answer", "text": "A new site can rank for your own name and clear local terms within a few weeks. The more competitive searches take a few months of consistent articles to climb. That is why the monthly work matters more than a one-off build." } }
+  ]
 }
 </script>
 
