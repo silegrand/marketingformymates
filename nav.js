@@ -22,6 +22,7 @@
     { href: 'index.html#about',   label: 'About' },
     { href: 'index.html#pricing', label: 'The Service' },
     { href: 'work.html',          label: 'The Work' },
+    { href: 'advice.html',        label: 'Advice' },
     { href: 'index.html#contact', label: 'Contact' }
   ];
 
