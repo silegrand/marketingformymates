@@ -25,14 +25,14 @@
     --bg: #f8f7f4;
     --bg2: #ffffff;
     --bg3: #f0ede8;
-    --amber: #c2780a;
-    --amber-glow: rgba(194,120,10,0.08);
-    --green: #059669;
+    --amber: #334155;
+    --amber-glow: rgba(51,65,85,0.08);
+    --green: #037048;
     --text: #111827;
     --text-muted: #4b5563;
-    --text-dim: #9ca3af;
+    --text-dim: #616a78;
     --border: rgba(0,0,0,0.09);
-    --border-amber: rgba(194,120,10,0.35);
+    --border-amber: rgba(51,65,85,0.35);
     --font-head: 'Cabinet Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
@@ -43,7 +43,7 @@
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background-image: linear-gradient(rgba(194,120,10,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(194,120,10,0.05) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(51,65,85,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(51,65,85,0.05) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none; z-index: 0;
   }
@@ -226,7 +226,7 @@
     grid-column: 1 / -1;
     flex-direction: row;
     border-color: var(--border-amber);
-    background: linear-gradient(120deg, rgba(194,120,10,0.04) 0%, var(--bg2) 60%);
+    background: linear-gradient(120deg, rgba(51,65,85,0.04) 0%, var(--bg2) 60%);
   }
   .project-card.featured .card-preview { width: 320px; flex-shrink: 0; height: auto; min-height: 240px; }
   .project-card.featured .card-body { padding: 2rem 2.5rem; }
@@ -287,10 +287,6 @@
     justify-content: space-between; align-items: center;
     border-top: 1px solid var(--border);
   }
-  .footer-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
-  .footer-logo strong { color: var(--amber); }
-  .footer-right { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-dim); }
-  .footer-right a { color: var(--text-muted); text-decoration: none; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { animation: fadeUp 0.5s ease both; }
