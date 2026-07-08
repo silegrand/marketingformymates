@@ -1,42 +1,62 @@
 # Marketing for my Mates
 
-> Full-service B2B digital marketing for UK trades and small businesses. Expert SEO, website management, and social media from £250/month with a one-off £500 setup fee. No contracts, no jargon, zero hours required from the client.
+> Full-service B2B digital marketing for UK trades and small businesses. Website, SEO, and social media from £250/month with a one-off £500 setup fee. No contracts, no jargon, zero hours required from the client.
 
-Marketing for my Mates is a one-person marketing service run by Simon Legrand, an MCIM Chartered Marketer with 20+ years of B2B experience across technology, public sector, and industrial sectors. The service was built specifically for UK technical trades — CCTV installers, network contractors, security integrators, electrical firms — who are skilled at their work but lack the time, budget, or inclination to manage their own marketing.
+Marketing for my Mates is a one-person marketing service run by Simon Legrand, an MCIM Chartered Marketer with 20+ years of B2B experience across technology, public sector, and industrial sectors. The service is built for UK trades: builders, electricians, plumbers and heating engineers, CCTV and security installers, telecoms and network firms, and other small trade businesses who are skilled at their work but lack the time, budget, or inclination to manage their own marketing.
 
-The business offers a single, all-inclusive "Growth Engine" plan: a custom 3–5 page website, B2B copywriting, brand fundamentals, premium hosting, one local SEO article per month, and four scheduled social media posts per month — all for a £500 one-off setup fee and £250/month ongoing. No tiered plans, no upsell ladders.
+The business offers a single, all-inclusive "Growth Engine" plan: a custom 3 to 5 page website, B2B copywriting, brand fundamentals, premium hosting, one local SEO article per month, and four scheduled social media posts per month, all for a £500 one-off setup fee and £250/month ongoing. No tiered plans, no upsell ladders, no lock-in.
 
 Simon's background includes co-founding Sunstone Systems (a globally recognised surveillance and IoT platform acquired by WJ Group), winning contracts with Chevron Technology Ventures, Rivian Automotive, and Network Rail, and being named in the IFSEC Global Top 50 Most Influential. He holds 3 granted patents and has published 15+ articles in PSI Magazine, IFSEC, and Security Buyer.
 
 ## Pages
 
 - [Homepage](https://www.marketingformymates.com/): Main landing page. Covers the problem (local trades being outspent and outranked by larger competitors), the solution (the Growth Engine plan), Simon's credentials, pricing, an FAQ, and a contact CTA.
-- [Free Digital Audit Tool](https://www.marketingformymates.com/audit-tool.html): Interactive tool where visitors select their business type, location, website status, and average contract value. Returns estimated Google ranking, organic visitor count, contracts lost per year, and missed annual pipeline — all benchmarked against UK technical trades data. Includes a breakeven calculation showing how many extra jobs the service needs to win to pay for itself.
+- [The Work](https://www.marketingformymates.com/work.html): Portfolio of real projects, split honestly between client work and Simon's own ventures. Shows the websites, copywriting, and SEO delivered, including for Vesta IT Services and the Fyrfly Systems security company Simon runs on the same system he sells.
+- [Advice](https://www.marketingformymates.com/advice.html): Plain-English articles for trades on getting found online and winning more work. This is also the monthly content the service produces for clients, published on the site as a live demonstration.
+- [Local service pages](https://www.marketingformymates.com/for/): Trade-and-location landing pages, one per trade, covering the specific visibility problem each trade faces locally and the offer that fixes it.
+
+### Advice articles
+
+- [Why installers lose contracts they should win](https://www.marketingformymates.com/advice/why-installers-lose-contracts.html): Why good tradespeople miss work before they ever quote, and the three fixable reasons behind it.
+- [What a trades website actually needs in 2026](https://www.marketingformymates.com/advice/what-a-trades-website-needs.html): The short, plain list of what a trades site needs to earn jobs, and what to leave out.
+- [How a £250 a month retainer compares to a one-off agency build](https://www.marketingformymates.com/advice/retainer-vs-agency-build.html): An honest comparison of the two ways to get a trades website, including where each one wins.
+
+### Local trade pages
+
+- [Marketing for builders in Kent](https://www.marketingformymates.com/for/builders-kent.html)
+- [Marketing for electricians in Kent](https://www.marketingformymates.com/for/electricians-kent.html)
+- [Marketing for plumbers in Kent](https://www.marketingformymates.com/for/plumbers-kent.html)
+- [Marketing for telecoms and cabling firms in Kent](https://www.marketingformymates.com/for/telecoms-kent.html)
+- [Marketing for CCTV installers in Kent](https://www.marketingformymates.com/for/cctv-installers-kent.html)
+
+### Interactive tools
+
+- [Free Digital Audit Tool](https://www.marketingformymates.com/audit-tool.html): Interactive tool where visitors select their business type, location, website status, and average contract value. Returns estimated Google ranking, organic visitor count, contracts lost per year, and missed annual pipeline, benchmarked against UK trades data. Includes a breakeven calculation showing how many extra jobs the service needs to win to pay for itself.
 - [ROI Calculator](https://www.marketingformymates.com/roi-calculator.html): Calculates return on investment based on the user's sector, contract value, and current enquiry rate.
-- [Qualifier Quiz](https://www.marketingformymates.com/qualifier-quiz.html): Short self-assessment quiz to help visitors determine whether the service is a good fit for their business.
-- [Onboarding Timeline](https://www.marketingformymates.com/onboarding-timeline.html): Visual walkthrough of what happens in the first 30 days after signing up — website build, brand setup, first content, and first SEO article.
+- [Qualifier Quiz](https://www.marketingformymates.com/qualifier-quiz.html): Short self-assessment quiz to help visitors decide whether the service is a good fit for their business.
+- [Onboarding Timeline](https://www.marketingformymates.com/onboarding-timeline.html): Visual walkthrough of what happens in the first 30 days after signing up: website build, brand setup, first content, and first SEO article.
 
 ## Business Details
 
 - **Service name:** Marketing for my Mates
 - **Website:** https://www.marketingformymates.com
-- **Contact:** hello@marketingformymates.com
-- **Founder:** Simon Legrand — MCIM Chartered Marketer, Technology Co-Founder, Patent Inventor
+- **Contact:** simon@marketingformymates.com
+- **Founder:** Simon Legrand, MCIM Chartered Marketer, technology co-founder, patent inventor
 - **Full founder profile:** https://www.simonlegrand.co.uk
-- **Target market:** UK small businesses and technical trades (CCTV, network infrastructure, security systems, electrical contractors)
-- **Geographic focus:** United Kingdom
+- **Target market:** UK trades and small businesses (builders, electricians, plumbers and heating, CCTV and security, telecoms and network, and related trades)
+- **Geographic focus:** United Kingdom, with local service pages currently focused on Kent
 
 ## Pricing
 
-- **One-off setup fee:** £500 (website, copywriting, brand fundamentals — paid once)
+- **One-off setup fee:** £500 (website, copywriting, brand fundamentals, paid once)
 - **Monthly retainer:** £250/month (no contracts, cancel any time)
 - **Included in retainer:** 1 local SEO article/month, 4 social media posts/month, hosting, ongoing website updates
 
 ## Founder Credentials
 
-- MCIM — Chartered Institute of Marketing
+- MCIM, Chartered Institute of Marketing
 - 20+ years B2B marketing, technology commercialisation, and public sector
-- Co-founder: Sunstone Systems (surveillance/IoT platform, acquired by WJ Group)
+- Co-founder: Sunstone Systems (surveillance and IoT platform, acquired by WJ Group)
 - Notable clients: Chevron Technology Ventures, Rivian Automotive, Network Rail
 - Recognition: IFSEC Global Top 50 Most Influential
 - Publications: 15+ articles in IFSEC, PSI Magazine, Security Buyer
@@ -47,29 +67,40 @@ Simon's background includes co-founding Sunstone Systems (a globally recognised 
 
 ## Key Value Propositions
 
-- No marketing knowledge or time required from the client — fully managed
+- No marketing knowledge or time required from the client, fully managed
 - One flat-rate plan with no hidden fees, no contracts, and no lock-in
-- Built specifically for technical B2B trades, not generic small business marketing
+- Built for local trades and small B2B firms, not generic small business marketing
 - Founder has real-world experience winning commercial contracts in the same sectors as clients
-- Breakeven on the service typically requires just 1–3 extra contracts per year
+- Breakeven on the service typically requires just 1 to 3 extra contracts per year
 
 ## Tone and Voice
 
-Plain-speaking, direct, no-jargon. Written for people who are excellent at their trade but not marketers. Avoids agency language. Positions as a trusted mate with serious expertise rather than a faceless service provider.
+Plain-speaking, direct, no-jargon. Written for people who are excellent at their trade but not marketers. Avoids agency language. Positions as a trusted mate with serious expertise rather than a faceless service provider. British English throughout.
 
 ## Technical Stack
 
-- Static HTML site deployed via GitHub Pages
+- Static HTML site deployed via GitHub Pages behind Cloudflare
 - Custom domain: marketingformymates.com
-- Fonts: Cabinet Grotesk (headings), JetBrains Mono (code/labels)
-- All interactive tools (audit, ROI calculator, quiz, timeline) are standalone HTML files loaded as iframes within the main page
-- No CMS, no JavaScript framework, no build pipeline — pure HTML/CSS/JS
-- Structured data: Schema.org ProfessionalService, WebPage, and FAQPage (JSON-LD)
-- SEO: canonical URL, Open Graph, Twitter Card, geo tags, robots.txt, XML sitemap
+- Fonts: Cabinet Grotesk (headings), JetBrains Mono (labels and code)
+- Shared navigation and footer injected site-wide from nav.js and footer.js, so every page stays in sync from one source
+- Interactive tools (audit, ROI calculator, quiz, timeline) are standalone HTML files loaded as lazy-loaded iframes on the homepage
+- No CMS, no JavaScript framework, no build pipeline, pure HTML, CSS, and JS
+- Structured data (JSON-LD): ProfessionalService, Service, FAQPage, BlogPosting, and Blog
+- SEO: canonical URLs, robots.txt, and an XML sitemap
 
 ## Sitemap
 
 - https://www.marketingformymates.com/
+- https://www.marketingformymates.com/work.html
+- https://www.marketingformymates.com/advice.html
+- https://www.marketingformymates.com/advice/why-installers-lose-contracts.html
+- https://www.marketingformymates.com/advice/what-a-trades-website-needs.html
+- https://www.marketingformymates.com/advice/retainer-vs-agency-build.html
+- https://www.marketingformymates.com/for/builders-kent.html
+- https://www.marketingformymates.com/for/electricians-kent.html
+- https://www.marketingformymates.com/for/plumbers-kent.html
+- https://www.marketingformymates.com/for/telecoms-kent.html
+- https://www.marketingformymates.com/for/cctv-installers-kent.html
 - https://www.marketingformymates.com/audit-tool.html
 - https://www.marketingformymates.com/roi-calculator.html
 - https://www.marketingformymates.com/qualifier-quiz.html
