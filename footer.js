@@ -44,20 +44,20 @@
     css.id = 'site-footer-css';
     css.textContent =
       // Ink footer: one warm near-black anchor at the base of every page.
-      // Amber is lifted slightly (#e8952a) so it stays legible on dark.
+      // Amber is lifted slightly (#94a3b8) so it stays legible on dark.
       '.page-index{border-top:1px solid rgba(0,0,0,0.09);background:#1b1a16;padding:3.75rem 0;}' +
       '.page-index h2{font-size:1.15rem;margin-bottom:0.4rem;color:#f6f4ef;}' +
       '.page-index .idx-intro{font-size:0.85rem;color:#9c968c;max-width:640px;margin-bottom:1.75rem;line-height:1.7;}' +
       '.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.35rem 1.75rem;}' +
       '.index-grid a{font-family:var(--font-mono);font-size:0.73rem;color:#cbc6bd;text-decoration:none;padding:0.28rem 0;transition:color 0.18s;letter-spacing:0.02em;}' +
-      '.index-grid a:hover{color:#e8952a;}' +
-      '.index-grid a.current{color:#e8952a;font-weight:700;}' +
+      '.index-grid a:hover{color:#94a3b8;}' +
+      '.index-grid a.current{color:#94a3b8;font-weight:700;}' +
       'footer{background:#1b1a16;border-top:1px solid rgba(255,255,255,0.07);}' +
       '.footer-logo{color:#9c968c;}' +
-      '.footer-logo strong{color:#e8952a;}' +
+      '.footer-logo strong{color:#94a3b8;}' +
       '.footer-right{color:#948f86;}' +
       '.footer-right a{color:#cbc6bd;text-decoration:none;}' +
-      '.footer-right a:hover{color:#e8952a;}';
+      '.footer-right a:hover{color:#94a3b8;}';
     document.head.appendChild(css);
   }
 
